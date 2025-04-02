@@ -1,0 +1,3 @@
+= ReleaseHx Demo Project
+
+This repo contains demo and test files for the ReleaseHx gem.

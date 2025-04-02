@@ -1,0 +1,117 @@
+code: '1.1.0'
+date: 2024-11-01
+hash: 'd34db33fabc1234567890feedface000000abcd1'
+memo: |
+  This release introduces several important features and bug fixes, along with one deprecation.
+changes:
+  # NOTE:
+  # This file is a source for generating and testing demo payloads for using with ReleaseHx.
+  # This file is proper RHYML; we use it to reverse engineer API payloads from JIRA, GH Issues, etc.
+  # All change records except IMP-999 should have a release_note_needed indicator in their
+  #  JSON payload, depending on whether the IMS-side setup is to use labels or checkboxes in the 
+  #  body/description field.
+  # If release notes are sourced in the description/body, they should contain developer-oriented 
+  #  content from the original issue text, followed by demarcation like:
+  #  '\n\n## Draft Release Note\n\n' followed by the content of note
+  - chid: FEA-101
+    tick: PROJ-310
+    hash: 'a1b2c3d4e5f60718293a4b5c6d7e8f9012345678'
+    type: feature
+    part: webui
+    summ: 'Add inline editing to dashboard widgets'
+    head: 'Inline Editing for Widgets'
+    tags: [featured, changelog]
+    note: |
+      Introduces an interactive editor directly in the dashboard, allowing users to modify widgets without navigating away.
+
+      This significantly streamlines common tasks.
+    lead: julie
+    auths:
+      - user: julie
+        memo: frontend lead
+      - user: robin
+        memo: UX review
+
+  - chid: FEA-102
+    tick: PROJ-467
+    hash: 'abc123abc123abc123abc123abc123abc123abcd'
+    type: feature
+    part: api
+    summ: 'Add rate limiting headers to public API'
+    head: 'API Rate Limiting Headers'
+    tags: [breaking, changelog]
+    note: |
+      The API now includes standard `X-RateLimit-*` headers in all responses to better inform consumers of usage thresholds.
+
+      > **Note:** The default rate limit remains unchanged.
+    lead: devin
+
+  - chid: BUG-303
+    tick: PROJ-983
+    hash: 'deadbeef0000000000000000000000000000feed'
+    type: bug
+    part: webui
+    summ: 'Fix modal overflow on small screens'
+    tags: [changelog]
+    note: |
+      Modals now scroll correctly on devices with < 600px screen width.
+    lead: sam
+    auths:
+      - user: sam
+        memo: implementation
+      - user: tracy
+        memo: QA
+
+  - chid: BUG-304
+    tick: PROJ-987
+    hash: 'facefeed1234567890abcdef1234567890abcdef'
+    type: bug
+    part: api
+    summ: 'Fix JSON serialization issue with null values'
+    tags: []
+    note: |
+      Previously, null values were omitted from JSON payloads. This has been corrected.
+
+      **Impact:** Clients expecting explicit nulls will now receive them as specified.
+    lead: cory
+
+  - chid: DOC-205
+    tick: PROJ-399
+    hash: 'ffeeddbbaa99887766554433221100aa00bbccdd'
+    type: documentation
+    part: webui
+    summ: 'Add missing keyboard shortcuts to Help page'
+    tags: []
+    note: |
+      The Help page now includes a full list of supported keyboard shortcuts, including:
+
+      - `/` to focus search
+      - `?` to show help modal
+    lead: robin
+
+  - chid: DOC-410
+    tick: PROJ-200
+    hash: '55556666777788889999aaaabbbbccccddddeeee'
+    type: documentation
+    part: api
+    summ: 'Deprecate v1 endpoints for user settings'
+    tags: [deprecation]
+    note: |
+      The following v1 endpoints are now deprecated:
+
+      - `GET /api/v1/settings/user`
+      - `PUT /api/v1/settings/user`
+
+      Use `/api/v2/settings/profile` instead.
+    lead: amir
+
+  # only appears in changelog, not release notes
+  - chid: IMP-999
+    tick: PROJ-1234
+    hash: '0000111122223333444455556666777788889999'
+    type: improvement
+    part: installer
+    summ: 'Speed up dependency resolution during install'
+    tags: [] # this will have had a changelog label in IMS
+    # its presencce in this file designates it as belonging in the changelog
+    lead: jorge
