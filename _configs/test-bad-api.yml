@@ -1,0 +1,107 @@
+# Test configuration with invalid API type
+# This config is used to test error handling and help message functionality
+# Expected behavior: Should show helpful error message about missing mapping file
+
+origin:
+  source: nonexistent
+  version: 2
+  label: Test Bad API (for error testing)
+  format: json
+
+paths:
+  drafts_dir: drafts
+  payloads_dir: issues
+  templates_dir: _templates
+  mappings_dir: _mappings
+
+conversions:
+  summ: issue_heading
+  note: issue_body
+  note_pattern: /^## Draft Release Note\s*\n+(?<note>(.|\n)+)/mi
+  head_pattern: /^(?<head>[^\n]+)\n+/m
+  markup: markdown
+  engine: redcarpet
+
+parts:
+  webui:
+    head: Web UI
+    icon: desktop # desktop
+    text: Web UI
+  api:
+    head: API
+    icon: server
+    text: API
+  installer:
+    head: Installer
+    icon: cloud-download
+    text: Installer
+
+links:
+  web:
+    href: https://jira.example.com/browse/{{ tick }}
+  git:
+    href: https://github.com/DocOps/releasehx-demo/commit/{{ hash }}
+  # usr: https://example.com/staff/profiles/{{ lead }}
+  get:
+    href: "https://github.com/example/project/commit/{{ code | replae: '.', '_' }}"
+    text: giddyup!
+
+modes:
+  asciidoc_frontmatter: true
+  # remove_excess_lines: 3
+
+rhyml:
+  pasterize_head: true
+  chid: "{{ release.code | replace: '.', '_' | upcase }}-{{ change.tick }}"
+  # chid: "{{- change.tick }}-{{ change.summ | truncate: 20 | slugify }}"
+
+history:
+  items:
+    empty_groups: |
+      No changes in this {{ group_type }} category.
+
+changelog:
+  items:
+    frame: paragraph
+    # metadata_icons: false
+
+notes:
+  spot: 2
+  items:
+    frame: table-cols-2
+    allow_redundant: true
+
+tags:
+  _include: ['release_note_needed', 'changelog', 'highlighted', 'breaking', 'deprecation']
+  _exclude: ['internal', 'wontfix']
+
+  # Tag definitions
+  highlighted:
+    head: Highlighted
+    icon: star
+    text: Notable features and improvements
+
+  breaking:
+    head: Breaking Changes
+    icon: exclamation-triangle
+    text: Changes that may require action
+
+  deprecation:
+    head: Deprecations
+    icon: clock-o
+    text: Features marked for future removal
+
+  bug:
+    head: Bug Fixes
+    icon: bug
+    text: Issues resolved in this release
+
+  improvement:
+    head: Improvements
+    icon: arrow-up
+    text: Enhancements and optimizations
+
+  task:
+    head: Tasks
+    icon: check
+    text: Maintenance and internal changes

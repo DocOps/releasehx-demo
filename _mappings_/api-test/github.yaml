@@ -1,0 +1,54 @@
+$config:
+  path_lang: jmespath
+  tplt_lang: liquid
+  desc: GitHub Issues API to RHYML (API testing with release notes)
+  note: Extracts release notes from ## Release Note sections in issue body
+
+changes_array_path: "[?state == 'closed']"
+
+tick:
+  path: number
+
+type:
+  path: labels[?name=='bug' || name=='feature' || name=='improvement' || name=='documentation'].name | [0]
+  tplt: '{{ path | default: "task" }}'
+
+parts:
+  path: labels[?starts_with(name, 'part:') || name == 'ui' || name == 'api' || name == 'testing'].name
+  tplt: '{% assign part_labels = path %}{% assign part_slugs = "" | split: "," %}{% for label in part_labels %}{% if label contains ":" %}{% assign slug = label | split: ":" | last %}{% else %}{% assign slug = label %}{% endif %}{% assign part_slugs = part_slugs | push: slug %}{% endfor %}{{ part_slugs | join: "," }}'
+
+# hash: GitHub Issues API doesn't provide merge commit info directly
+
+summ:
+  path: title
+
+head:
+  path: title
+
+note:
+  path: body
+  tplt: |
+    {% assign lines = path | split: "\n" %}
+    {% assign in_release_note = false %}
+    {% assign note_lines = "" | split: "\n" %}
+    {% for line in lines %}
+      {% if line contains "## Release Note" %}
+        {% assign in_release_note = true %}
+        {% continue %}
+      {% endif %}
+      {% if in_release_note %}
+        {% if line contains "##" and line != "## Release Note" %}
+          {% break %}
+        {% endif %}
+        {% unless line == "" and note_lines.size == 0 %}
+          {% assign note_lines = note_lines | push: line %}
+        {% endunless %}
+      {% endif %}
+    {% endfor %}
+    {{ note_lines | join: "\n" | strip }}
+
+tags:
+  path: labels[].name
+
+lead:
+  path: assignee.login

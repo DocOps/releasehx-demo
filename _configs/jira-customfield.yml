@@ -1,0 +1,81 @@
+origin:
+  source: jira
+  label: Jira Cloud API
+  format: json
+
+paths:
+  drafts_dir: drafts
+  payloads_dir: issues
+  templates_dir: _templates
+
+conversions:
+  summ: issue_heading
+  note: custom_field
+  markup: markdown
+
+sources:
+  note_custom_field: customfield_10039
+
+parts:
+  webui:
+    head: Web UI
+    icon: desktop
+    text: Web UI
+  api:
+    head: API
+    icon: server
+    text: API
+  installer:
+    head: Installer
+    icon: cloud-download
+    text: Installer
+
+links:
+  web: https://jira.example.com/browse/{{ tick }}
+  git: https://github.com/DocOps/releasehx-demo/commit/{{ hash }}
+  usr: https://example.com/staff/profiles/{{ vars.lead }}
+
+modes:
+  asciidoc_frontmatter: true
+
+rhyml:
+  pasterize_head: true
+  chid: "{{ release.code | replace: '.', '_' | upcase }}-{{ change.tick }}"
+
+history:
+  items: 
+    empty_groups: |
+      No changes in this {{ group_type }} category.
+
+changelog:
+  items:
+    frame: paragraph
+
+notes:
+  spot: 2
+  items:
+    frame: table-cols-2
+    allow_redundant: true
+
+tags:
+  changelog:
+    incl: changelog
+  breaking:
+    incl: breaking
+    note: "⚠️ **Breaking Change**"
+  highlighted:
+    incl: highlighted
+
+types:
+  feature:
+    head: Features
+    icon: star
+  improvement:
+    head: Improvements
+    icon: arrow-up
+  bug:
+    head: Bug Fixes
+    icon: bug
+  task:
+    head: Tasks
+    icon: check

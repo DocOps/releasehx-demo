@@ -1,0 +1,176 @@
+origin:
+  source: jira
+  version: 2
+  label: JIRA v2 API (Feature-Rich Configuration)
+  format: json
+
+paths:
+  drafts_dir: drafts
+  payloads_dir: issues
+  templates_dir: _templates
+  mappings_dir: _mappings
+
+conversions:
+  summ: issue_heading
+  note: custom_field
+  markup: markdown
+
+sources:
+  note_custom_field: customfield_10039
+
+parts:
+  webui:
+    head: Web User Interface
+    icon: desktop
+    text: Web UI
+    desc: Frontend user interface components and experiences
+  api:
+    head: Application Programming Interface
+    icon: server
+    text: API
+    desc: Backend services and API endpoints
+  installer:
+    head: Installation & Deployment
+    icon: cloud-download
+    text: Installer
+    desc: Installation, deployment, and configuration tools
+  internal:
+    head: Internal Systems
+    icon: lock
+    text: Internal
+    desc: Internal refactoring and infrastructure changes
+
+links:
+  web: https://jira.example.com/browse/{{ tick }}
+  git: https://github.com/DocOps/releasehx-demo/commit/{{ hash }}
+  usr: https://example.com/staff/profiles/{{ vars.lead }}
+
+modes:
+  asciidoc_frontmatter: true
+  markdown_frontmatter: true
+  fetch: all-tagged
+  remove_excess_lines: 3
+
+rhyml:
+  pasterize_head: true
+  pasterize_summ: true
+  chid: "{{ release.code | replace: '.', '_' | upcase }}-{{ change.tick }}-{{ change.summ | truncate: 20 | slugify }}"
+  empty_notes: empty
+  max_parts: 3
+
+history:
+  head: "Release {{ release.code }} - {{ release.date | date: '%B %d, %Y' }}"
+  text: |
+    This release includes {{ release.changes.size }} changes across {{ release.parts.size }} components.
+    
+    {% assign breaking_count = release.changes | where: 'tags', 'breaking' | size %}
+    {% assign highlighted_count = release.changes | where: 'tags', 'highlighted' | size %}
+    {% if breaking_count > 0 %}**⚠️ This release contains {{ breaking_count }} breaking change{% if breaking_count != 1 %}s{% endif %}.**{% endif %}
+    {% if highlighted_count > 0 %}✨ {{ highlighted_count }} highlighted feature{% if highlighted_count != 1 %}s{% endif %} included.{% endif %}
+  items: 
+    issue_links: true
+    git_links: true
+    metadata_icons: before
+    metadata_labels: after
+    empty_groups: |
+      _No changes in this {{ group_type }} category._
+
+changelog:
+  head: "Complete Changelog"
+  text: |
+    Comprehensive list of all changes included in {{ release.code }}.
+    
+    Changes are organized by component and type for easy navigation.
+  spot: 3
+  sort:
+    - 'highlighted:grouping1'
+    - 'breaking:grouping1'
+    - 'part:grouping2'
+    - 'type:grouping3'
+  items:
+    frame: unordered
+    issue_links: true
+    git_links: true
+    metadata_icons: before
+    metadata_labels: after
+
+notes:
+  head: "Release Highlights & Important Notes"
+  text: |
+    Detailed information about significant changes, new features, and important considerations for {{ release.code }}.
+    
+    Please review breaking changes and deprecations carefully before upgrading.
+  spot: 1
+  sort:
+    - 'breaking:grouping1'
+    - 'deprecation:grouping1'
+    - 'highlighted:grouping1'
+    - 'security:grouping1'
+    - 'part:grouping2'
+    - 'type:grouping3'
+  items:
+    frame: table-cols-2
+    allow_redundant: false
+    issue_links: true
+    git_links: false
+    metadata_icons: true
+    metadata_labels: false
+
+# Comprehensive tag system
+tags:
+  _include: ['release_note_needed', 'changelog', 'highlighted', 'breaking', 'deprecation', 'security', 'performance']
+  _exclude: ['internal', 'wontfix', 'duplicate', 'invalid']
+  
+  highlighted:
+    head: "🌟 Highlighted Features"
+    icon: star
+    text: Highlighted
+    desc: Major new features and significant improvements
+    
+  breaking:
+    head: "⚠️ Breaking Changes"
+    icon: exclamation-triangle
+    text: Breaking Change
+    desc: Changes that may require code or configuration updates
+    
+  deprecation:
+    head: "⏰ Deprecations"
+    icon: clock-o
+    text: Deprecated
+    desc: Features marked for removal in future versions
+    
+  security:
+    head: "🔒 Security Updates"
+    icon: shield
+    text: Security Fix
+    desc: Security improvements and vulnerability fixes
+    
+  performance:
+    head: "⚡ Performance Improvements"
+    icon: tachometer
+    text: Performance
+    desc: Optimizations and performance enhancements
+    
+  bug:
+    head: "🐛 Bug Fixes"
+    icon: bug
+    text: Bug Fix
+    desc: Issues and defects resolved
+    
+  improvement:
+    head: "✨ Improvements"
+    icon: arrow-up
+    text: Improvement
+    desc: Enhancements to existing functionality
+    
+  feature:
+    head: "🚀 New Features"
+    icon: plus-square-o
+    text: New Feature
+    desc: Brand new functionality and capabilities
+    
+  task:
+    head: "🔧 Maintenance"
+    icon: check
+    text: Maintenance
+    desc: Maintenance tasks and technical improvements

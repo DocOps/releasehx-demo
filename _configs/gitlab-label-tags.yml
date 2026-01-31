@@ -1,0 +1,155 @@
+origin:
+  source: gitlab
+  version: 4
+  label: GitLab Issues API v4 (Label-based Tags)
+  format: json
+
+paths:
+  drafts_dir: drafts
+  payloads_dir: issues
+  templates_dir: _templates
+  mappings_dir: _mappings
+
+conversions:
+  summ: issue_heading
+  note: issue_body
+  note_pattern: '/^## Release Note\s*\n+(?<note>(.|\n)+)/mi'
+  markup: markdown
+  engine: commonmarker
+
+parts:
+  collaboration:
+    head: Collaboration
+    icon: users
+    text: Collaboration
+  search:
+    head: Search & Discovery
+    icon: search
+    text: Search
+  database:
+    head: Database
+    icon: database
+    text: Database
+  ai:
+    head: AI Features
+    icon: magic
+    text: AI
+  configuration:
+    head: Configuration
+    icon: cogs
+    text: Configuration
+  security:
+    head: Security
+    icon: shield
+    text: Security
+  performance:
+    head: Performance
+    icon: tachometer
+    text: Performance
+  bug-fixes:
+    head: Bug Fixes
+    icon: bug
+    text: Bug Fixes
+  data:
+    head: Data & Storage
+    icon: database
+    text: Data
+  concurrency:
+    head: Concurrency & Threading
+    icon: refresh
+    text: Concurrency
+
+links:
+  web: https://gitlab.example.com/project/-/issues/{{ tick }}
+  git: https://gitlab.example.com/project/-/commit/{{ hash }}
+  usr: https://gitlab.example.com/{{ vars.lead }}
+
+modes:
+  asciidoc_frontmatter: true
+  fetch: all-tagged
+  remove_excess_lines: 1
+
+rhyml:
+  pasterize_head: false
+  pasterize_summ: true
+  chid: "{{ change.tick }}-{{ change.summ | truncate: 15 | slugify }}"
+  empty_notes: empty
+  max_parts: 2
+
+history:
+  head: "Release {{ release.code }} - {{ release.date }}"
+  items: 
+    issue_links: true
+    git_links: false
+    metadata_icons: before
+    metadata_labels: before
+
+changelog:
+  head: Changes
+  text: |
+    All changes included in this release (using label-based tagging).
+  sort:
+    - 'part:grouping1'
+    - 'type:grouping2'
+  items:
+    frame: ordered
+
+notes:
+  head: Notable Changes
+  text: |
+    Detailed information about significant changes that may affect users.
+  spot: 1
+  sort:
+    - 'highlighted:grouping1'
+    - 'security:grouping1'
+    - 'breaking:grouping1'
+    - 'removal:grouping1'
+    - 'experimental:grouping1'
+    - 'part:grouping2'
+  items:
+    frame: table-cols-2
+    allow_redundant: false
+
+tags:
+  _include: ['highlighted', 'changelog', 'breaking', 'deprecation', 'removal', 'security', 'experimental']
+  _exclude: ['internal', 'wontfix']
+  
+  highlighted:
+    head: Highlighted Features
+    icon: star
+    text: Highlighted
+    
+  breaking:
+    head: Breaking Changes
+    icon: exclamation-triangle
+    text: Breaking
+    
+  removal:
+    head: Removed Features
+    icon: sign-out
+    text: Removed
+    
+  security:
+    head: Security Updates
+    icon: shield
+    text: Security
+    
+  experimental:
+    head: Experimental Features
+    icon: flask
+    text: Experimental
+    
+  deprecation:
+    head: Deprecated Features
+    icon: clock-o
+    text: Deprecated
+    
+  enhancement:
+    head: Enhancements
+    icon: wrench
+    text: Enhancement
+    
+  bug:
+    head: Bug Fixes
+    icon: bug
+    text: Bug Fix

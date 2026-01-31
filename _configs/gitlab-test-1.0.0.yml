@@ -1,0 +1,67 @@
+origin:
+  source: gitlab
+  version: 4
+  project: 14069112
+  label: GitLab Issues API v4 (Test 1.0.0)
+  format: json
+
+paths:
+  drafts_dir: drafts
+  payloads_dir: _payloads
+
+conversions:
+  summ: issue_heading
+  note: issue_body
+  note_pattern: '/^## Release Note\s*\n+(?<note>(.|\n)+)/mi'
+  markup: markdown
+
+# Default types without requiring specific labels
+types:
+  bug:
+    slug: bug
+    head: Bug Fixes
+    text: Bug fix
+    icon: bug
+  enhancement:
+    slug: enhancement  
+    head: Enhancements
+    text: Enhancement
+    icon: wrench
+  feature:
+    slug: feature
+    head: New Features  
+    text: Feature
+    icon: plus
+
+# No tag filtering - include all issues
+tags:
+  _include: []  # Include all
+  _exclude: []  # Exclude none
+
+links:
+  web: https://gitlab.com/bdom/asciidoc-testing/-/issues/{{ tick }}
+
+modes:
+  markdown_frontmatter: true
+  remove_excess_lines: 2
+
+rhyml:
+  empty_notes: skip
+
+history:
+  items:
+    show_issue_links: true
+
+changelog:
+  head: What's Changed
+  text: Summary of all changes in this release.
+  items:
+    frame: unordered
+
+notes:
+  spot: 1
+  head: Release Notes
+  text: Descriptions of notable changes in this release.
+  items:
+    frame: unordered
+    allow_redundant: true

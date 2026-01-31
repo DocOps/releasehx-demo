@@ -1,0 +1,20 @@
+$config:
+  path_lang: jmespath
+  tplt_lang: liquid
+  desc: Minimal Jira Issues API to RHYML mapping
+  note: Basic test mapping for Jira API
+
+# Take all issues from Jira response structure 
+changes_array_path: "issues"
+
+tick:
+  path: key
+
+summ:
+  path: fields.summary
+
+note:
+  path: fields.description
+
+lead:
+  path: fields.assignee.displayName

@@ -1,0 +1,200 @@
+= ReleaseHx Demo API Client Testing
+:toc: macro
+:toclevels: 3
+
+Demo-specific testing scenarios for ReleaseHx API client configurations using the mock data and configurations provided in this repository.
+
+[NOTE]
+For API authentication setup instructions, see the https://github.com/DocOps/releasehx#rest-api-auth[REST API Authentication] section in the main ReleaseHx README.
+
+toc::[]
+
+[[overview]]
+== Overview
+
+This document focuses on testing the ReleaseHx API clients using the demo configurations and mock data available in this repository.
+It complements the comprehensive authentication setup and testing guidance in the main ReleaseHx documentation.
+
+[[demo-data-testing]]
+== Demo Data Testing
+
+[[jira-demo-testing]]
+=== JIRA Demo Testing
+
+Test with existing mock JSON data:
+
+[.prompt]
+----
+# Test basic JIRA configuration with mock data
+bundle exec rhx 1.1.0 --api-data _payloads/jira-customfield-note-1.1.0.json --config _configs/jira-customfield.yml --yaml
+
+# Test description-based release notes
+bundle exec rhx 1.1.0 --api-data _payloads/jira-description-note-1.1.0.json --config _configs/jira-description.yml --md
+
+# Test changelog-only output
+bundle exec rhx 1.1.0 --api-data _payloads/jira-customfield-note-1.1.0.json --config _configs/jira-customfield-changelog.yml --html
+
+# Test heavy configuration with all features
+bundle exec rhx 1.1.0 --api-data _payloads/jira-customfield-note-1.1.0.json --config _configs/jira-customfield-heavy.yml --pdf
+----
+
+[[github-demo-testing]]
+=== GitHub Demo Testing
+
+Test with GitHub mock data and different tag strategies:
+
+[.prompt]
+----
+# Test checkbox-based tagging
+bundle exec rhx 1.1.0 --api-data _payloads/github-checkbox-tags-1.1.0.json --config _configs/github-basic.yml --yaml
+
+# Test label-based tagging  
+bundle exec rhx 1.1.0 --api-data _payloads/github-label-tags-1.1.0.json --config _configs/github-label-tags.yml --adoc
+
+# Test with actual GitHub data (if available)
+# bundle exec rhx 0.2.0 --api-data _payloads/github-issuer-actual-0.2.0.json --config _configs/github-basic.yml --html
+----
+
+[[gitlab-demo-testing]]
+=== GitLab Demo Testing
+
+Test with GitLab mock data configurations:
+
+[.prompt]
+----
+# Test checkbox-based tagging
+bundle exec rhx 1.1.0 --api-data _payloads/gitlab-checkbox-tags-1.1.0.json --config _configs/gitlab-basic.yml --yaml
+
+# Test label-based tagging
+bundle exec rhx 1.1.0 --api-data _payloads/gitlab-label-tags-1.1.0.json --config _configs/gitlab-label-tags.yml --md
+----
+
+[[generic-demo-testing]]
+=== Generic Demo Testing
+
+Test with version progression using generic demo data:
+
+[.prompt]
+----
+# Test version 1.1.1
+bundle exec rhx 1.1.1 --api-data _payloads/generic-1.1.1.json --config _configs/github-basic.yml --yaml
+
+# Test version 1.1.2
+bundle exec rhx 1.1.2 --api-data _payloads/generic-1.1.2.json --config _configs/gitlab-basic.yml --adoc
+
+# Test version 1.2.0
+bundle exec rhx 1.2.0 --api-data _payloads/generic-1.2.0.json --config _configs/jira-customfield.yml --html
+----
+
+[[testing-phases]]
+== Testing Phases
+
+[[configuration-validation]]
+=== Configuration Validation
+
+Syntax testing:: Ensure YAML files parse correctly
+Template rendering:: Verify Liquid templates render with test data
+Authentication:: Test auth header generation with mock credentials
+
+[[static-json-testing]]
+=== Static JSON Testing
+
+JIRA:: Test with existing mock JSON files
+GitHub/GitLab:: Test with downloaded sample responses
+Mapping validation:: Ensure data maps correctly to RHYML format
+
+[[live-api-testing]]
+=== Live API Testing
+
+GitHub:: Test with real GitHub repository
+GitLab:: Test with real GitLab project  
+Error handling:: Test with invalid tokens, missing repos, etc.
+
+[[integration-testing]]
+=== Integration Testing
+
+End-to-end:: Full workflow from API → RHYML → AsciiDoc/HTML/PDF
+Authentication methods:: Test different auth modes
+Pagination:: Test with large result sets
+Edge cases:: Empty responses, API errors, network timeouts
+
+[[test-data-requirements]]
+== Test Data Requirements
+
+[[github-repository-setup]]
+=== GitHub Repository Setup
+
+Create a test repository with:
+
+* Multiple issues with different labels
+* At least one milestone named "1.1.0" 
+* Issues assigned to the milestone
+* Mix of open/closed issues
+* Issues with and without release note content
+
+[[gitlab-project-setup]]
+=== GitLab Project Setup
+
+Create a test project with:
+
+* Multiple issues with different labels
+* At least one milestone named "1.1.0"
+* Issues assigned to the milestone
+* Mix of open/closed issues  
+* Issues with merge request links
+
+[[expected-blockers]]
+== Expected Blockers & Solutions
+
+[[authentication-issues]]
+=== Authentication Issues
+
+Problem:: Invalid tokens, wrong scopes
+Solution:: Clear error messages, token validation
+
+[[api-rate-limiting]]
+=== API Rate Limiting
+
+Problem:: GitHub/GitLab rate limits
+Solution:: Implement retry logic, respect rate limit headers
+
+[[data-format-variations]]
+=== Data Format Variations
+
+Problem:: Different response formats between API versions
+Solution:: Flexible mapping configurations, validation
+
+[[missing-data]]
+=== Missing Data
+
+Problem:: Required fields not present in API responses
+Solution:: Default values, conditional mapping
+
+[[success-criteria]]
+== Success Criteria
+
+[[client-criteria]]
+=== Client Criteria
+
+Configuration file loads without errors:: Test YAML parsing and validation
+Authentication headers generate correctly:: Verify proper auth token/header formatting
+API requests execute successfully:: When credentials available, test actual API calls
+JSON responses map to valid RHYML format:: Ensure data transformation works correctly
+Generated AsciiDoc/HTML renders correctly:: Validate final output quality
+Error conditions handled gracefully:: Test failure scenarios and error messages
+
+[[integration-criteria]]
+=== Integration Criteria
+
+All three APIs work with demo configurations:: JIRA, GitHub, and GitLab clients functional
+API → AsciiDoc → HTML/PDF pipeline works end-to-end:: Complete workflow validation
+Documentation accurately reflects capabilities:: Ensure docs match implementation
+Error messages are helpful for troubleshooting:: User-friendly error reporting
+
+[[next-steps]]
+== Next Steps
+
+Immediate:: Test JIRA with static JSON files
+Short-term:: Set up GitHub/GitLab test repositories  
+Medium-term:: Implement comprehensive error handling
+Long-term:: Add support for additional API endpoints (pull requests, etc.)

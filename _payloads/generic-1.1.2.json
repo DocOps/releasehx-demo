@@ -1,0 +1,76 @@
+{
+  "changes": [
+    {
+      "id": "SEC-001",
+      "type": "security",
+      "summary": "Patch XSS vulnerability in user input handling",
+      "description": "A cross-site scripting vulnerability was discovered in user input processing.\n\n## Release Note\n\nFixed a cross-site scripting (XSS) vulnerability in user input handling. This security patch prevents malicious scripts from being executed through user-generated content.",
+      "components": ["security", "web-ui"],
+      "tags": ["security", "critical", "changelog"],
+      "assignee": "marcus-security",
+      "commit_hash": "sec123456789abcdef012345678901234567890",
+      "created_date": "2024-12-01T08:00:00Z",
+      "resolved_date": "2024-12-01T12:30:00Z"
+    },
+    {
+      "id": "BUG-004",
+      "type": "bug",
+      "summary": "Fix database connection timeout in high-load scenarios",
+      "description": "Database connections were timing out under high load, causing service interruptions.\n\n## Release Note\n\nFixed database connection timeout issues that could occur during high-traffic periods. The system now handles concurrent connections more efficiently.",
+      "components": ["database", "performance"],
+      "tags": ["performance", "changelog"],
+      "assignee": "nina-dba",
+      "commit_hash": "db456789abcdef012345678901234567890123",
+      "created_date": "2024-12-02T14:15:00Z",
+      "resolved_date": "2024-12-02T18:45:00Z"
+    },
+    {
+      "id": "BUG-005",
+      "type": "bug",
+      "summary": "Resolve keyboard shortcut conflicts in Firefox",
+      "description": "Some keyboard shortcuts were conflicting with Firefox's built-in shortcuts.\n\n## Release Note\n\nResolved keyboard shortcut conflicts with Firefox browser. All application shortcuts now work correctly across different browsers.",
+      "components": ["web-ui", "accessibility"],
+      "tags": ["browser-compatibility", "changelog"],
+      "assignee": "emma-ux",
+      "commit_hash": "ff789abcdef012345678901234567890123456",
+      "created_date": "2024-12-03T09:30:00Z",
+      "resolved_date": "2024-12-03T13:20:00Z"
+    },
+    {
+      "id": "IMPROVE-003",
+      "type": "improvement",
+      "summary": "Optimize search indexing for better performance",
+      "description": "Search indexing was taking too long for large datasets, affecting user experience.\n\n## Release Note\n\nOptimized search indexing process, reducing indexing time by up to 60% for large datasets. Search results now appear faster and system responsiveness is improved.",
+      "components": ["search", "performance"],
+      "tags": ["performance", "changelog"],
+      "assignee": "carlos-frontend",
+      "commit_hash": "opt123abcdef456789012345678901234567890",
+      "created_date": "2024-12-04T11:00:00Z",
+      "resolved_date": "2024-12-04T16:30:00Z"
+    },
+    {
+      "id": "IMPROVE-004",
+      "type": "improvement",
+      "summary": "Add progress indicators for long-running operations",
+      "description": "Users had no feedback during long operations like data exports or bulk updates.\n\n## Release Note\n\nAdded progress indicators for long-running operations including data exports, bulk updates, and large file uploads. Users now receive real-time feedback on operation status.",
+      "components": ["web-ui", "user-experience"],
+      "tags": ["usability", "changelog"],
+      "assignee": "sarah-dev",
+      "commit_hash": "prog456def789012345678901234567890123abc",
+      "created_date": "2024-12-05T10:15:00Z",
+      "resolved_date": "2024-12-05T14:45:00Z"
+    },
+    {
+      "id": "DOC-001",
+      "type": "documentation",
+      "summary": "Update API documentation for OAuth2 migration",
+      "description": "API documentation needed updates to reflect the OAuth2 migration and deprecation of basic auth.\n\n## Release Note\n\nUpdated API documentation with comprehensive OAuth2 migration guide and examples. Includes step-by-step instructions for transitioning from basic authentication.",
+      "components": ["documentation", "api"],
+      "tags": ["documentation", "changelog"],
+      "assignee": "lisa-docs",
+      "commit_hash": "doc789012345678901234567890123456789def",
+      "created_date": "2024-12-06T09:00:00Z",
+      "resolved_date": "2024-12-06T17:30:00Z"
+    }
+  ]
+}

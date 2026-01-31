@@ -1,0 +1,35 @@
+_config:
+  path_lang: jmespath
+  tplt_lang: liquid
+  desc: GitLab Issues API to RHYML (label-based tags)
+  note: Extracts tags from issue labels
+
+changes_array_path: issues
+
+tick:
+  path: iid
+
+type:
+  path: labels[?contains(@, 'enhancement')] | [0]
+  tplt: '{% if path %}improvement{% else %}{{ labels[0] | default: "task" }}{% endif %}'
+
+parts:
+  path: labels
+
+hash:
+  path: merge_commit_sha
+
+summ:
+  path: title
+
+head:
+  path: title
+
+note:
+  path: description
+
+tags:
+  path: labels
+
+lead:
+  path: assignee.username

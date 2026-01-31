@@ -1,0 +1,178 @@
+origin:
+  source: github
+  version: 3
+  label: GitHub Issues API v3 (Label-based Tags)
+  format: json
+
+paths:
+  drafts_dir: drafts
+  payloads_dir: issues
+  templates_dir: _templates
+  mappings_dir: _mappings
+
+conversions:
+  summ: issue_heading
+  note: issue_body
+  note_pattern: '/^## Release Note\s*\n+(?<note>(.|\n)+)/mi'
+  markup: markdown
+  engine: redcarpet
+
+parts:
+  ui:
+    head: User Interface
+    icon: desktop
+    text: UI
+  api:
+    head: API
+    icon: server
+    text: API
+  security:
+    head: Security
+    icon: shield
+    text: Security
+  performance:
+    head: Performance
+    icon: tachometer
+    text: Performance
+  accessibility:
+    head: Accessibility
+    icon: universal-access
+    text: Accessibility
+
+types:
+  enhancement:
+    slug: enhancement
+    text: Enhancement
+    head: Enhancements
+    icon: arrow-up
+  bug:
+    slug: bug
+    text: Bug Fix
+    head: Bug Fixes
+    icon: bug
+  feature:
+    slug: feature
+    text: Feature
+    head: New Features
+    icon: plus
+  documentation:
+    slug: documentation
+    text: Documentation
+    head: Documentation
+    icon: book
+
+links:
+  web: https://github.com/example/project/issues/{{ tick }}
+  git: https://github.com/example/project/commit/{{ hash }}
+  usr: https://github.com/{{ vars.lead }}
+
+modes:
+  asciidoc_frontmatter: true
+  markdown_frontmatter: true
+  remove_excess_lines: 2
+
+rhyml:
+  pasterize_head: true
+  chid: "{{ release.code | replace: '.', '_' | upcase }}-{{ change.tick }}"
+  empty_notes: skip
+
+history:
+  items:
+    issue_links: true
+    git_links: false  # GitHub Issues API doesn't provide commit hashes
+    metadata_icons: true
+
+changelog:
+  head: What's Changed
+  text: |
+    Summary of all changes in this release (using label-based tagging).
+  htag: h2
+  spot: 2
+  sort:
+    - type:group
+  items:
+    frame: unordered
+    allow_redundant: false
+    show_git_links: false
+    show_issue_links: false
+    metadata_labels: before
+    metadata_icons: before
+    show_lead: false
+    show_type_label: false
+    show_parts_label: false
+    show_tags_label: false
+    show_lead_label: false
+    show_auths_label: false
+
+notes:
+  head: Release Notes
+  text: Descriptions of any specially notable changes or additions since the previous release.
+  htag: h2
+  spot: 1
+  sort:
+    - highlighted:group
+    - breaking:group
+    - deprecation:group
+    - type:group
+  items:
+    frame: unordered
+    allow_redundant: true
+    show_git_links: false
+    show_issue_links: false
+    metadata_labels: before
+    metadata_icons: before
+    show_lead: false
+    show_type_label: false
+    show_parts_label: false
+    show_tags_label: false
+    show_lead_label: false
+    show_auths_label: false
+
+tags:
+  _include: ['highlighted', 'changelog', 'breaking', 'deprecation', 'security', 'experimental', 'removal']
+  _exclude: ['internal', 'wontfix', 'duplicate']
+
+  highlighted:
+    head: Highlights
+    icon: star
+    text: Featured changes
+
+  breaking:
+    head: Breaking Changes
+    icon: exclamation-triangle
+    text: Breaking changes
+
+  deprecation:
+    head: Deprecations
+    icon: clock-o
+    text: Deprecated features
+
+  security:
+    head: Security Fixes
+    icon: shield
+    text: Security improvements
+
+  experimental:
+    head: Experimental Features
+    icon: flask
+    text: Experimental features
+
+  removal:
+    head: Removed Features
+    icon: sign-out
+    text: Removed features
+
+  enhancement:
+    head: Enhancements
+    icon: arrow-up
+    text: Improvements
+
+  bug:
+    head: Bug Fixes
+    icon: bug
+    text: Bug fixes
+
+  documentation:
+    head: Documentation
+    icon: book
+    text: Documentation updates

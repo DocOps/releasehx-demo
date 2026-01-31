@@ -1,0 +1,154 @@
+[
+  {
+    "expand": "operations,versionedRepresentations,editmeta,changelog,renderedFields",
+    "id": "10033",
+    "self": "https://docopslab.atlassian.net/rest/api/2/issue/10033",
+    "key": "RHX-7",
+    "fields": {
+      "statuscategorychangedate": "2025-08-29T10:09:37.349-0400",
+      "issuetype": {
+        "self": "https://docopslab.atlassian.net/rest/api/2/issuetype/10004",
+        "id": "10004",
+        "description": "Stories track functionality or features expressed as user goals.",
+        "iconUrl": "https://docopslab.atlassian.net/rest/api/2/universal_avatar/view/type/issuetype/avatar/10315?size=medium",
+        "name": "Story",
+        "subtask": false,
+        "avatarId": 10315,
+        "entityId": "a1e12a62-20d9-48db-8db2-1e65c3787783",
+        "hierarchyLevel": 0
+      },
+      "components": [],
+      "timespent": null,
+      "timeoriginalestimate": null,
+      "project": {
+        "self": "https://docopslab.atlassian.net/rest/api/2/project/10000",
+        "id": "10000",
+        "key": "RHX",
+        "name": "IssuerHx Demo Project",
+        "projectTypeKey": "software",
+        "simplified": true,
+        "avatarUrls": {
+          "48x48": "https://docopslab.atlassian.net/rest/api/2/universal_avatar/view/type/project/avatar/10404",
+          "24x24": "https://docopslab.atlassian.net/rest/api/2/universal_avatar/view/type/project/avatar/10404?size=small",
+          "16x16": "https://docopslab.atlassian.net/rest/api/2/universal_avatar/view/type/project/avatar/10404?size=xsmall",
+          "32x32": "https://docopslab.atlassian.net/rest/api/2/universal_avatar/view/type/project/avatar/10404?size=medium"
+        }
+      },
+      "description": "Add comprehensive search capabilities with filters, sorting, and real-time results.\n\n\n\nh2. Release Note\n\nThis is a test release note that I’m just rambling into to see if we can get it to show up.",
+      "fixVersions": [
+        {
+          "self": "https://docopslab.atlassian.net/rest/api/2/version/10000",
+          "id": "10000",
+          "description": "RelaseHx Testing Version",
+          "name": "1.0.0",
+          "archived": false,
+          "released": false
+        }
+      ],
+      "aggregatetimespent": null,
+      "statusCategory": {
+        "self": "https://docopslab.atlassian.net/rest/api/2/statuscategory/3",
+        "id": 3,
+        "key": "done",
+        "colorName": "green",
+        "name": "Done"
+      },
+      "resolution": {
+        "self": "https://docopslab.atlassian.net/rest/api/2/resolution/10000",
+        "id": "10000",
+        "description": "GreenHopper Managed Resolution",
+        "name": "Done"
+      },
+      "customfield_10015": null,
+      "security": null,
+      "aggregatetimeestimate": null,
+      "resolutiondate": "2025-08-29T10:09:37.316-0400",
+      "workratio": -1,
+      "summary": "Implement advanced search functionality",
+      "watches": {
+        "self": "https://docopslab.atlassian.net/rest/api/2/issue/RHX-7/watchers",
+        "watchCount": 1,
+        "isWatching": true
+      },
+      "lastViewed": "2025-08-29T20:42:34.816-0400",
+      "creator": {
+        "self": "https://docopslab.atlassian.net/rest/api/2/user?accountId=712020%3A90d1461f-73dd-4307-a0f1-6cc63fc95b6a",
+        "accountId": "712020:90d1461f-73dd-4307-a0f1-6cc63fc95b6a",
+        "emailAddress": "codewriting@protonmail.com",
+        "avatarUrls": {
+          "48x48": "https://secure.gravatar.com/avatar/5fc39fd810b32495a48ea7c42f1b5d8d?d=https%3A%2F%2Favatar-management--avatars.us-west-2.prod.public.atl-paas.net%2Finitials%2FBD-3.png",
+          "24x24": "https://secure.gravatar.com/avatar/5fc39fd810b32495a48ea7c42f1b5d8d?d=https%3A%2F%2Favatar-management--avatars.us-west-2.prod.public.atl-paas.net%2Finitials%2FBD-3.png",
+          "16x16": "https://secure.gravatar.com/avatar/5fc39fd810b32495a48ea7c42f1b5d8d?d=https%3A%2F%2Favatar-management--avatars.us-west-2.prod.public.atl-paas.net%2Finitials%2FBD-3.png",
+          "32x32": "https://secure.gravatar.com/avatar/5fc39fd810b32495a48ea7c42f1b5d8d?d=https%3A%2F%2Favatar-management--avatars.us-west-2.prod.public.atl-paas.net%2Finitials%2FBD-3.png"
+        },
+        "displayName": "Brian Dominick",
+        "active": true,
+        "timeZone": "America/New_York",
+        "accountType": "atlassian"
+      },
+      "subtasks": [],
+      "created": "2025-08-29T10:07:11.853-0400",
+      "customfield_10021": null,
+      "reporter": {
+        "self": "https://docopslab.atlassian.net/rest/api/2/user?accountId=712020%3A90d1461f-73dd-4307-a0f1-6cc63fc95b6a",
+        "accountId": "712020:90d1461f-73dd-4307-a0f1-6cc63fc95b6a",
+        "emailAddress": "codewriting@protonmail.com",
+        "avatarUrls": {
+          "48x48": "https://secure.gravatar.com/avatar/5fc39fd810b32495a48ea7c42f1b5d8d?d=https%3A%2F%2Favatar-management--avatars.us-west-2.prod.public.atl-paas.net%2Finitials%2FBD-3.png",
+          "24x24": "https://secure.gravatar.com/avatar/5fc39fd810b32495a48ea7c42f1b5d8d?d=https%3A%2F%2Favatar-management--avatars.us-west-2.prod.public.atl-paas.net%2Finitials%2FBD-3.png",
+          "16x16": "https://secure.gravatar.com/avatar/5fc39fd810b32495a48ea7c42f1b5d8d?d=https%3A%2F%2Favatar-management--avatars.us-west-2.prod.public.atl-paas.net%2Finitials%2FBD-3.png",
+          "32x32": "https://secure.gravatar.com/avatar/5fc39fd810b32495a48ea7c42f1b5d8d?d=https%3A%2F%2Favatar-management--avatars.us-west-2.prod.public.atl-paas.net%2Finitials%2FBD-3.png"
+        },
+        "displayName": "Brian Dominick",
+        "active": true,
+        "timeZone": "America/New_York",
+        "accountType": "atlassian"
+      },
+      "aggregateprogress": {
+        "progress": 0,
+        "total": 0
+      },
+      "priority": {
+        "self": "https://docopslab.atlassian.net/rest/api/2/priority/3",
+        "iconUrl": "https://docopslab.atlassian.net/images/icons/priorities/medium_new.svg",
+        "name": "Medium",
+        "id": "3"
+      },
+      "customfield_10001": null,
+      "labels": [],
+      "customfield_10039": "This is the release note field!",
+      "environment": null,
+      "customfield_10019": "0|i0001z:",
+      "timeestimate": null,
+      "aggregatetimeoriginalestimate": null,
+      "versions": [],
+      "duedate": null,
+      "progress": {
+        "progress": 0,
+        "total": 0
+      },
+      "issuelinks": [],
+      "votes": {
+        "self": "https://docopslab.atlassian.net/rest/api/2/issue/RHX-7/votes",
+        "votes": 0,
+        "hasVoted": false
+      },
+      "assignee": null,
+      "updated": "2025-08-29T20:42:46.920-0400",
+      "status": {
+        "self": "https://docopslab.atlassian.net/rest/api/2/status/10003",
+        "description": "",
+        "iconUrl": "https://docopslab.atlassian.net/images/icons/statuses/generic.png",
+        "name": "Done",
+        "id": "10003",
+        "statusCategory": {
+          "self": "https://docopslab.atlassian.net/rest/api/2/statuscategory/3",
+          "id": 3,
+          "key": "done",
+          "colorName": "green",
+          "name": "Done"
+        }
+      }
+    }
+  }
+]

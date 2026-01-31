@@ -1,0 +1,107 @@
+origin:
+  source: github
+  version: 3
+  label: GitHub Issues API v3 (Legacy Label-based Types)
+  format: json
+
+paths:
+  drafts_dir: drafts
+  payloads_dir: issues
+  templates_dir: _templates
+  mappings_dir: _mappings
+
+conversions:
+  summ: issue_heading
+  note: issue_body
+  note_pattern: '/^## Release Note\s*\n+(?<note>(.|\n)+)/mi'
+  markup: markdown
+  engine: redcarpet
+
+parts:
+  ui:
+    head: User Interface
+    icon: desktop
+    text: UI
+  api:
+    head: API
+    icon: server
+    text: API
+
+links:
+  web: https://github.com/example/project/issues/{{ tick }}
+  git: https://github.com/example/project/commit/{{ hash }}
+  usr: https://github.com/{{ vars.lead }}
+
+modes:
+  asciidoc_frontmatter: true
+  markdown_frontmatter: true
+  remove_excess_lines: 2
+
+rhyml:
+  pasterize_head: true
+  chid: "{{ release.code | replace: '.', '_' | upcase }}-{{ change.tick }}"
+  empty_notes: skip
+
+history:
+  items:
+    issue_links: true
+    git_links: false
+    metadata_icons: true
+
+changelog:
+  head: What's Changed
+  text: |
+    Summary of all changes in this release (using legacy label-based tagging).
+  items:
+    frame: unordered
+    git_links: false
+    metadata_labels: after
+
+notes:
+  spot: 1
+  items:
+    frame: desc-list
+    allow_redundant: true
+
+types:
+  label_prefix: 'type:'
+  bug:
+    slug: bug
+    text: Bug Fix
+  feature:
+    slug: feature
+    text: New Feature
+
+tags:
+  _include: ['highlighted', 'changelog', 'breaking', 'deprecation', 'security', 'experimental', 'removal']
+  _exclude: ['internal', 'wontfix', 'duplicate']
+
+  highlighted:
+    head: Highlights
+    icon: star
+    text: Featured changes
+
+  breaking:
+    head: Breaking Changes
+    icon: exclamation-triangle
+    text: Breaking changes
+
+  deprecation:
+    head: Deprecations
+    icon: clock-o
+    text: Deprecated features
+
+  security:
+    head: Security Fixes
+    icon: shield
+    text: Security improvements
+
+  experimental:
+    head: Experimental Features
+    icon: flask
+    text: Experimental features
+
+  removal:
+    head: Removed Features
+    icon: sign-out
+    text: Removed features
