@@ -1,0 +1,138 @@
+{
+  "issues": [
+    {
+      "id": 2001,
+      "number": 42,
+      "title": "Add dark mode toggle to user preferences",
+      "body": "Users have been requesting a dark mode option for better accessibility and reduced eye strain during extended usage.\n\n- [x] highlighted\n- [x] changelog\n- [ ] breaking\n- [ ] deprecation\n\n## Release Note\n\nIntroduced a dark mode toggle in user preferences, allowing users to switch between light and dark themes. The setting is automatically saved and persists across sessions.",
+      "state": "closed",
+      "labels": [
+        {"name": "enhancement"},
+        {"name": "ui"}
+      ],
+      "assignee": {
+        "login": "sarah-dev"
+      },
+      "milestone": {
+        "title": "v1.1.0"
+      },
+      "created_at": "2024-10-15T09:30:00Z",
+      "closed_at": "2024-11-20T14:22:00Z"
+    },
+    {
+      "id": 2002,
+      "number": 43,
+      "title": "Fix memory leak in background sync process",
+      "body": "Background sync was consuming excessive memory over time, causing performance degradation.\n\n- [ ] highlighted\n- [x] changelog\n- [ ] breaking\n- [ ] deprecation\n\n## Release Note\n\nFixed a memory leak in the background synchronization process that was causing gradual performance degradation. Users should notice improved stability during long sessions.",
+      "state": "closed",
+      "labels": [
+        {"name": "bug"},
+        {"name": "performance"}
+      ],
+      "assignee": {
+        "login": "mike-backend"
+      },
+      "milestone": {
+        "title": "v1.1.0"
+      },
+      "created_at": "2024-10-20T11:15:00Z",
+      "closed_at": "2024-11-18T16:45:00Z"
+    },
+    {
+      "id": 2003,
+      "number": 44,
+      "title": "Implement OAuth2 authentication flow",
+      "body": "Replace basic auth with OAuth2 for improved security and third-party integrations.\n\n- [x] highlighted\n- [x] changelog\n- [x] breaking\n- [ ] deprecation\n\n## Release Note\n\nImplemented OAuth2 authentication flow to replace basic authentication. This provides enhanced security and enables seamless integration with third-party services.\n\n**Breaking Change:** Basic authentication will be deprecated in v1.2.0. Please migrate to OAuth2 before then.",
+      "state": "closed",
+      "labels": [
+        {"name": "enhancement"},
+        {"name": "security"},
+        {"name": "api"}
+      ],
+      "assignee": {
+        "login": "alex-security"
+      },
+      "milestone": {
+        "title": "v1.1.0"
+      },
+      "created_at": "2024-09-25T08:00:00Z",
+      "closed_at": "2024-11-15T12:30:00Z"
+    },
+    {
+      "id": 2004,
+      "number": 45,
+      "title": "Add keyboard shortcuts for common actions",
+      "body": "Power users want keyboard shortcuts for frequently used actions to improve workflow efficiency.\n\n- [ ] highlighted\n- [x] changelog\n- [ ] breaking\n- [ ] deprecation\n\n## Release Note\n\nAdded keyboard shortcuts for common actions:\n- `Ctrl+N` / `Cmd+N`: Create new item\n- `Ctrl+S` / `Cmd+S`: Save current work\n- `Ctrl+F` / `Cmd+F`: Open search\n- `Esc`: Close modals/dialogs",
+      "state": "closed",
+      "labels": [
+        {"name": "enhancement"},
+        {"name": "ui"},
+        {"name": "accessibility"}
+      ],
+      "assignee": {
+        "login": "emma-ux"
+      },
+      "milestone": {
+        "title": "v1.1.0"
+      },
+      "created_at": "2024-10-05T13:45:00Z",
+      "closed_at": "2024-11-12T10:20:00Z"
+    },
+    {
+      "id": 2005,
+      "number": 46,
+      "title": "Deprecate legacy API endpoints",
+      "body": "Several API endpoints are being deprecated in favor of new, more efficient versions.\n\n- [ ] highlighted\n- [x] changelog\n- [ ] breaking\n- [x] deprecation\n\n## Release Note\n\nThe following legacy API endpoints are now deprecated and will be removed in v1.3.0:\n\n- `/api/v1/users` → Use `/api/v2/users` instead\n- `/api/v1/projects` → Use `/api/v2/projects` instead\n- `/api/v1/tasks` → Use `/api/v2/tasks` instead\n\nThe new endpoints provide better performance and additional features.",
+      "state": "closed",
+      "labels": [
+        {"name": "api"},
+        {"name": "deprecation"}
+      ],
+      "assignee": {
+        "login": "david-api"
+      },
+      "milestone": {
+        "title": "v1.1.0"
+      },
+      "created_at": "2024-10-10T15:30:00Z",
+      "closed_at": "2024-11-10T09:15:00Z"
+    },
+    {
+      "id": 2006,
+      "number": 47,
+      "title": "Update documentation for new features",
+      "body": "Documentation needs to be updated to reflect the new features added in this release.\n\n- [ ] highlighted\n- [x] changelog\n- [ ] breaking\n- [ ] deprecation",
+      "state": "closed",
+      "labels": [
+        {"name": "documentation"}
+      ],
+      "assignee": {
+        "login": "lisa-docs"
+      },
+      "milestone": {
+        "title": "v1.1.0"
+      },
+      "created_at": "2024-11-01T10:00:00Z",
+      "closed_at": "2024-11-22T14:30:00Z"
+    },
+    {
+      "id": 2007,
+      "number": 48,
+      "title": "Refactor internal logging system",
+      "body": "Internal refactoring to improve logging performance and maintainability. No user-facing changes.\n\n- [ ] highlighted\n- [ ] changelog\n- [ ] breaking\n- [ ] deprecation\n- [x] internal",
+      "state": "closed",
+      "labels": [
+        {"name": "refactoring"},
+        {"name": "internal"}
+      ],
+      "assignee": {
+        "login": "tom-backend"
+      },
+      "milestone": {
+        "title": "v1.1.0"
+      },
+      "created_at": "2024-10-28T16:20:00Z",
+      "closed_at": "2024-11-19T11:45:00Z"
+    }
+  ]
+}

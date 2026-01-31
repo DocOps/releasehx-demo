@@ -1,0 +1,19 @@
+origin:
+  source: jira
+  project: RHX
+  href: "https://docopslab.atlassian.net/rest/api/3/search/jql"
+
+sources:
+  note_heading: "Release Note"
+
+changelog:
+  sort:
+    - type:grouping1
+
+types:
+  story:
+    head: Features
+  task:
+    head: Improvements
+  bug:
+    head: Bug Fixes

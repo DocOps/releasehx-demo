@@ -1,0 +1,34 @@
+_config:
+  path_lang: jmespath
+  tplt_lang: liquid
+  desc: Generic format to RHYML
+  note: Simple mapping for generic change format
+
+changes_array_path: changes
+
+tick:
+  path: id
+
+type:
+  path: type
+
+parts:
+  path: components
+
+hash:
+  path: commit_hash
+
+summ:
+  path: summary
+
+head:
+  path: summary
+
+note:
+  path: description
+
+tags:
+  path: tags
+
+lead:
+  path: assignee

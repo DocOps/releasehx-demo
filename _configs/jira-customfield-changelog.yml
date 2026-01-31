@@ -1,0 +1,116 @@
+origin:
+  source: jira
+  version: 2
+  label: JIRA v2 API
+  format: json
+
+paths:
+  drafts_dir: drafts
+  payloads_dir: issues
+  templates_dir: _templates
+  mappings_dir: _mappings
+
+conversions:
+  summ: issue_heading
+  markup: markdown
+
+sources:
+  note: custom_field
+  note_custom_field: customfield_10039
+
+parts:
+  webui:
+    head: Web UI
+    icon: desktop
+    text: Web UI
+  api:
+    head: API
+    icon: server
+    text: API
+  installer:
+    head: Installer
+    icon: cloud-download
+    text: Installer
+  internal:
+    head: Internal
+    icon: lock
+    text: Internal
+
+links:
+  web: https://jira.example.com/browse/{{ tick }}
+  git: https://github.com/DocOps/releasehx-demo/commit/{{ hash }}
+  usr: https://example.com/staff/profiles/{{ vars.lead }}
+
+modes:
+  asciidoc_frontmatter: true
+  fetch: all-tagged
+
+rhyml:
+  pasterize_head: true
+  chid: "{{ release.code | replace: '.', '_' | upcase }}-{{ change.tick }}"
+
+history:
+  head: "Changelog for {{ release.code }}"
+  items: 
+    issue_links: true
+    git_links: true
+    metadata_icons: true
+    metadata_labels: before
+
+# Only changelog, no release notes section
+changelog:
+  head: Changes in {{ release.code }}
+  text: |
+    Complete list of all changes included in this release.
+  spot: 1
+  sort:
+    - 'part:group'
+    - 'type:group'
+  items:
+    frame: unordered
+    issue_links: true
+    git_links: true
+    metadata_icons: true
+
+# Disable release notes section by setting spot to 0
+notes:
+  spot: 0
+
+tags:
+  _include: ['changelog', 'highlighted', 'breaking', 'deprecation']
+  _exclude: ['internal', 'wontfix']
+  
+  highlighted:
+    head: Highlighted
+    icon: star
+    text: Notable
+    
+  breaking:
+    head: Breaking Changes
+    icon: exclamation-triangle
+    text: Breaking
+    
+  deprecation:
+    head: Deprecations
+    icon: clock-o
+    text: Deprecated
+    
+  bug:
+    head: Bug Fixes
+    icon: bug
+    text: Bug Fix
+    
+  improvement:
+    head: Improvements
+    icon: arrow-up
+    text: Improvement
+    
+  feature:
+    head: New Features
+    icon: plus-square-o
+    text: New Feature
+    
+  task:
+    head: Tasks
+    icon: check
+    text: Task

@@ -1,0 +1,64 @@
+{
+  "changes": [
+    {
+      "id": "HOTFIX-001",
+      "type": "bug",
+      "summary": "Fix critical login issue affecting Safari users",
+      "description": "Safari users were unable to log in due to a cookie handling issue introduced in v1.1.0.\n\n## Release Note\n\nFixed a critical issue preventing Safari users from logging in. The problem was related to cookie handling changes introduced in the previous release.",
+      "components": ["authentication", "web-ui"],
+      "tags": ["critical", "changelog"],
+      "assignee": "emergency-team",
+      "commit_hash": "abc123def456789012345678901234567890abcd",
+      "created_date": "2024-11-23T09:15:00Z",
+      "resolved_date": "2024-11-23T14:30:00Z"
+    },
+    {
+      "id": "HOTFIX-002", 
+      "type": "bug",
+      "summary": "Resolve memory leak in real-time collaboration",
+      "description": "The new real-time collaboration feature was causing memory leaks during extended sessions.\n\n## Release Note\n\nFixed a memory leak in the real-time collaboration feature that could cause performance degradation during long editing sessions.",
+      "components": ["collaboration"],
+      "tags": ["performance", "changelog"],
+      "assignee": "jordan-collab",
+      "commit_hash": "def456789012345678901234567890abcdef123",
+      "created_date": "2024-11-24T11:20:00Z",
+      "resolved_date": "2024-11-24T16:45:00Z"
+    },
+    {
+      "id": "HOTFIX-003",
+      "type": "bug", 
+      "summary": "Fix search filter reset bug",
+      "description": "Advanced search filters were not properly resetting when clearing search terms.\n\n## Release Note\n\nFixed an issue where advanced search filters would not reset properly when clearing search terms, causing unexpected search results.",
+      "components": ["search"],
+      "tags": ["ui", "changelog"],
+      "assignee": "carlos-frontend",
+      "commit_hash": "789012345678901234567890abcdef123456789",
+      "created_date": "2024-11-25T08:30:00Z",
+      "resolved_date": "2024-11-25T12:15:00Z"
+    },
+    {
+      "id": "PATCH-001",
+      "type": "improvement",
+      "summary": "Improve error messages for OAuth2 setup",
+      "description": "OAuth2 configuration errors were showing cryptic messages that were hard for users to understand.\n\n## Release Note\n\nImproved error messages during OAuth2 setup to provide clearer guidance when configuration issues are encountered.",
+      "components": ["authentication"],
+      "tags": ["usability", "changelog"],
+      "assignee": "alex-security",
+      "commit_hash": "012345678901234567890abcdef123456789abc",
+      "created_date": "2024-11-26T10:00:00Z",
+      "resolved_date": "2024-11-26T15:20:00Z"
+    },
+    {
+      "id": "PATCH-002",
+      "type": "improvement",
+      "summary": "Add loading indicators for AI suggestions",
+      "description": "Users couldn't tell when AI suggestions were being generated, leading to confusion.\n\n## Release Note\n\nAdded loading indicators for AI-powered suggestions to provide better feedback when suggestions are being generated.",
+      "components": ["ai", "web-ui"],
+      "tags": ["experimental", "usability", "changelog"],
+      "assignee": "sophia-ai",
+      "commit_hash": "345678901234567890abcdef123456789abc012",
+      "created_date": "2024-11-27T13:45:00Z",
+      "resolved_date": "2024-11-27T17:30:00Z"
+    }
+  ]
+}

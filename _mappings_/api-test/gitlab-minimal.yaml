@@ -1,0 +1,20 @@
+$config:
+  path_lang: jmespath
+  tplt_lang: liquid
+  desc: Minimal GitLab Issues API to RHYML mapping
+  note: Basic test mapping
+
+# Don't filter - just take all issues
+changes_array_path: "@"
+
+tick:
+  path: iid
+
+summ:
+  path: title
+
+note:
+  path: description
+
+lead:
+  path: author.username

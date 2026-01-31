@@ -1,0 +1,84 @@
+# Files matrix for ReleaseHx demo repository
+# Defines valid combinations of configs, payloads, and mappings
+
+combinations:
+  - slug: github-basic
+    desc: Basic GitHub Issues integration with native type fields and part labels
+    configs:
+      - _configs/github-basic.yml
+    payloads:
+      - _payloads/github-1.0.0-issues.json
+    versions: [1.0.0]
+    formats: [md, adoc, html, yaml]
+  
+  - slug: github-label-tags
+    desc: Basic GitHub issues with all tags as labels
+    config: _configs/github-label-tags.yml
+    payloads:
+      - _payloads/github-label-tags-1.1.0.json
+    mapping: _mappings_/label-tags/github.yaml
+    versions: [1.1.0]
+
+  - slug: jira-customfield
+    desc: Jira integration using custom field for release notes
+    configs:
+      - _configs/jira-customfield.yml
+      - _configs/jira-customfield-changelog.yml
+      - _configs/jira-customfield-heavy.yml
+      - _configs/jira-customfield-resorted.yml
+    payloads:
+      - _payloads/jira-customfield-note-1.1.0.json
+    mapping: _mappings_/customfield-note/jira.yaml
+    versions: [1.1.0]
+
+  - slug: jira-description
+    desc: Jira integration extracting notes from description field
+    configs:
+      - _configs/jira-description.yml
+    payloads:
+      - _payloads/jira-description-note-1.1.0.json
+    mapping: _mappings_/description-note/jira.yaml
+    versions: [1.1.0]
+
+  - slug: gitlab-label-tags
+    desc: Basic GitLab integration with label-based categorization
+    config: _configs/gitlab-label-tags.yml
+    payloads:
+      - _payloads/gitlab-label-tags-1.1.0.json
+    mapping: _mappings_/label-tags/gitlab.yaml
+    versions: ["1.1.0"]
+
+  - slug: generic-kitchen-sink
+    desc: Comprehensive example demonstrating all features
+    config: _configs/kitchen-sink.yml
+    payloads:
+      - _payloads/generic-1.1.1.json
+      - _payloads/generic-1.1.2.json
+      - _payloads/generic-1.2.0.json
+    mapping: _mappings_/generic/basic.yaml
+    versions: ["1.1.1", "1.1.2", "1.2.0"]
+
+  # Built-in mapping tests - no mapping field means use built-in mappings
+  - slug: github-builtin-mapping
+    desc: GitHub Issues integration using built-in mappings
+    config: _configs/github-builtin-mapping.yml
+    payloads:
+      - _payloads/github-1.0.0-issues.json
+    versions: [1.0.0, 1.1.0]
+    formats: [md, adoc, html, yaml]
+  
+  - slug: gitlab-builtin-mapping
+    desc: GitLab Issues integration using built-in mappings
+    config: _configs/gitlab-builtin-mapping.yml
+    payloads:
+      - _payloads/gitlab-label-tags-1.1.0.json
+    versions: [1.1.0]
+    formats: [md, adoc, html, yaml]
+  
+  - slug: jira-builtin-mapping
+    desc: Jira Issues integration using built-in mappings
+    config: _configs/jira-builtin-mapping.yml
+    payloads:
+      - _payloads/jira-customfield-note-1.1.0.json
+    versions: [1.1.0]
+    formats: [md, adoc, html, yaml]

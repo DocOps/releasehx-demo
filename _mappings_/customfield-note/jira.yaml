@@ -1,0 +1,35 @@
+$config:
+  path_lang: jmespath
+  tplt_lang: liquid
+  desc: JIRA API to RHYML (customfield-based notes)
+  note: Requires config.sources.note_custom_field
+
+changes_array_path: "@"
+
+tick:
+  path: key
+
+type:
+  path: fields.issueType.name
+  tplt: '{{ path | downcase }}'
+
+parts:
+  path: fields.components[].name
+
+hash:
+  path: fields.development.commits[0].sha
+
+summ:
+  path: fields.summary
+
+head:
+  path: fields.summary
+
+note:
+  path: fields.{{ config.sources.note_custom_field }}
+
+tags:
+  path: fields.labels
+
+lead:
+  path: fields.assignee.displayName

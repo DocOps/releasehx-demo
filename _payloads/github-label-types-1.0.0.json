@@ -1,0 +1,20 @@
+[
+  {
+    "number": 101,
+    "title": "Fix login issue with legacy labels",
+    "body": "A critical bug that needs fixing.\n\n## Release Note\n\nThis fixes a critical login issue.",
+    "labels": [
+      { "name": "type:bug" },
+      { "name": "part:api" }
+    ]
+  },
+  {
+    "number": 102,
+    "title": "Add new feature with legacy labels",
+    "body": "A new feature to be added.\n\n## Release Note\n\nThis adds a new feature.",
+    "labels": [
+      { "name": "type:feature" },
+      { "name": "part:ui" }
+    ]
+  }
+]

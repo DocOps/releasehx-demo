@@ -1,0 +1,45 @@
+.ruby-version
+
+# Output directories (demos and tests - gitignored on main branch)
+__output/
+__tests/
+
+# Artifacts (version-specific frozen snapshots)
+# Generated on main but committed only to generated/* branches
+artifacts/
+
+# Legacy paths (deprecated - will be removed after verification)
+drafts/
+publish/
+__drafts/
+__publish/
+releases/
+_publish/
+
+# Live testing files (keep local but don't commit)
+_configs/jira-live-testing.yml
+_payloads/jira-actual-live.json
+_payloads/jira-live-1.2.0.json
+
+# Custom API client overrides (not used in demo)
+_apis/
+
+# DocOps Lab Dev tooling - vendor configs are synced, not tracked
+.config/.vendor/
+scripts/.vendor/
+# Generated configs
+.config/vale.ini
+.config/htmlproofer.yml
+
+# Temporary files
+tmp/
+*.xml
+*.txt
+*.log
+README.html
+src/
+.jekyll-cache
+test_description_config.rb
+.warp/
+.agent/
+.bundle/

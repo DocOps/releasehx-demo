@@ -1,0 +1,123 @@
+{
+  "issues": [
+    {
+      "id": 3001,
+      "iid": 101,
+      "title": "Implement real-time collaboration features",
+      "description": "Add real-time collaborative editing capabilities to improve team productivity.\n\n## Release Note\n\nIntroduced real-time collaboration features allowing multiple users to edit documents simultaneously. Changes are synchronized instantly across all connected clients with conflict resolution.",
+      "state": "closed",
+      "labels": ["enhancement", "collaboration", "real-time", "highlighted", "changelog"],
+      "assignee": {
+        "username": "jordan-collab"
+      },
+      "milestone": {
+        "title": "1.1.0"
+      },
+      "merge_commit_sha": "a1b2c3d4e5f6789012345678901234567890abcd",
+      "created_at": "2024-09-15T10:30:00.000Z",
+      "closed_at": "2024-11-14T15:45:00.000Z"
+    },
+    {
+      "id": 3002,
+      "iid": 102,
+      "title": "Fix race condition in data synchronization",
+      "description": "Concurrent operations were causing data inconsistencies in multi-user scenarios.\n\n## Release Note\n\nResolved a race condition in data synchronization that could cause inconsistencies when multiple users modified the same data simultaneously. Data integrity is now properly maintained.",
+      "state": "closed",
+      "labels": ["bug", "concurrency", "data", "changelog"],
+      "assignee": {
+        "username": "rachel-backend"
+      },
+      "milestone": {
+        "title": "1.1.0"
+      },
+      "merge_commit_sha": "b2c3d4e5f6789012345678901234567890abcdef",
+      "created_at": "2024-10-08T14:20:00.000Z",
+      "closed_at": "2024-11-16T09:30:00.000Z"
+    },
+    {
+      "id": 3003,
+      "iid": 103,
+      "title": "Add advanced search with filters",
+      "description": "Implement comprehensive search functionality with multiple filter options.\n\n## Release Note\n\nAdded advanced search capabilities with filtering options including:\n- Date ranges\n- Content types\n- User assignments\n- Status filters\n- Custom tags\n\nSearch results are now more precise and easier to navigate.",
+      "state": "closed",
+      "labels": ["enhancement", "search", "ui", "highlighted", "changelog"],
+      "assignee": {
+        "username": "carlos-frontend"
+      },
+      "milestone": {
+        "title": "1.1.0"
+      },
+      "merge_commit_sha": "c3d4e5f6789012345678901234567890abcdef12",
+      "created_at": "2024-09-28T11:15:00.000Z",
+      "closed_at": "2024-11-13T16:20:00.000Z"
+    },
+    {
+      "id": 3004,
+      "iid": 104,
+      "title": "Migrate to new database schema",
+      "description": "Database schema migration to improve performance and support new features.\n\n## Release Note\n\nCompleted migration to an optimized database schema that provides:\n- 40% faster query performance\n- Better support for concurrent operations\n- Improved data relationships\n\n**Note:** This migration was performed automatically during the update process.",
+      "state": "closed",
+      "labels": ["enhancement", "database", "performance", "changelog"],
+      "assignee": {
+        "username": "nina-dba"
+      },
+      "milestone": {
+        "title": "1.1.0"
+      },
+      "merge_commit_sha": "d4e5f6789012345678901234567890abcdef1234",
+      "created_at": "2024-10-12T08:45:00.000Z",
+      "closed_at": "2024-11-17T13:10:00.000Z"
+    },
+    {
+      "id": 3005,
+      "iid": 105,
+      "title": "Remove deprecated configuration options",
+      "description": "Clean up deprecated configuration options that were marked for removal.\n\n## Release Note\n\nRemoved the following deprecated configuration options:\n- `legacy_mode` (use `compatibility.legacy_support` instead)\n- `old_api_format` (use `api.response_format` instead)\n- `deprecated_auth` (OAuth2 is now required)\n\nPlease update your configuration files accordingly.",
+      "state": "closed",
+      "labels": ["breaking-change", "cleanup", "configuration", "changelog", "breaking", "removal"],
+      "assignee": {
+        "username": "kevin-config"
+      },
+      "milestone": {
+        "title": "1.1.0"
+      },
+      "merge_commit_sha": "e5f6789012345678901234567890abcdef123456",
+      "created_at": "2024-10-18T12:00:00.000Z",
+      "closed_at": "2024-11-11T10:25:00.000Z"
+    },
+    {
+      "id": 3006,
+      "iid": 106,
+      "title": "Add experimental AI-powered suggestions",
+      "description": "Introduce AI-powered content suggestions as an experimental feature.\n\n## Release Note\n\nIntroduced experimental AI-powered content suggestions to help users create better content. This feature:\n- Suggests improvements to writing\n- Recommends relevant tags\n- Provides content structure guidance\n\n**Note:** This is an experimental feature and may change in future releases.",
+      "state": "closed",
+      "labels": ["enhancement", "ai", "experimental", "highlighted", "changelog"],
+      "assignee": {
+        "username": "sophia-ai"
+      },
+      "milestone": {
+        "title": "1.1.0"
+      },
+      "merge_commit_sha": "f6789012345678901234567890abcdef12345678",
+      "created_at": "2024-10-25T09:30:00.000Z",
+      "closed_at": "2024-11-20T14:15:00.000Z"
+    },
+    {
+      "id": 3007,
+      "iid": 107,
+      "title": "Security patch for authentication bypass",
+      "description": "Critical security fix for potential authentication bypass vulnerability.\n\n## Release Note\n\nFixed a critical security vulnerability that could potentially allow authentication bypass under specific conditions. All users are strongly encouraged to update immediately.",
+      "state": "closed",
+      "labels": ["security", "critical", "bug", "highlighted", "changelog"],
+      "assignee": {
+        "username": "marcus-security"
+      },
+      "milestone": {
+        "title": "1.1.0"
+      },
+      "merge_commit_sha": "789012345678901234567890abcdef1234567890",
+      "created_at": "2024-11-05T16:45:00.000Z",
+      "closed_at": "2024-11-21T08:30:00.000Z"
+    }
+  ]
+}

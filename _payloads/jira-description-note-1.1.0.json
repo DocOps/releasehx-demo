@@ -1,0 +1,586 @@
+{
+  "issues": [
+    {
+      "id": "1001",
+      "key": "PROJ-310",
+      "fields": {
+        "issueType": {
+          "name": "Improvement"
+        },
+        "summary": "Add inline editing to dashboard widgets",
+        "description": {
+          "type": "doc",
+          "version": 1,
+          "content": [
+            {
+              "type": "paragraph",
+              "content": [
+                {
+                  "type": "text",
+                  "text": "Implements interactive dashboard widgets using JavaScript hooks and async save."
+                }
+              ]
+            },
+            {
+              "type": "heading",
+              "attrs": {
+                "level": 2
+              },
+              "content": [
+                {
+                  "type": "text",
+                  "text": "Release Note"
+                }
+              ]
+            },
+            {
+              "type": "paragraph",
+              "content": [
+                {
+                  "type": "text",
+                  "text": "Introduces an interactive editor directly in the dashboard, allowing users to modify widgets without navigating away."
+                }
+              ]
+            },
+            {
+              "type": "paragraph",
+              "content": [
+                {
+                  "type": "text",
+                  "text": "This significantly streamlines common tasks."
+                }
+              ]
+            }
+          ]
+        },
+        "components": [
+          {
+            "name": "webui"
+          }
+        ],
+        "labels": [
+          "highlighted",
+          "changelog",
+          "release_note_needed"
+        ],
+        "assignee": {
+          "displayName": "julie"
+        },
+        "development": {
+          "commits": [
+            {
+              "type": "commit",
+              "sha": "a1b2c3d4e5f60718293a4b5c6d7e8f9012345678"
+            }
+          ]
+        }
+      }
+    },
+    {
+      "id": "1002",
+      "key": "PROJ-467",
+      "fields": {
+        "issueType": {
+          "name": "Improvement"
+        },
+        "summary": "Add rate limiting headers to public API",
+        "description": {
+          "type": "doc",
+          "version": 1,
+          "content": [
+            {
+              "type": "paragraph",
+              "content": [
+                {
+                  "type": "text",
+                  "text": "Implements middleware to attach X-RateLimit headers."
+                }
+              ]
+            },
+            {
+              "type": "heading",
+              "attrs": {
+                "level": 2
+              },
+              "content": [
+                {
+                  "type": "text",
+                  "text": "Release Note"
+                }
+              ]
+            },
+            {
+              "type": "paragraph",
+              "content": [
+                {
+                  "type": "text",
+                  "text": "The API now includes standard "
+                },
+                {
+                  "type": "text",
+                  "text": "X-RateLimit-*",
+                  "marks": [
+                    {
+                      "type": "code"
+                    }
+                  ]
+                },
+                {
+                  "type": "text",
+                  "text": " headers in all responses to better inform consumers of usage thresholds."
+                }
+              ]
+            },
+            {
+              "type": "blockquote",
+              "content": [
+                {
+                  "type": "paragraph",
+                  "content": [
+                    {
+                      "type": "text",
+                      "text": "Note:",
+                      "marks": [
+                        {
+                          "type": "strong"
+                        }
+                      ]
+                    },
+                    {
+                      "type": "text",
+                      "text": " The default rate limit remains unchanged."
+                    }
+                  ]
+                }
+              ]
+            }
+          ]
+        },
+        "components": [
+          {
+            "name": "api"
+          }
+        ],
+        "labels": [
+          "breaking",
+          "changelog",
+          "release_note_needed"
+        ],
+        "assignee": {
+          "displayName": "devin"
+        },
+        "development": {
+          "commits": [
+            {
+              "type": "commit",
+              "sha": "abc123abc123abc123abc123abc123abc123abcd"
+            }
+          ]
+        }
+      }
+    },
+    {
+      "id": "1003",
+      "key": "PROJ-983",
+      "fields": {
+        "issueType": {
+          "name": "Bug"
+        },
+        "summary": "Fix modal overflow on small screens",
+        "description": {
+          "type": "doc",
+          "version": 1,
+          "content": [
+            {
+              "type": "paragraph",
+              "content": [
+                {
+                  "type": "text",
+                  "text": "Bugfix: modal height exceeded viewport height."
+                }
+              ]
+            },
+            {
+              "type": "heading",
+              "attrs": {
+                "level": 2
+              },
+              "content": [
+                {
+                  "type": "text",
+                  "text": "Release Note"
+                }
+              ]
+            },
+            {
+              "type": "paragraph",
+              "content": [
+                {
+                  "type": "text",
+                  "text": "Modals now scroll correctly on devices with < 600px screen width."
+                }
+              ]
+            }
+          ]
+        },
+        "components": [
+          {
+            "name": "webui"
+          }
+        ],
+        "labels": [
+          "changelog",
+          "release_note_needed"
+        ],
+        "assignee": {
+          "displayName": "sam"
+        },
+        "development": {
+          "commits": [
+            {
+              "type": "commit",
+              "sha": "deadbeef0000000000000000000000000000feed"
+            }
+          ]
+        }
+      }
+    },
+    {
+      "id": "1004",
+      "key": "PROJ-987",
+      "fields": {
+        "issueType": {
+          "name": "Bug"
+        },
+        "summary": "Fix JSON serialization issue with null values",
+        "description": {
+          "type": "doc",
+          "version": 1,
+          "content": [
+            {
+              "type": "paragraph",
+              "content": [
+                {
+                  "type": "text",
+                  "text": "Previously, null values were omitted from JSON payloads."
+                }
+              ]
+            },
+            {
+              "type": "heading",
+              "attrs": {
+                "level": 2
+              },
+              "content": [
+                {
+                  "type": "text",
+                  "text": "Release Note"
+                }
+              ]
+            },
+            {
+              "type": "paragraph",
+              "content": [
+                {
+                  "type": "text",
+                  "text": "Previously, null values were omitted from JSON payloads. This has been corrected."
+                }
+              ]
+            },
+            {
+              "type": "paragraph",
+              "content": [
+                {
+                  "type": "text",
+                  "text": "Impact:",
+                  "marks": [
+                    {
+                      "type": "strong"
+                    }
+                  ]
+                },
+                {
+                  "type": "text",
+                  "text": " Clients expecting explicit nulls will now receive them as specified."
+                }
+              ]
+            }
+          ]
+        },
+        "components": [
+          {
+            "name": "api"
+          }
+        ],
+        "labels": [
+          "release_note_needed"
+        ],
+        "assignee": {
+          "displayName": "cory"
+        },
+        "development": {
+          "commits": [
+            {
+              "type": "commit",
+              "sha": "facefeed1234567890abcdef1234567890abcdef"
+            }
+          ]
+        }
+      }
+    },
+    {
+      "id": "1005",
+      "key": "PROJ-399",
+      "fields": {
+        "issueType": {
+          "name": "Improvement"
+        },
+        "summary": "Add missing keyboard shortcuts to Help page",
+        "description": {
+          "type": "doc",
+          "version": 1,
+          "content": [
+            {
+              "type": "paragraph",
+              "content": [
+                {
+                  "type": "text",
+                  "text": "User doc update requested by QA lead."
+                }
+              ]
+            },
+            {
+              "type": "heading",
+              "attrs": {
+                "level": 2
+              },
+              "content": [
+                {
+                  "type": "text",
+                  "text": "Release Note"
+                }
+              ]
+            },
+            {
+              "type": "paragraph",
+              "content": [
+                {
+                  "type": "text",
+                  "text": "The Help page now includes a full list of supported keyboard shortcuts, including:"
+                }
+              ]
+            },
+            {
+              "type": "bulletList",
+              "content": [
+                {
+                  "type": "listItem",
+                  "content": [
+                    {
+                      "type": "paragraph",
+                      "content": [
+                        {
+                          "type": "text",
+                          "text": "/"
+                        },
+                        {
+                          "type": "text",
+                          "text": " to focus search"
+                        }
+                      ]
+                    }
+                  ]
+                },
+                {
+                  "type": "listItem",
+                  "content": [
+                    {
+                      "type": "paragraph",
+                      "content": [
+                        {
+                          "type": "text",
+                          "text": "?"
+                        },
+                        {
+                          "type": "text",
+                          "text": " to show help modal"
+                        }
+                      ]
+                    }
+                  ]
+                }
+              ]
+            }
+          ]
+        },
+        "components": [
+          {
+            "name": "webui"
+          }
+        ],
+        "labels": [
+          "changelog",
+          "release_note_needed"
+        ],
+        "assignee": {
+          "displayName": "alex"
+        },
+        "development": {
+          "commits": [
+            {
+              "type": "commit",
+              "sha": "0123456789abcdef0123456789abcdef01234567"
+            }
+          ]
+        }
+      }
+    },
+    {
+      "id": "1006",
+      "key": "PROJ-777",
+      "fields": {
+        "issueType": {
+          "name": "Feature"
+        },
+        "summary": "Add batch export API endpoint",
+        "description": {
+          "type": "doc",
+          "version": 1,
+          "content": [
+            {
+              "type": "paragraph",
+              "content": [
+                {
+                  "type": "text",
+                  "text": "Implement "
+                },
+                {
+                  "type": "text",
+                  "text": "/api/export/batch",
+                  "marks": [
+                    {
+                      "type": "code"
+                    }
+                  ]
+                },
+                {
+                  "type": "text",
+                  "text": " endpoint supporting CSV and JSON formats."
+                }
+              ]
+            },
+            {
+              "type": "heading",
+              "attrs": {
+                "level": 2
+              },
+              "content": [
+                {
+                  "type": "text",
+                  "text": "Release Note"
+                }
+              ]
+            },
+            {
+              "type": "paragraph",
+              "content": [
+                {
+                  "type": "text",
+                  "text": "A new batch export endpoint is now available at "
+                },
+                {
+                  "type": "text",
+                  "text": "/api/export/batch",
+                  "marks": [
+                    {
+                      "type": "code"
+                    }
+                  ]
+                },
+                {
+                  "type": "text",
+                  "text": ". Supported formats:"
+                }
+              ]
+            },
+            {
+              "type": "bulletList",
+              "content": [
+                {
+                  "type": "listItem",
+                  "content": [
+                    {
+                      "type": "paragraph",
+                      "content": [
+                        {
+                          "type": "text",
+                          "text": "CSV (default)"
+                        }
+                      ]
+                    }
+                  ]
+                },
+                {
+                  "type": "listItem",
+                  "content": [
+                    {
+                      "type": "paragraph",
+                      "content": [
+                        {
+                          "type": "text",
+                          "text": "JSON with optional compression"
+                        }
+                      ]
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "type": "paragraph",
+              "content": [
+                {
+                  "type": "text",
+                  "text": "Example usage:"
+                }
+              ]
+            },
+            {
+              "type": "codeBlock",
+              "attrs": {
+                "language": "bash"
+              },
+              "content": [
+                {
+                  "type": "text",
+                  "text": "curl -X POST /api/export/batch \\\n  -H \"Content-Type: application/json\" \\\n  -d '{\"format\": \"csv\", \"ids\": [1,2,3]}'"
+                }
+              ]
+            }
+          ]
+        },
+        "components": [
+          {
+            "name": "api"
+          }
+        ],
+        "labels": [
+          "highlighted",
+          "changelog",
+          "release_note_needed"
+        ],
+        "assignee": {
+          "displayName": "morgan"
+        },
+        "development": {
+          "commits": [
+            {
+              "type": "commit",
+              "sha": "feedface1111222233334444555566667777888"
+            }
+          ]
+        }
+      }
+    }
+  ]
+}

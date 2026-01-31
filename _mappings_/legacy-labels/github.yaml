@@ -1,0 +1,87 @@
+# GitHub Issues API to RHYML mapping configuration (Legacy Label-based)
+# Maps GitHub Issues API response to RHYML Change entries
+# Uses labels for type extraction (for projects without native type fields)
+
+$config:
+  desc: "GitHub Issues API to RHYML mapping (legacy label-based types)"
+  path_lang: jmespath
+  tplt_lang: liquid
+
+# GitHub Issues API returns an array of issues directly
+changes_array_path: "@"
+
+# Map each issue to RHYML Change properties
+tick:
+  path: "number"
+
+summ:
+  path: "title"
+
+note:
+  path: "body"
+
+# Derive `type` from labels using direct key matching or slug override (legacy approach)
+type:
+  path: "labels[].name"
+  ruby: |
+    begin
+      if !path.is_a?(Array)
+        nil
+      else
+        type_defs = config.dig('types') || {}
+        if type_defs.empty?
+          nil
+        else
+          label_to_type = {}
+          type_defs.each do |type_key, type_config|
+            next unless type_config.is_a?(Hash)
+            slug = type_config['slug']
+            label_to_type[type_key.downcase] = type_key
+            label_to_type[slug.downcase] = type_key if slug
+          end
+          found_type = nil
+          path.each do |label|
+            l = label.downcase
+            if label_to_type[l]
+              found_type = label_to_type[l]
+              break
+            end
+          end
+          found_type
+        end
+      end
+    rescue => e
+      puts "Error in type mapping: #{e.message}"
+      puts "Path: #{path.inspect}"
+      puts "Config types: #{config.dig('types').inspect}"
+      nil
+    end
+
+# Extract parts from labels with "part:" prefix
+parts:
+  path: "labels[].name"
+  ruby: |
+    labels = path.is_a?(Array) ? path : []
+    part_labels = labels.select { |label| label.downcase.start_with?('part:') }
+    part_labels.map { |label| label.sub(/^part:/i, '') }.uniq
+
+# Extract tags from remaining labels (excluding type and part labels)
+tags:
+  path: "labels[].name"
+  ruby: |
+    labels = path.is_a?(Array) ? path : []
+    type_defs = config.dig('types') || {}
+    type_slugs = type_defs.values.map { |v| v['slug'] if v.is_a?(Hash) }.compact
+    type_names = type_defs.keys + type_slugs
+    
+    # Filter out type and part labels
+    tag_labels = labels.reject do |label|
+      l = label.downcase
+      type_names.any? { |t| t.downcase == l } || l.start_with?('part:')
+    end
+    
+    tag_labels.uniq
+
+# Extract lead/assignee information
+lead:
+  path: "assignee.login"

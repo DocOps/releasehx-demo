@@ -1,0 +1,157 @@
+origin:
+  source: gitlab
+  version: 4
+  label: GitLab Issues API v4 (Built-in Mapping)
+  format: json
+
+# Note: No mappings_dir specified - uses built-in mappings
+
+paths:
+  drafts_dir: drafts
+  payloads_dir: issues
+  templates_dir: _templates
+  # mappings_dir not specified - will use built-in mappings
+
+conversions:
+  summ: issue_heading
+  note: issue_body
+  markup: markdown
+  engine: commonmarker
+
+# Define parts that match what the built-in GitLab mapping expects
+parts:
+  label_prefix: ''
+  collaboration:
+    head: Collaboration
+    icon: users
+    text: Collaboration
+    slug: collaboration
+  search:
+    head: Search & Discovery
+    icon: search
+    text: Search
+    slug: search
+  database:
+    head: Database
+    icon: database
+    text: Database
+    slug: database
+  ai:
+    head: AI Features
+    icon: magic
+    text: AI
+    slug: ai
+  configuration:
+    head: Configuration
+    icon: cogs
+    text: Configuration
+    slug: configuration
+
+# Define types that match what the built-in GitLab mapping expects
+types:
+  label_prefix: ''
+  enhancement:
+    slug: enhancement
+    text: Enhancement
+    head: Enhancements
+    icon: arrow-up
+  bug:
+    slug: bug
+    text: Bug Fix
+    head: Bug Fixes
+    icon: bug
+  feature:
+    slug: feature
+    text: Feature
+    head: New Features
+    icon: plus
+
+links:
+  web: https://gitlab.example.com/project/-/issues/{{ tick }}
+  git: https://gitlab.example.com/project/-/commit/{{ hash }}
+  usr: https://gitlab.example.com/{{ vars.lead }}
+
+modes:
+  asciidoc_frontmatter: true
+  fetch: all-tagged
+  remove_excess_lines: 1
+
+rhyml:
+  pasterize_head: false
+  pasterize_summ: true
+  chid: "{{ change.tick }}-{{ change.summ | truncate: 15 | slugify }}"
+  empty_notes: empty
+  max_parts: 2
+
+history:
+  head: "Release {{ release.code }} - {{ release.date }}"
+  items: 
+    issue_links: true
+    git_links: false
+    metadata_icons: before
+    metadata_labels: before
+
+changelog:
+  head: Changes
+  text: |
+    All changes included in this release.
+  sort:
+    - 'part:grouping1'
+    - 'type:grouping2'
+  items:
+    frame: ordered
+
+notes:
+  head: Notable Changes
+  text: |
+    Detailed information about significant changes that may affect users.
+  spot: 1
+  sort:
+    - 'highlighted:grouping1'
+    - 'security:grouping1'
+    - 'breaking:grouping1'
+    - 'removal:grouping1'
+    - 'experimental:grouping1'
+    - 'part:grouping2'
+  items:
+    frame: table-cols-2
+    allow_redundant: false
+
+tags:
+  _include: ['highlighted', 'changelog', 'breaking', 'deprecation', 'removal', 'security', 'experimental']
+  _exclude: ['internal', 'wontfix']
+  
+  highlighted:
+    head: Highlighted Features
+    icon: star
+    text: Highlighted
+    
+  breaking:
+    head: Breaking Changes
+    icon: exclamation-triangle
+    text: Breaking
+    
+  removal:
+    head: Removed Features
+    icon: sign-out
+    text: Removed
+    
+  security:
+    head: Security Updates
+    icon: shield
+    text: Security
+    
+  experimental:
+    head: Experimental Features
+    icon: flask
+    text: Experimental
+    
+  enhancement:
+    head: Enhancements
+    icon: wrench
+    text: Enhancement
+    
+  bug:
+    head: Bug Fixes
+    icon: bug
+    text: Bug Fix

@@ -1,0 +1,11 @@
+{% if config.conversions.markup == "markdown" -%}
+{% assign change_note = change.note | default: "NO RELEASE NOTE PROVIDED" | trim -%}
+{% else -%}
+{% assign change_note = change.note | default: "NO RELEASE NOTE PROVIDED" | adoc_to_md | trim -%}
+{% endif -%}
+{% embed metadata-note.md.liquid -%}
+
+<a id="note-{{ change.chid }}"></a>
+**{{ change.head }}**
+   {{ change_note }}
+   INFO: **{{ change_metadata }}**

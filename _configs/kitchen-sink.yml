@@ -1,0 +1,286 @@
+# Kitchen Sink Configuration - Showcases ALL ReleaseHx Features
+# This configuration demonstrates every available option and feature
+# Use this as a reference for advanced configurations
+
+origin:
+  source: json
+  version: 1
+  label: "Kitchen Sink Demo - All Features Enabled"
+  format: json
+  desc: "Comprehensive demonstration of all ReleaseHx configuration options"
+
+paths:
+  drafts_dir: drafts
+  payloads_dir: issues
+  templates_dir: _templates
+  mappings_dir: _mappings
+  output_dir: releases
+
+conversions:
+  summ: issue_heading
+  note: issue_body
+  head: release_note_heading
+  note_pattern: '/^## Release Note\s*\n+(?<note>(.|\n)+)/mi'
+  head_pattern: '/^(?<head>[^\n]+)\n+/m'
+  markup: markdown
+  engine: commonmarker
+
+# Comprehensive parts definition with all optional fields
+parts:
+  core:
+    head: "Core System"
+    icon: cog
+    text: Core
+    desc: "Fundamental system components and architecture"
+    color: "#FF6B6B"
+  ui:
+    head: "User Interface"
+    icon: desktop
+    text: UI
+    desc: "Frontend user interface and user experience"
+    color: "#4ECDC4"
+  api:
+    head: "API & Services"
+    icon: server
+    text: API
+    desc: "Backend services and API endpoints"
+    color: "#45B7D1"
+  mobile:
+    head: "Mobile Applications"
+    icon: mobile
+    text: Mobile
+    desc: "iOS and Android mobile applications"
+    color: "#96CEB4"
+  security:
+    head: "Security & Authentication"
+    icon: shield
+    text: Security
+    desc: "Security features and authentication systems"
+    color: "#FFEAA7"
+  performance:
+    head: "Performance & Optimization"
+    icon: tachometer
+    text: Performance
+    desc: "Performance improvements and optimizations"
+    color: "#DDA0DD"
+  infrastructure:
+    head: "Infrastructure & DevOps"
+    icon: cloud
+    text: Infrastructure
+    desc: "Deployment, monitoring, and infrastructure"
+    color: "#98D8C8"
+  documentation:
+    head: "Documentation & Help"
+    icon: book
+    text: Docs
+    desc: "Documentation, guides, and help resources"
+    color: "#F7DC6F"
+
+# Comprehensive link templates
+links:
+  web: "https://example.com/issues/{{ tick }}"
+  git: "https://github.com/example/project/commit/{{ hash }}"
+  usr: "https://example.com/users/{{ vars.lead }}"
+  milestone: "https://example.com/milestones/{{ vars.milestone }}"
+  project: "https://example.com/projects/{{ vars.project }}"
+
+# All mode options enabled
+modes:
+  asciidoc_frontmatter: true
+  markdown_frontmatter: true
+  fetch: all-tagged
+  remove_excess_lines: 4
+  debug: false
+
+# Advanced RHYML options
+rhyml:
+  pasterize_head: true
+  pasterize_summ: true
+  chid: "{{ release.code | replace: '.', '_' | upcase }}-{{ change.tick }}-{{ change.summ | truncate: 25 | slugify }}"
+  empty_notes: empty
+  max_parts: 4
+  date_format: "%B %d, %Y"
+
+# Rich history section with templating
+history:
+  head: "{{ release.code }} Release - {{ release.date | date: '%B %d, %Y' }}"
+  text: |
+    Welcome to {{ release.code }}! This release includes {{ release.changes.size }} changes across {{ release.parts.size }} different components.
+
+    {% assign breaking_count = release.changes | where: 'tags', 'breaking' | size %}
+    {% assign security_count = release.changes | where: 'tags', 'security' | size %}
+    {% assign highlighted_count = release.changes | where: 'tags', 'highlighted' | size %}
+
+    {% if breaking_count > 0 %}
+    ⚠️ **Important:** This release contains {{ breaking_count }} breaking change{% if breaking_count != 1 %}s{% endif %}. Please review the breaking changes section carefully.
+    {% endif %}
+
+    {% if security_count > 0 %}
+    🔒 **Security:** {{ security_count }} security update{% if security_count != 1 %}s{% endif %} included. Update recommended.
+    {% endif %}
+
+    {% if highlighted_count > 0 %}
+    ✨ **Highlights:** {{ highlighted_count }} major feature{% if highlighted_count != 1 %}s{% endif %} and improvement{% if highlighted_count != 1 %}s{% endif %} in this release.
+    {% endif %}
+
+    For questions or support, visit our [documentation](https://docs.example.com) or [contact support](mailto:support@example.com).
+  items:
+    issue_links: true
+    git_links: true
+    metadata_icons: before
+    metadata_labels: after
+    empty_groups: |
+      _No {{ group_type }} changes in this release._
+
+# Multiple sections with different configurations
+changelog:
+  head: "Complete Changelog"
+  text: |
+    Comprehensive list of all changes in {{ release.code }}, organized by component and change type.
+
+    Each entry includes links to the original issue and commit for detailed information.
+  spot: 4
+  sort:
+    - 'highlighted:group'
+    - 'breaking:group'
+    - 'security:group'
+    - 'part:group'
+    - 'type:group'
+  items:
+    frame: unordered
+    issue_links: true
+    git_links: true
+    metadata_icons: before
+    metadata_labels: after
+
+notes:
+  head: "Release Notes & Highlights"
+  text: |
+    Detailed information about the most important changes in {{ release.code }}.
+
+    This section focuses on changes that directly impact users and require attention during upgrades.
+  spot: 1
+  sort:
+    - 'breaking:group'
+    - 'security:group'
+    - 'highlighted:group'
+    - 'deprecation:group'
+    - 'part:group'
+  items:
+    frame: table-cols-2
+    allow_redundant: false
+    issue_links: true
+    git_links: false
+    metadata_icons: true
+    metadata_labels: false
+
+# Comprehensive tag system with all possible options
+tags:
+  _include: ['highlighted', 'changelog', 'breaking', 'deprecation', 'removal', 'security', 'performance', 'experimental']
+  _exclude: ['internal', 'wontfix', 'duplicate', 'invalid', 'spam']
+
+  # Priority tags (appear first)
+  highlighted:
+    head: "🌟 Highlighted Features"
+    icon: star
+    text: Highlighted
+    desc: "Major new features and significant improvements that define this release"
+    color: "#FFD700"
+    priority: 1
+
+  breaking:
+    head: "⚠️ Breaking Changes"
+    icon: exclamation-triangle
+    text: Breaking Change
+    desc: "Changes that may require code, configuration, or workflow updates"
+    color: "#FF4444"
+    priority: 2
+
+  security:
+    head: "🔒 Security Updates"
+    icon: shield
+    text: Security Fix
+    desc: "Security improvements, vulnerability fixes, and hardening measures"
+    color: "#FF8C00"
+    priority: 3
+
+  # Change type tags
+  feature:
+    head: "🚀 New Features"
+    icon: plus-square-o
+    text: New Feature
+    desc: "Brand new functionality and capabilities"
+    color: "#00CED1"
+
+  improvement:
+    head: "✨ Improvements"
+    icon: arrow-up
+    text: Improvement
+    desc: "Enhancements to existing functionality"
+    color: "#32CD32"
+
+  bug:
+    head: "🐛 Bug Fixes"
+    icon: bug
+    text: Bug Fix
+    desc: "Issues, defects, and problems resolved"
+    color: "#FF6347"
+
+  performance:
+    head: "⚡ Performance"
+    icon: tachometer
+    text: Performance
+    desc: "Speed improvements, optimizations, and efficiency gains"
+    color: "#9370DB"
+
+  # Lifecycle tags
+  deprecation:
+    head: "⏰ Deprecations"
+    icon: clock-o
+    text: Deprecated
+    desc: "Features marked for removal in future versions"
+    color: "#FFA500"
+
+  removal:
+    head: "🗑️ Removed Features"
+    icon: sign-out
+    text: Removed
+    desc: "Features and functionality removed in this release"
+    color: "#DC143C"
+
+  experimental:
+    head: "🧪 Experimental"
+    icon: flask
+    text: Experimental
+    desc: "New experimental features that may change or be removed"
+    color: "#8A2BE2"
+
+  # Maintenance tags
+  task:
+    head: "🔧 Maintenance"
+    icon: check
+    text: Maintenance
+    desc: "Maintenance tasks, refactoring, and technical improvements"
+    color: "#708090"
+
+  documentation:
+    head: "📚 Documentation"
+    icon: book
+    text: Documentation
+    desc: "Documentation updates, guides, and help improvements"
+    color: "#4682B4"
+
+  # Special tags
+  critical:
+    head: "🚨 Critical"
+    icon: warning
+    text: Critical
+    desc: "Critical fixes that should be applied immediately"
+    color: "#B22222"
+
+  accessibility:
+    head: "♿ Accessibility"
+    icon: universal-access
+    text: Accessibility
+    desc: "Accessibility improvements and compliance updates"
+    color: "#20B2AA"

@@ -1,0 +1,34 @@
+$config:
+  path_lang: jmespath
+  tplt_lang: liquid
+  desc: GitHub Issues API to RHYML (checkbox-based tags)
+  note: Extracts tags from checkbox lists in issue body
+
+changes_array_path: issues
+
+tick:
+  path: number
+
+type:
+  path: labels[?name=='enhancement'].name | [0]
+  tplt: '{% if path %}improvement{% else %}{{ labels[0].name | default: "task" }}{% endif %}'
+
+parts:
+  path: labels[].name
+
+# hash: GitHub Issues API doesn't provide merge commit info
+
+summ:
+  path: title
+
+head:
+  path: title
+
+note:
+  path: body
+
+tags:
+  path: body
+
+lead:
+  path: assignee.login

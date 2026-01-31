@@ -1,0 +1,35 @@
+_config:
+  path_lang: jmespath
+  tplt_lang: liquid
+  desc: GitHub Issues API to RHYML (label-based tags)
+  note: Extracts tags from issue labels
+
+changes_array_path: issues
+
+tick:
+  path: number
+
+type:
+  path: labels[?name=='enhancement'].name | [0]
+  tplt: '{% if path %}improvement{% else %}{{ labels[0].name | default: "task" }}{% endif %}'
+
+parts:
+  path: labels[?starts_with(name, 'part:')].name
+  tplt: '{% assign part_labels = path %}{% assign part_slugs = "" | split: "," %}{% for label in part_labels %}{% assign slug = label | split: ":" | last %}{% assign part_slugs = part_slugs | push: slug %}{% endfor %}{{ part_slugs | join: "," }}'
+
+# hash: GitHub Issues API doesn't provide merge commit info
+
+summ:
+  path: title
+
+head:
+  path: title
+
+note:
+  path: body
+
+tags:
+  path: labels[].name
+
+lead:
+  path: assignee.login

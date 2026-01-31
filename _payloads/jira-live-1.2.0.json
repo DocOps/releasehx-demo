@@ -1,0 +1,661 @@
+{
+  "issues": [
+    {
+      "expand": "renderedFields,names,schema,operations,editmeta,changelog,versionedRepresentations",
+      "id": "10109",
+      "self": "https://docopslab.atlassian.net/rest/api/3/issue/10109",
+      "key": "RHX-14",
+      "fields": {
+        "summary": "Optimize database query performance",
+        "issuetype": {
+          "self": "https://docopslab.atlassian.net/rest/api/3/issuetype/10003",
+          "id": "10003",
+          "description": "Tasks track small, distinct pieces of work.",
+          "iconUrl": "https://docopslab.atlassian.net/rest/api/2/universal_avatar/view/type/issuetype/avatar/10318?size=medium",
+          "name": "Task",
+          "subtask": false,
+          "avatarId": 10318,
+          "entityId": "8ad7f57b-cdde-48c3-8581-822ea92a3336",
+          "hierarchyLevel": 0
+        },
+        "components": [
+          {
+            "self": "https://docopslab.atlassian.net/rest/api/3/component/10006",
+            "id": "10006",
+            "name": "Database"
+          }
+        ],
+        "description": {
+          "type": "doc",
+          "version": 1,
+          "content": [
+            {
+              "type": "heading",
+              "attrs": {
+                "level": 2
+              },
+              "content": [
+                {
+                  "type": "text",
+                  "text": "Release Note"
+                }
+              ]
+            },
+            {
+              "type": "paragraph",
+              "content": [
+                {
+                  "type": "text",
+                  "text": "Improved database query performance by "
+                },
+                {
+                  "type": "text",
+                  "text": "60%",
+                  "marks": [
+                    {
+                      "type": "strong"
+                    }
+                  ]
+                },
+                {
+                  "type": "text",
+                  "text": " through index optimization and query restructuring."
+                }
+              ]
+            },
+            {
+              "type": "table",
+              "content": [
+                {
+                  "type": "tableRow",
+                  "content": [
+                    {
+                      "type": "tableHeader",
+                      "attrs": {},
+                      "content": [
+                        {
+                          "type": "paragraph",
+                          "content": [
+                            {
+                              "type": "text",
+                              "text": "Query Type"
+                            }
+                          ]
+                        }
+                      ]
+                    },
+                    {
+                      "type": "tableHeader",
+                      "attrs": {},
+                      "content": [
+                        {
+                          "type": "paragraph",
+                          "content": [
+                            {
+                              "type": "text",
+                              "text": "Before"
+                            }
+                          ]
+                        }
+                      ]
+                    },
+                    {
+                      "type": "tableHeader",
+                      "attrs": {},
+                      "content": [
+                        {
+                          "type": "paragraph",
+                          "content": [
+                            {
+                              "type": "text",
+                              "text": "After"
+                            }
+                          ]
+                        }
+                      ]
+                    }
+                  ]
+                },
+                {
+                  "type": "tableRow",
+                  "content": [
+                    {
+                      "type": "tableCell",
+                      "attrs": {},
+                      "content": [
+                        {
+                          "type": "paragraph",
+                          "content": [
+                            {
+                              "type": "text",
+                              "text": "User search"
+                            }
+                          ]
+                        }
+                      ]
+                    },
+                    {
+                      "type": "tableCell",
+                      "attrs": {},
+                      "content": [
+                        {
+                          "type": "paragraph",
+                          "content": [
+                            {
+                              "type": "text",
+                              "text": "250ms"
+                            }
+                          ]
+                        }
+                      ]
+                    },
+                    {
+                      "type": "tableCell",
+                      "attrs": {},
+                      "content": [
+                        {
+                          "type": "paragraph",
+                          "content": [
+                            {
+                              "type": "text",
+                              "text": "95ms"
+                            }
+                          ]
+                        }
+                      ]
+                    }
+                  ]
+                },
+                {
+                  "type": "tableRow",
+                  "content": [
+                    {
+                      "type": "tableCell",
+                      "attrs": {},
+                      "content": [
+                        {
+                          "type": "paragraph",
+                          "content": [
+                            {
+                              "type": "text",
+                              "text": "Report generation"
+                            }
+                          ]
+                        }
+                      ]
+                    },
+                    {
+                      "type": "tableCell",
+                      "attrs": {},
+                      "content": [
+                        {
+                          "type": "paragraph",
+                          "content": [
+                            {
+                              "type": "text",
+                              "text": "3.2s"
+                            }
+                          ]
+                        }
+                      ]
+                    },
+                    {
+                      "type": "tableCell",
+                      "attrs": {},
+                      "content": [
+                        {
+                          "type": "paragraph",
+                          "content": [
+                            {
+                              "type": "text",
+                              "text": "1.1s"
+                            }
+                          ]
+                        }
+                      ]
+                    }
+                  ]
+                }
+              ]
+            }
+          ]
+        },
+        "assignee": null,
+        "fixVersions": [
+          {
+            "self": "https://docopslab.atlassian.net/rest/api/3/version/10033",
+            "id": "10033",
+            "name": "1.2.0",
+            "archived": false,
+            "released": false
+          }
+        ],
+        "labels": [
+          "part:backend",
+          "performance"
+        ]
+      }
+    },
+    {
+      "expand": "renderedFields,names,schema,operations,editmeta,changelog,versionedRepresentations",
+      "id": "10108",
+      "self": "https://docopslab.atlassian.net/rest/api/3/issue/10108",
+      "key": "RHX-13",
+      "fields": {
+        "summary": "Add real-time collaboration features to editor",
+        "issuetype": {
+          "self": "https://docopslab.atlassian.net/rest/api/3/issuetype/10004",
+          "id": "10004",
+          "description": "Stories track functionality or features expressed as user goals.",
+          "iconUrl": "https://docopslab.atlassian.net/rest/api/2/universal_avatar/view/type/issuetype/avatar/10315?size=medium",
+          "name": "Story",
+          "subtask": false,
+          "avatarId": 10315,
+          "entityId": "a1e12a62-20d9-48db-8db2-1e65c3787783",
+          "hierarchyLevel": 0
+        },
+        "components": [
+          {
+            "self": "https://docopslab.atlassian.net/rest/api/3/component/10004",
+            "id": "10004",
+            "name": "Editor"
+          },
+          {
+            "self": "https://docopslab.atlassian.net/rest/api/3/component/10005",
+            "id": "10005",
+            "name": "WebUI"
+          }
+        ],
+        "description": {
+          "type": "doc",
+          "version": 1,
+          "content": [
+            {
+              "type": "heading",
+              "attrs": {
+                "level": 2
+              },
+              "content": [
+                {
+                  "type": "text",
+                  "text": "Release Note"
+                }
+              ]
+            },
+            {
+              "type": "paragraph",
+              "content": [
+                {
+                  "type": "text",
+                  "text": "Added real-time collaboration with:"
+                }
+              ]
+            },
+            {
+              "type": "bulletList",
+              "content": [
+                {
+                  "type": "listItem",
+                  "content": [
+                    {
+                      "type": "paragraph",
+                      "content": [
+                        {
+                          "type": "text",
+                          "text": "Live cursor tracking"
+                        }
+                      ]
+                    }
+                  ]
+                },
+                {
+                  "type": "listItem",
+                  "content": [
+                    {
+                      "type": "paragraph",
+                      "content": [
+                        {
+                          "type": "text",
+                          "text": "Conflict-free merge resolution"
+                        }
+                      ]
+                    }
+                  ]
+                },
+                {
+                  "type": "listItem",
+                  "content": [
+                    {
+                      "type": "paragraph",
+                      "content": [
+                        {
+                          "type": "text",
+                          "text": "Presence indicators"
+                        }
+                      ]
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "type": "codeBlock",
+              "attrs": {
+                "language": "javascript"
+              },
+              "content": [
+                {
+                  "type": "text",
+                  "text": "// Enable collaboration\neditor.enableCollaboration({\n  serverUrl: 'wss://collab.example.com',\n  userId: currentUser.id\n});"
+                }
+              ]
+            }
+          ]
+        },
+        "assignee": null,
+        "fixVersions": [
+          {
+            "self": "https://docopslab.atlassian.net/rest/api/3/version/10033",
+            "id": "10033",
+            "name": "1.2.0",
+            "archived": false,
+            "released": false
+          }
+        ],
+        "labels": [
+          "highlighted",
+          "part:webui"
+        ]
+      }
+    },
+    {
+      "expand": "renderedFields,names,schema,operations,editmeta,changelog,versionedRepresentations",
+      "id": "10107",
+      "self": "https://docopslab.atlassian.net/rest/api/3/issue/10107",
+      "key": "RHX-12",
+      "fields": {
+        "summary": "Deprecate legacy XML export format",
+        "issuetype": {
+          "self": "https://docopslab.atlassian.net/rest/api/3/issuetype/10003",
+          "id": "10003",
+          "description": "Tasks track small, distinct pieces of work.",
+          "iconUrl": "https://docopslab.atlassian.net/rest/api/2/universal_avatar/view/type/issuetype/avatar/10318?size=medium",
+          "name": "Task",
+          "subtask": false,
+          "avatarId": 10318,
+          "entityId": "8ad7f57b-cdde-48c3-8581-822ea92a3336",
+          "hierarchyLevel": 0
+        },
+        "components": [
+          {
+            "self": "https://docopslab.atlassian.net/rest/api/3/component/10003",
+            "id": "10003",
+            "name": "Export"
+          }
+        ],
+        "description": {
+          "type": "doc",
+          "version": 1,
+          "content": [
+            {
+              "type": "heading",
+              "attrs": {
+                "level": 2
+              },
+              "content": [
+                {
+                  "type": "text",
+                  "text": "Release Note"
+                }
+              ]
+            },
+            {
+              "type": "paragraph",
+              "content": [
+                {
+                  "type": "text",
+                  "text": "The legacy XML export format is ",
+                  "marks": [
+                    {
+                      "type": "strong"
+                    }
+                  ]
+                },
+                {
+                  "type": "text",
+                  "text": "deprecated",
+                  "marks": [
+                    {
+                      "type": "strong"
+                    },
+                    {
+                      "type": "em"
+                    }
+                  ]
+                },
+                {
+                  "type": "text",
+                  "text": " and will be removed in version 2.0. Use JSON export instead."
+                }
+              ]
+            },
+            {
+              "type": "bulletList",
+              "content": [
+                {
+                  "type": "listItem",
+                  "content": [
+                    {
+                      "type": "paragraph",
+                      "content": [
+                        {
+                          "type": "text",
+                          "text": "Migration guide available in documentation"
+                        }
+                      ]
+                    }
+                  ]
+                },
+                {
+                  "type": "listItem",
+                  "content": [
+                    {
+                      "type": "paragraph",
+                      "content": [
+                        {
+                          "type": "text",
+                          "text": "Automated conversion tool provided"
+                        }
+                      ]
+                    }
+                  ]
+                }
+              ]
+            }
+          ]
+        },
+        "assignee": null,
+        "fixVersions": [
+          {
+            "self": "https://docopslab.atlassian.net/rest/api/3/version/10033",
+            "id": "10033",
+            "name": "1.2.0",
+            "archived": false,
+            "released": false
+          }
+        ],
+        "labels": [
+          "breaking",
+          "deprecation"
+        ]
+      }
+    },
+    {
+      "expand": "renderedFields,names,schema,operations,editmeta,changelog,versionedRepresentations",
+      "id": "10106",
+      "self": "https://docopslab.atlassian.net/rest/api/3/issue/10106",
+      "key": "RHX-11",
+      "fields": {
+        "summary": "Fix memory leak in background job processor",
+        "issuetype": {
+          "self": "https://docopslab.atlassian.net/rest/api/3/issuetype/10034",
+          "id": "10034",
+          "description": "Bugs track problems or errors.",
+          "iconUrl": "https://docopslab.atlassian.net/rest/api/2/universal_avatar/view/type/issuetype/avatar/10303?size=medium",
+          "name": "Bug",
+          "subtask": false,
+          "avatarId": 10303,
+          "entityId": "80e75ac2-6622-4daf-974a-ad3ca28a00bb",
+          "hierarchyLevel": 0
+        },
+        "components": [
+          {
+            "self": "https://docopslab.atlassian.net/rest/api/3/component/10002",
+            "id": "10002",
+            "name": "Background Jobs"
+          }
+        ],
+        "description": {
+          "type": "doc",
+          "version": 1,
+          "content": [
+            {
+              "type": "heading",
+              "attrs": {
+                "level": 2
+              },
+              "content": [
+                {
+                  "type": "text",
+                  "text": "Release Note"
+                }
+              ]
+            },
+            {
+              "type": "paragraph",
+              "content": [
+                {
+                  "type": "text",
+                  "text": "Resolved memory leak in background job processor that caused "
+                },
+                {
+                  "type": "text",
+                  "text": "gradual memory growth",
+                  "marks": [
+                    {
+                      "type": "code"
+                    }
+                  ]
+                },
+                {
+                  "type": "text",
+                  "text": " over extended runs. Jobs now properly clean up resources."
+                }
+              ]
+            }
+          ]
+        },
+        "assignee": null,
+        "fixVersions": [
+          {
+            "self": "https://docopslab.atlassian.net/rest/api/3/version/10033",
+            "id": "10033",
+            "name": "1.2.0",
+            "archived": false,
+            "released": false
+          }
+        ],
+        "labels": [
+          "part:backend"
+        ]
+      }
+    },
+    {
+      "expand": "renderedFields,names,schema,operations,editmeta,changelog,versionedRepresentations",
+      "id": "10105",
+      "self": "https://docopslab.atlassian.net/rest/api/3/issue/10105",
+      "key": "RHX-10",
+      "fields": {
+        "summary": "Add user authentication to API",
+        "issuetype": {
+          "self": "https://docopslab.atlassian.net/rest/api/3/issuetype/10004",
+          "id": "10004",
+          "description": "Stories track functionality or features expressed as user goals.",
+          "iconUrl": "https://docopslab.atlassian.net/rest/api/2/universal_avatar/view/type/issuetype/avatar/10315?size=medium",
+          "name": "Story",
+          "subtask": false,
+          "avatarId": 10315,
+          "entityId": "a1e12a62-20d9-48db-8db2-1e65c3787783",
+          "hierarchyLevel": 0
+        },
+        "components": [
+          {
+            "self": "https://docopslab.atlassian.net/rest/api/3/component/10000",
+            "id": "10000",
+            "name": "API"
+          },
+          {
+            "self": "https://docopslab.atlassian.net/rest/api/3/component/10001",
+            "id": "10001",
+            "name": "Security"
+          }
+        ],
+        "description": {
+          "type": "doc",
+          "version": 1,
+          "content": [
+            {
+              "type": "heading",
+              "attrs": {
+                "level": 2
+              },
+              "content": [
+                {
+                  "type": "text",
+                  "text": "Release Note"
+                }
+              ]
+            },
+            {
+              "type": "paragraph",
+              "content": [
+                {
+                  "type": "text",
+                  "text": "Implemented "
+                },
+                {
+                  "type": "text",
+                  "text": "JWT-based authentication",
+                  "marks": [
+                    {
+                      "type": "strong"
+                    }
+                  ]
+                },
+                {
+                  "type": "text",
+                  "text": " for all API endpoints. Includes token refresh and role-based access control."
+                }
+              ]
+            }
+          ]
+        },
+        "assignee": null,
+        "fixVersions": [
+          {
+            "self": "https://docopslab.atlassian.net/rest/api/3/version/10033",
+            "id": "10033",
+            "name": "1.2.0",
+            "archived": false,
+            "released": false
+          }
+        ],
+        "labels": [
+          "highlighted",
+          "part:api"
+        ]
+      }
+    }
+  ],
+  "isLast": true
+}

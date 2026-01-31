@@ -1,0 +1,76 @@
+{
+  "changes": [
+    {
+      "id": "FEAT-001",
+      "type": "feature",
+      "summary": "Introduce plugin system for extensibility",
+      "description": "A comprehensive plugin system allowing third-party developers to extend application functionality.\n\n## Release Note\n\nIntroduced a powerful plugin system that allows developers to create custom extensions. Features include:\n- Plugin marketplace integration\n- Sandboxed execution environment\n- Rich API for plugin development\n- Hot-loading of plugins without restart\n\nThis opens up endless possibilities for customization and third-party integrations.",
+      "components": ["core", "api", "extensibility"],
+      "tags": ["highlighted", "feature", "changelog"],
+      "assignee": "plugin-team",
+      "commit_hash": "plugin123456789abcdef0123456789012345678",
+      "created_date": "2024-10-01T10:00:00Z",
+      "resolved_date": "2024-12-15T16:30:00Z"
+    },
+    {
+      "id": "FEAT-002",
+      "type": "feature",
+      "summary": "Add mobile application support",
+      "description": "Native mobile applications for iOS and Android with full feature parity.\n\n## Release Note\n\nLaunched native mobile applications for iOS and Android! The mobile apps provide:\n- Full feature parity with web application\n- Offline mode with automatic sync\n- Push notifications for important updates\n- Optimized touch interface\n- Biometric authentication support\n\nDownload from the App Store or Google Play Store.",
+      "components": ["mobile", "ios", "android"],
+      "tags": ["highlighted", "feature", "changelog"],
+      "assignee": "mobile-team",
+      "commit_hash": "mobile456789abcdef012345678901234567890",
+      "created_date": "2024-09-15T09:00:00Z",
+      "resolved_date": "2024-12-18T14:20:00Z"
+    },
+    {
+      "id": "FEAT-003",
+      "type": "feature",
+      "summary": "Implement advanced analytics dashboard",
+      "description": "Comprehensive analytics and reporting capabilities for administrators and power users.\n\n## Release Note\n\nIntroduced an advanced analytics dashboard providing deep insights into:\n- User engagement patterns\n- Content performance metrics\n- System usage statistics\n- Custom report generation\n- Data export capabilities\n- Real-time monitoring\n\nPerfect for administrators and teams wanting to optimize their workflows.",
+      "components": ["analytics", "dashboard", "reporting"],
+      "tags": ["highlighted", "feature", "changelog"],
+      "assignee": "analytics-team",
+      "commit_hash": "analytics789abcdef01234567890123456789012",
+      "created_date": "2024-10-20T11:30:00Z",
+      "resolved_date": "2024-12-20T13:45:00Z"
+    },
+    {
+      "id": "BREAKING-001",
+      "type": "improvement",
+      "summary": "Remove deprecated basic authentication",
+      "description": "Complete removal of basic authentication as announced in v1.1.0.\n\n## Release Note\n\n**Breaking Change:** Removed basic authentication support as previously announced. All API access now requires OAuth2 authentication.\n\nIf you haven't migrated yet:\n1. Set up OAuth2 application credentials\n2. Update your API clients to use OAuth2 flow\n3. Test your integration before upgrading\n\nSee our migration guide for detailed instructions.",
+      "components": ["api", "authentication"],
+      "tags": ["breaking", "removal", "changelog"],
+      "assignee": "alex-security",
+      "commit_hash": "auth012345678901234567890123456789abcdef",
+      "created_date": "2024-11-01T08:00:00Z",
+      "resolved_date": "2024-12-10T10:15:00Z"
+    },
+    {
+      "id": "IMPROVE-005",
+      "type": "improvement",
+      "summary": "Enhance AI suggestions with context awareness",
+      "description": "AI suggestions now consider document context and user preferences for more relevant recommendations.\n\n## Release Note\n\nSignificantly enhanced AI-powered suggestions with context awareness. The AI now:\n- Considers document structure and content\n- Learns from user preferences and patterns\n- Provides more relevant and accurate suggestions\n- Adapts to different content types\n\nNote: This feature has graduated from experimental status and is now fully supported.",
+      "components": ["ai", "machine-learning"],
+      "tags": ["highlighted", "improvement", "changelog"],
+      "assignee": "sophia-ai",
+      "commit_hash": "ai345678901234567890123456789abcdef0123",
+      "created_date": "2024-11-15T14:00:00Z",
+      "resolved_date": "2024-12-22T11:30:00Z"
+    },
+    {
+      "id": "IMPROVE-006",
+      "type": "improvement",
+      "summary": "Redesign user interface with modern design system",
+      "description": "Complete UI overhaul with a modern, accessible design system.\n\n## Release Note\n\nUnveiled a completely redesigned user interface built on our new design system:\n- Modern, clean aesthetic\n- Improved accessibility (WCAG 2.1 AA compliant)\n- Better responsive design for all screen sizes\n- Consistent component library\n- Enhanced dark mode support\n- Customizable themes\n\nThe new design improves usability while maintaining familiar workflows.",
+      "components": ["web-ui", "design-system", "accessibility"],
+      "tags": ["highlighted", "improvement", "changelog"],
+      "assignee": "design-team",
+      "commit_hash": "ui678901234567890123456789abcdef012345",
+      "created_date": "2024-10-05T12:00:00Z",
+      "resolved_date": "2024-12-25T15:45:00Z"
+    }
+  ]
+}
