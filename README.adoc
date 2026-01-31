@@ -751,9 +751,9 @@ This repository uses an artifacts-only branch workflow to showcase generated out
 
 Branch names (`generated/*`)::
 * `generated/latest` - Always contains most recent ReleaseHx version output
-* `generated/{releasehx_vrsn_majmin}` - Version-specific snapshots (e.g., `generated/{releasehx_vrsn_majmin}.0`)
+* `generated/n.n` - Version-specific snapshots (e.g., `generated/{releasehx_vrsn_majmin}`)
 * Purpose: Orphan branches (no shared history with main)
-* Browse at: link:{this_repo_git_www}/tree/generated/latest[generated/latest] | link:{this_repo_git_www}/tree/generated/{releasehx_vrsn}[generated/{releasehx_vrsn}]
+* Browse at: link:{this_repo_git_www}/tree/generated/latest[generated/latest] | link:{this_repo_git_www}/tree/generated/{releasehx_vrsn_majmin}[generated/{releasehx_vrsn_majmin}]
 
 Directory structure on branches::
 * `artifacts/rhx-{releasehx_vrsn_majmin}/` - All generated files in flat structure

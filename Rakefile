@@ -164,6 +164,16 @@ def get_readme_releasehx_version
   readme_version
 end
 
+# Helper method to get major.minor version from README.adoc for branch naming
+def get_readme_releasehx_majmin
+  doc = Asciidoctor.load_file('README.adoc')
+  majmin_version = doc.attributes['releasehx_vrsn_majmin']
+  if majmin_version.nil? || majmin_version.empty?
+    raise "Unable to find :releasehx_vrsn_majmin: attribute in README.adoc"
+  end
+  majmin_version
+end
+
 # Helper method to validate version alignment
 def validate_version_alignment
   cli_version = get_releasehx_version
@@ -187,8 +197,7 @@ end
 # Helper method to create artifacts-only branch
 def create_artifacts_only_branch branch_name, releasehx_version
   puts "Creating artifacts-only branch: #{branch_name}"
-  minor_version = releasehx_version.split('.')[0..1].join('.')
-  artifact_path = "artifacts/rhx-#{minor_version}"
+  artifact_path = "artifacts"
   
   # Save .gitignore-generated content before switching branches
   gitignore_generated_content = File.read('.gitignore-generated') if File.exist?('.gitignore-generated')
@@ -262,33 +271,26 @@ end
 desc "Generate all demo artifacts on main branch"
 task :generate_artifacts do
   releasehx_version = get_releasehx_version
-  minor_version = releasehx_version.split('.')[0..1].join('.')
   
   puts "Generating artifacts using ReleaseHx #{releasehx_version} on main branch..."
   
   # Clean first
   Rake::Task[:clean].invoke
   
-  # Use dynamic generation script to generate artifacts in artifacts/rhx-<version>/ directory
-  artifact_dir = "artifacts/rhx-#{minor_version}"
+  # Use dynamic generation script to generate artifacts in artifacts/ directory
+  artifact_dir = "artifacts"
   puts "Running dynamic generation script to generate artifacts to #{artifact_dir}..."
   sh "bundle exec ruby scripts/dynamic-gen.rb --execute --output-dir #{artifact_dir} --flatten"
   
-  # Also create rhx-latest as a copy
-  latest_dir = "artifacts/rhx-latest"
-  puts "Creating latest snapshot at #{latest_dir}..."
-  FileUtils.rm_rf(latest_dir)
-  FileUtils.cp_r(artifact_dir, latest_dir)
-  
   puts "\nGenerated all available artifacts using ReleaseHx #{releasehx_version}"
-  puts "  Version-specific: #{artifact_dir}/"
-  puts "  Latest snapshot:  #{latest_dir}/"
+  puts "  Artifacts directory: #{artifact_dir}/"
 end
 
 desc "Create artifacts-only branch for current ReleaseHx version"
 task :create_version_branch do
   releasehx_version = validate_version_alignment
-  branch_name = "generated/#{releasehx_version}"
+  majmin_version = get_readme_releasehx_majmin
+  branch_name = "generated/#{majmin_version}"
   
   # Generate artifacts first on main branch
   Rake::Task[:generate_artifacts].invoke
@@ -316,6 +318,7 @@ end
 desc "Complete artifacts-only workflow for versioned branch"
 task :generate_release do
   releasehx_version = validate_version_alignment
+  majmin_version = get_readme_releasehx_majmin
   
   puts "Complete artifacts-only release generation workflow for ReleaseHx #{releasehx_version}"
   
@@ -342,7 +345,7 @@ task :generate_release do
   sh "git checkout main"
   Rake::Task[:clean].invoke
   
-  puts "🎉 Artifacts-only workflow complete! Check 'generated/#{releasehx_version}' branch."
+  puts "🎉 Artifacts-only workflow complete! Check 'generated/#{majmin_version}' branch."
 end
 
 desc "Complete artifacts-only workflow for latest branch"
