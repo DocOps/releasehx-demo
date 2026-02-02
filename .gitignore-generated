@@ -22,10 +22,6 @@ Gemfile*
 Rakefile
 *.sh
 
-# But allow essential documentation
-!README.adoc
-!.gitignore
-
 # Standard/universal ignores
 .ruby-version
 .jekyll-cache/
@@ -33,8 +29,11 @@ Rakefile
 .agent/
 AGENT.md
 
-# Misc ignores for generated branch
+# Misc ignores for generated branch (but keep README)
 config/
 /*.md
-/*.adoc
 *.sh
+
+# But DO allow essential documentation (must come after broader ignores)
+!README.adoc
+!.gitignore
