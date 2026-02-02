@@ -1,0 +1,74 @@
+code: "1.1.1"
+date: 2026-02-02
+memo:
+changes:
+
+  - chid: 1_1_1-HOTFIX-001-fixed-critical-login-i
+    tick: HOTFIX-001
+    type: bug
+    parts:
+      - authentication
+      - web-ui
+    hash: abc123def456789012345678901234567890abcd
+    summ: |
+      Fixed critical login issue affecting Safari users
+    head: Fixed critical login issue affecting Safari users
+    note: |
+      Fixed a critical issue preventing Safari users from logging in. The problem was related to cookie handling changes introduced in the previous release.
+    tags:
+      - critical
+    lead: emergency-team
+
+  - chid: 1_1_1-HOTFIX-002-resolved-memory-leak-i
+    tick: HOTFIX-002
+    type: bug
+    part: collaboration
+    hash: def456789012345678901234567890abcdef123
+    summ: |
+      Resolved memory leak in real-time collaboration
+    head: Resolved memory leak in real-time collaboration
+    note: |
+      Fixed a memory leak in the real-time collaboration feature that could cause performance degradation during long editing sessions.
+    tags:
+      - performance
+    lead: jordan-collab
+
+  - chid: 1_1_1-HOTFIX-003-fixed-search-filter-re
+    tick: HOTFIX-003
+    type: bug
+    part: search
+    hash: 789012345678901234567890abcdef123456789
+    summ: |
+      Fixed search filter reset bug
+    head: Fixed search filter reset bug
+    note: |
+      Fixed an issue where advanced search filters would not reset properly when clearing search terms, causing unexpected search results.
+    lead: carlos-frontend
+
+  - chid: 1_1_1-PATCH-001-improved-error-message
+    tick: PATCH-001
+    type: improvement
+    part: authentication
+    hash: 012345678901234567890abcdef123456789abc
+    summ: |
+      Improved error messages for OAuth2 setup
+    head: Improved error messages for OAuth2 setup
+    note: |
+      Improved error messages during OAuth2 setup to provide clearer guidance when configuration issues are encountered.
+    lead: alex-security
+
+  - chid: 1_1_1-PATCH-002-added-loading-indicato
+    tick: PATCH-002
+    type: improvement
+    parts:
+      - ai
+      - web-ui
+    hash: 345678901234567890abcdef123456789abc012
+    summ: |
+      Added loading indicators for AI suggestions
+    head: Added loading indicators for AI suggestions
+    note: |
+      Added loading indicators for AI-powered suggestions to provide better feedback when suggestions are being generated.
+    tags:
+      - experimental
+    lead: sophia-ai

@@ -1,0 +1,96 @@
+code: "1.1.0"
+date: 2026-02-02
+memo:
+changes:
+
+  - chid: 1_1_0-42
+    tick: 42
+    type: improvement
+    part: 
+    summ: |
+      Add dark mode toggle to user preferences
+    head: Added dark mode toggle to user preferences
+    note: |
+      Introduced a dark mode toggle in user preferences, allowing users to switch between light and dark themes. The setting is automatically saved and persists across sessions.
+    tags:
+      - enhancement
+      - highlighted
+    lead: sarah-dev
+
+  - chid: 1_1_0-43
+    tick: 43
+    type: task
+    part: 
+    summ: |
+      Fix memory leak in background sync process
+    head: Fixed memory leak in background sync process
+    note: |
+      Fixed a memory leak in the background synchronization process that was causing gradual performance degradation. Users should notice improved stability during long sessions.
+    tags:
+      - bug
+    lead: mike-backend
+
+  - chid: 1_1_0-44
+    tick: 44
+    type: improvement
+    part: 
+    summ: |
+      Implement OAuth2 authentication flow
+    head: Implemented OAuth2 authentication flow
+    note: |
+      Implemented OAuth2 authentication flow to replace basic authentication. This provides enhanced security and enables seamless integration with third-party services.
+      
+      **Breaking Change:** Basic authentication will be deprecated in v1.2.0. Please migrate to OAuth2 before then.
+    tags:
+      - enhancement
+      - security
+      - highlighted
+      - breaking
+    lead: alex-security
+
+  - chid: 1_1_0-45
+    tick: 45
+    type: improvement
+    part: 
+    summ: |
+      Add keyboard shortcuts for common actions
+    head: Added keyboard shortcuts for common actions
+    note: |
+      Added keyboard shortcuts for common actions:
+      - `Ctrl+N` / `Cmd+N`: Create new item
+      - `Ctrl+S` / `Cmd+S`: Save current work
+      - `Ctrl+F` / `Cmd+F`: Open search
+      - `Esc`: Close modals/dialogs
+    tags:
+      - enhancement
+    lead: emma-ux
+
+  - chid: 1_1_0-46
+    tick: 46
+    type: task
+    part: 
+    summ: |
+      Deprecate legacy API endpoints
+    head: Deprecated legacy API endpoints
+    note: |
+      The following legacy API endpoints are now deprecated and will be removed in v1.3.0:
+      
+      - `/api/v1/users` → Use `/api/v2/users` instead
+      - `/api/v1/projects` → Use `/api/v2/projects` instead
+      - `/api/v1/tasks` → Use `/api/v2/tasks` instead
+      
+      The new endpoints provide better performance and additional features.
+    tags:
+      - deprecation
+    lead: david-api
+
+  - chid: 1_1_0-47
+    tick: 47
+    type: task
+    part: 
+    summ: |
+      Update documentation for new features
+    head: Updated documentation for new features
+    tags:
+      - documentation
+    lead: lisa-docs

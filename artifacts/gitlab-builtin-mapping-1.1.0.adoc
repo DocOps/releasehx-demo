@@ -1,0 +1,139 @@
+:icons: font
+
+:page-title: Release History for 1.1.0
+:page-version: 1.1.0
+:page-date: 2026-02-02
+
+= Release 1.1.0 - 2026-02-02
+
+== Notable Changes
+
+Detailed information about significant changes that may affect users.
+
+=== Highlighted Features
+
+==== Collaboration
+
+[.release-note]
+--
+Introduced real-time collaboration features allowing multiple users to edit documents simultaneously.
+Changes are synchronized instantly across all connected clients with conflict resolution.
+
+--
+
+==== Search & Discovery
+
+[.release-note]
+--
+Added advanced search capabilities with filtering options including:
+
+* Date ranges
+* Content types
+* User assignments
+* Status filters
+* Custom tags
+
+Search results are now more precise and easier to navigate.
+
+--
+
+==== AI Features
+
+[.release-note]
+--
+Introduced experimental AI-powered content suggestions to help users create better content.
+This feature:
+
+* Suggests improvements to writing
+* Recommends relevant tags
+* Provides content structure guidance
+
+NOTE: This is an experimental feature and may change in future releases.
+
+--
+
+=== Breaking Changes
+
+==== Configuration
+
+[.release-note]
+--
+Removed the following deprecated configuration options:
+
+* `legacy_mode` (use `compatibility.legacy_support` instead)
+* `old_api_format` (use `api.response_format` instead)
+* `deprecated_auth` (OAuth2 is now required)
+
+Please update your configuration files accordingly.
+
+--
+
+=== Removed Features
+
+==== Configuration
+
+[.release-note]
+--
+Removed the following deprecated configuration options:
+
+* `legacy_mode` (use `compatibility.legacy_support` instead)
+* `old_api_format` (use `api.response_format` instead)
+* `deprecated_auth` (OAuth2 is now required)
+
+Please update your configuration files accordingly.
+
+--
+
+=== Experimental Features
+
+==== AI Features
+
+[.release-note]
+--
+Introduced experimental AI-powered content suggestions to help users create better content.
+This feature:
+
+* Suggests improvements to writing
+* Recommends relevant tags
+* Provides content structure guidance
+
+NOTE: This is an experimental feature and may change in future releases.
+
+--
+
+== Changes
+
+All changes included in this release.
+
+=== Collaboration
+
+==== Enhancements
+
+[start=0]
+. Implemented real-time collaboration features +
+xref:note-101-implemented[NOTE]
+
+=== Search & Discovery
+
+==== Enhancements
+
+[start=0]
+. Added advanced search with filters +
+xref:note-103-added-advanc[NOTE]
+
+=== Database
+
+==== Enhancements
+
+[start=0]
+. Migrated to new database schema +
+xref:note-104-migrated-to[NOTE]
+
+=== AI Features
+
+==== Enhancements
+
+[start=0]
+. Added experimental AI-powered suggestions +
+xref:note-106-added-experi[NOTE]
+

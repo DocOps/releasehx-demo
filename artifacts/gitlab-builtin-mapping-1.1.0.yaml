@@ -1,0 +1,107 @@
+code: "1.1.0"
+date: 2026-02-02
+memo:
+changes:
+
+  - chid: 101-implemented
+    tick: 101
+    type: enhancement
+    part: collaboration
+    summ: |
+      Implemented real-time collaboration features
+    note: |
+      Introduced real-time collaboration features allowing multiple users to edit documents simultaneously. Changes are synchronized instantly across all connected clients with conflict resolution.
+    tags:
+      - enhancement
+      - highlighted
+
+  - chid: 102-fixed-race-c
+    tick: 102
+    type: bug
+    summ: |
+      Fixed race condition in data synchronization
+    note: |
+      Resolved a race condition in data synchronization that could cause inconsistencies when multiple users modified the same data simultaneously. Data integrity is now properly maintained.
+    tags:
+      - bug
+
+  - chid: 103-added-advanc
+    tick: 103
+    type: enhancement
+    part: search
+    summ: |
+      Added advanced search with filters
+    note: |
+      Added advanced search capabilities with filtering options including:
+      - Date ranges
+      - Content types
+      - User assignments
+      - Status filters
+      - Custom tags
+      
+      Search results are now more precise and easier to navigate.
+    tags:
+      - enhancement
+      - highlighted
+
+  - chid: 104-migrated-to
+    tick: 104
+    type: enhancement
+    part: database
+    summ: |
+      Migrated to new database schema
+    note: |
+      Completed migration to an optimized database schema that provides:
+      - 40% faster query performance
+      - Better support for concurrent operations
+      - Improved data relationships
+      
+      **Note:** This migration was performed automatically during the update process.
+    tags:
+      - enhancement
+
+  - chid: 105-removed-depr
+    tick: 105
+    part: configuration
+    summ: |
+      Removed deprecated configuration options
+    note: |
+      Removed the following deprecated configuration options:
+      - `legacy_mode` (use `compatibility.legacy_support` instead)
+      - `old_api_format` (use `api.response_format` instead)
+      - `deprecated_auth` (OAuth2 is now required)
+      
+      Please update your configuration files accordingly.
+    tags:
+      - breaking
+      - removal
+
+  - chid: 106-added-experi
+    tick: 106
+    type: enhancement
+    part: ai
+    summ: |
+      Added experimental AI-powered suggestions
+    note: |
+      Introduced experimental AI-powered content suggestions to help users create better content. This feature:
+      - Suggests improvements to writing
+      - Recommends relevant tags
+      - Provides content structure guidance
+      
+      **Note:** This is an experimental feature and may change in future releases.
+    tags:
+      - enhancement
+      - experimental
+      - highlighted
+
+  - chid: 107-security-pat
+    tick: 107
+    type: bug
+    summ: |
+      Security patched for authentication bypass
+    note: |
+      Fixed a critical security vulnerability that could potentially allow authentication bypass under specific conditions. All users are strongly encouraged to update immediately.
+    tags:
+      - security
+      - bug
+      - highlighted

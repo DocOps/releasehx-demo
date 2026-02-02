@@ -1,0 +1,102 @@
+code: "1.1.0"
+date: 2026-02-02
+memo:
+changes:
+
+  - chid: 1_1_0-PROJ-310-added-inline-edit
+    tick: PROJ-310
+    type: improvement
+    part: webui
+    hash: a1b2c3d4e5f60718293a4b5c6d7e8f9012345678
+    summ: |
+      Added inline editing to dashboard widgets
+    head: Added inline editing to dashboard widgets
+    note: |
+      Introduces an interactive editor directly in the dashboard, allowing users to modify widgets without navigating away.
+      
+      This significantly streamlines common tasks.
+    tags:
+      - highlighted
+    lead: julie
+
+  - chid: 1_1_0-PROJ-467-added-rate-limiti
+    tick: PROJ-467
+    type: improvement
+    part: api
+    hash: abc123abc123abc123abc123abc123abc123abcd
+    summ: |
+      Added rate limiting headers to public API
+    head: Added rate limiting headers to public API
+    note: |
+      The API now includes standard `X-RateLimit-*` headers in all responses to better inform consumers of usage thresholds.
+      
+      > **NOTE:** The default rate limit remains unchanged.
+    tags:
+      - breaking
+    lead: devin
+
+  - chid: 1_1_0-PROJ-983-fixed-modal-overf
+    tick: PROJ-983
+    type: bug
+    part: webui
+    hash: deadbeef0000000000000000000000000000feed
+    summ: |
+      Fixed modal overflow on small screens
+    head: Fixed modal overflow on small screens
+    note: |
+      Modals now scroll correctly on devices with < 600px screen width.
+    lead: sam
+
+  - chid: 1_1_0-PROJ-987-fixed-json-serial
+    tick: PROJ-987
+    type: bug
+    part: api
+    hash: facefeed1234567890abcdef1234567890abcdef
+    summ: |
+      Fixed JSON serialization issue with null values
+    head: Fixed JSON serialization issue with null values
+    note: |
+      Previously, null values were omitted from JSON payloads. This has been corrected.
+      
+      > **WARNING:** **Impact:** Clients expecting explicit nulls will now receive them as specified.
+    lead: cory
+
+  - chid: 1_1_0-PROJ-399-added-missing-key
+    tick: PROJ-399
+    type: improvement
+    part: webui
+    hash: 0123456789abcdef0123456789abcdef01234567
+    summ: |
+      Added missing keyboard shortcuts to Help page
+    head: Added missing keyboard shortcuts to Help page
+    note: |
+      The Help page now includes a full list of supported keyboard shortcuts, including:
+      
+      - / to focus search
+      - ? to show help modal
+    lead: alex
+
+  - chid: 1_1_0-PROJ-777-added-batch-expor
+    tick: PROJ-777
+    type: feature
+    part: api
+    hash: feedface1111222233334444555566667777888
+    summ: |
+      Added batch export API endpoint
+    head: Added batch export API endpoint
+    note: |
+      A new batch export endpoint is now available at `/api/export/batch`. Supported formats:
+      
+      - CSV (default)
+      - JSON with optional compression
+      
+      Example usage:
+      
+      ```bash
+      curl -X POST /api/export/batch \
+        -H "Content-Type: application/json" \
+        -d '{"format": "csv", "ids": [1,2,3]}'
+      ```
+    tags:
+      - highlighted
+    lead: morgan
