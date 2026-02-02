@@ -1,0 +1,20 @@
+= Generated Artifacts for ReleaseHx 0.1.2
+
+This branch contains only the generated artifacts produced by ReleaseHx 0.1.2.
+
+== Structure
+
+- `artifacts/` - All generated files (YAML, Markdown, AsciiDoc, HTML, PDF)
+
+**Note**: These files are generated artifacts for demonstration purposes.
+Paths and structure may change between versions.
+
+Generated on: 2026-02-02 00:21:00 UTC
+
+== Branch Purpose
+
+This is an artifacts-only branch (orphan branch with no shared history with `main`).
+
+- *Source files*: See the `main` branch
+- *Documentation*: See the `main` branch README
+- *Showcase*: This branch displays generated output only

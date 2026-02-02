@@ -1,0 +1,114 @@
+:icons: font
+
+:page-title: Release History for 1.1.0
+:page-version: 1.1.0
+:page-date: 2026-02-02
+
+= Release History -- 1.1.0 - 2026-02-02
+
+
+== Release Notes
+
+
+Descriptions of any specially notable changes or additions since the previous release.
+
+
+[[note-1_1_0-42]]
+[.release-note]
+--
+Introduced a dark mode toggle in user preferences, allowing users to switch between light and dark themes.
+The setting is automatically saved and persists across sessions.
+
+--
+
+
+[[note-1_1_0-43]]
+[.release-note]
+--
+Fixed a memory leak in the background synchronization process that was causing gradual performance degradation.
+Users should notice improved stability during long sessions.
+
+--
+
+
+[[note-1_1_0-44]]
+[.release-note]
+--
+Implemented OAuth2 authentication flow to replace basic authentication.
+This provides enhanced security and enables seamless integration with third-party services.
+
+*Breaking Change:* Basic authentication will be deprecated in v1.2.0.
+Please migrate to OAuth2 before then.
+
+--
+
+
+[[note-1_1_0-45]]
+[.release-note]
+--
+Added keyboard shortcuts for common actions:
+
+* `Ctrl+N` / `Cmd+N`: Create new item
+* `Ctrl+S` / `Cmd+S`: Save current work
+* `Ctrl+F` / `Cmd+F`: Open search
+* `Esc`: Close modals/dialogs
+
+--
+
+
+[[note-1_1_0-46]]
+[.release-note]
+--
+The following legacy API endpoints are now deprecated and will be removed in v1.3.0:
+
+* `/api/v1/users` → Use `/api/v2/users` instead
+* `/api/v1/projects` → Use `/api/v2/projects` instead
+* `/api/v1/tasks` → Use `/api/v2/tasks` instead
+
+The new endpoints provide better performance and additional features.
+
+--
+
+
+[[note-1_1_0-47]]
+[.release-note]
+--
+NO RELEASE NOTE PROVIDED
+
+--
+
+
+== What's Changed
+
+
+Summary of all changes in this release (using label-based tagging).
+
+
+[[entry-1_1_0-42]]
+* Add dark mode toggle to user preferences +
+xref:note-1_1_0-42[NOTE]
+
+
+[[entry-1_1_0-43]]
+* Fix memory leak in background sync process +
+xref:note-1_1_0-43[NOTE]
+
+
+[[entry-1_1_0-44]]
+* Implement OAuth2 authentication flow +
+xref:note-1_1_0-44[NOTE]
+
+
+[[entry-1_1_0-45]]
+* Add keyboard shortcuts for common actions +
+xref:note-1_1_0-45[NOTE]
+
+
+[[entry-1_1_0-46]]
+* Deprecate legacy API endpoints +
+xref:note-1_1_0-46[NOTE]
+
+
+[[entry-1_1_0-47]]
+* Update documentation for new features
+

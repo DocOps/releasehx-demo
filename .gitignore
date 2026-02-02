@@ -1,0 +1,39 @@
+# Generated branch .gitignore - track artifacts, ignore source
+# This is the OPPOSITE of main branch .gitignore in key areas
+
+# Track generated artifacts directory (this is the whole point of generated/* branches)
+!artifacts/
+!artifacts/**/*
+
+# Ignore source directories (not needed on artifacts-only branch)
+_configs/
+_payloads/
+_templates_/
+_apis_/
+_mappings_/
+
+# Ignore test/demo output (artifacts/ is what we want on this branch)
+__output/
+__tests/
+
+# Ignore all source files
+*.rb
+Gemfile*
+Rakefile
+*.sh
+
+# Standard/universal ignores
+.ruby-version
+.jekyll-cache/
+.warp/
+.agent/
+AGENT.md
+
+# Misc ignores for generated branch (but keep README)
+config/
+/*.md
+*.sh
+
+# But DO allow essential documentation (must come after broader ignores)
+!README.adoc
+!.gitignore

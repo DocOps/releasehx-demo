@@ -1,0 +1,61 @@
+:icons: font
+
+:page-title: Release History for 1.1.1
+:page-version: 1.1.1
+:page-date: 2026-02-02
+
+= 1.1.1 Release - February 02, 2026
+
+
+
+== Release Notes & Highlights
+
+
+
+Detailed information about the most important changes in 1.1.1.
+
+This section focuses on changes that directly impact users and require attention during upgrades.
+
+
+
+[[note-1_1_1-HOTFIX-001-fixed-critical-login-i]]
+[.release-note]
+--
+Fixed a critical issue preventing Safari users from logging in.
+The problem was related to cookie handling changes introduced in the previous release.
+
+--
+
+
+[[note-1_1_1-HOTFIX-002-resolved-memory-leak-i]]
+[.release-note]
+--
+Fixed a memory leak in the real-time collaboration feature that could cause performance degradation during long editing sessions.
+
+--
+
+
+[[note-1_1_1-HOTFIX-003-fixed-search-filter-re]]
+[.release-note]
+--
+Fixed an issue where advanced search filters would not reset properly when clearing search terms, causing unexpected search results.
+
+--
+
+
+[[note-1_1_1-PATCH-001-improved-error-message]]
+[.release-note]
+--
+Improved error messages during OAuth2 setup to provide clearer guidance when configuration issues are encountered.
+
+--
+
+
+[[note-1_1_1-PATCH-002-added-loading-indicato]]
+[.release-note]
+--
+Added loading indicators for AI-powered suggestions to provide better feedback when suggestions are being generated.
+
+--
+
+

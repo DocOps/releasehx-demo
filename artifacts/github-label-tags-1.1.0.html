@@ -1,0 +1,252 @@
+
+---
+title: Release History for 1.1.0
+version: 1.1.0
+date: 2026-02-02
+---
+
+<h1>Release History -- 1.1.0 - 2026-02-02</h1>
+
+
+<div class="release-section" id="release-1-1-0">
+
+<div class="notes-section">
+<h2>Release Notes</h2>
+
+
+Descriptions of any specially notable changes or additions since the previous release.
+
+
+<div class="release-note card mb-3" id="note-1_1_0-42">
+    <div class="card-body">
+        <h5 class="card-title">Added dark mode toggle to user preferences</h5>
+
+        <div class="card-text">
+            Introduced a dark mode toggle in user preferences, allowing users to switch between light and dark themes. The setting is automatically saved and persists across sessions.
+
+        </div>
+        <div class="change-metadata mt-3 pt-2 border-top">
+            
+        </div>
+    </div>
+</div>
+
+
+<div class="release-note card mb-3" id="note-1_1_0-43">
+    <div class="card-body">
+        <h5 class="card-title">Fixed memory leak in background sync process</h5>
+
+        <div class="card-text">
+            Fixed a memory leak in the background synchronization process that was causing gradual performance degradation. Users should notice improved stability during long sessions.
+
+        </div>
+        <div class="change-metadata mt-3 pt-2 border-top">
+            
+        </div>
+    </div>
+</div>
+
+
+<div class="release-note card mb-3" id="note-1_1_0-44">
+    <div class="card-body">
+        <h5 class="card-title">Implemented OAuth2 authentication flow</h5>
+
+        <div class="card-text">
+            Implemented OAuth2 authentication flow to replace basic authentication. This provides enhanced security and enables seamless integration with third-party services.
+
+**Breaking Change:** Basic authentication will be deprecated in v1.2.0. Please migrate to OAuth2 before then.
+
+        </div>
+        <div class="change-metadata mt-3 pt-2 border-top">
+            
+        </div>
+    </div>
+</div>
+
+
+<div class="release-note card mb-3" id="note-1_1_0-45">
+    <div class="card-body">
+        <h5 class="card-title">Added keyboard shortcuts for common actions</h5>
+
+        <div class="card-text">
+            Added keyboard shortcuts for common actions:
+- `Ctrl+N` / `Cmd+N`: Create new item
+- `Ctrl+S` / `Cmd+S`: Save current work
+- `Ctrl+F` / `Cmd+F`: Open search
+- `Esc`: Close modals/dialogs
+
+        </div>
+        <div class="change-metadata mt-3 pt-2 border-top">
+            
+        </div>
+    </div>
+</div>
+
+
+<div class="release-note card mb-3" id="note-1_1_0-46">
+    <div class="card-body">
+        <h5 class="card-title">Deprecated legacy API endpoints</h5>
+
+        <div class="card-text">
+            The following legacy API endpoints are now deprecated and will be removed in v1.3.0:
+
+- `/api/v1/users` → Use `/api/v2/users` instead
+- `/api/v1/projects` → Use `/api/v2/projects` instead
+- `/api/v1/tasks` → Use `/api/v2/tasks` instead
+
+The new endpoints provide better performance and additional features.
+
+        </div>
+        <div class="change-metadata mt-3 pt-2 border-top">
+            
+        </div>
+    </div>
+</div>
+
+
+<div class="release-note card mb-3" id="note-1_1_0-47">
+    <div class="card-body">
+        <h5 class="card-title">Updated documentation for new features</h5>
+
+        <div class="card-text">
+            NO RELEASE NOTE PROVIDED
+        </div>
+        <div class="change-metadata mt-3 pt-2 border-top">
+            
+        </div>
+    </div>
+</div>
+
+
+</div>
+
+
+<div class="changelog-section">
+<h2>What's Changed</h2>
+
+
+Summary of all changes in this release (using label-based tagging).
+
+
+<div class="change-entry mb-2" id="entry-1_1_0-42">
+    <div class="d-flex align-items-start">
+        <div class="flex-grow-1">
+            <span class="change-summary">Add dark mode toggle to user preferences
+</span><div class="change-metadata mt-1">
+                
+<i class="fa fa-wrench meta-icon"></i>
+<span class="badge bg-secondary meta-label type-label">Improvement</span>
+<span class="badge bg-secondary meta-label part-label"></span>
+            </div>
+        </div>
+        <div class="note-link">
+            <a href="#note-1_1_0-42" class="text-decoration-none">
+                <i class="fa fa-sticky-note-o"></i>
+                <small>NOTE</small>
+            </a>
+        </div>
+    </div>
+</div>
+
+
+<div class="change-entry mb-2" id="entry-1_1_0-43">
+    <div class="d-flex align-items-start">
+        <div class="flex-grow-1">
+            <span class="change-summary">Fix memory leak in background sync process
+</span><div class="change-metadata mt-1">
+                
+<span class="badge bg-secondary meta-label type-label">task</span>
+<span class="badge bg-secondary meta-label part-label"></span>
+            </div>
+        </div>
+        <div class="note-link">
+            <a href="#note-1_1_0-43" class="text-decoration-none">
+                <i class="fa fa-sticky-note-o"></i>
+                <small>NOTE</small>
+            </a>
+        </div>
+    </div>
+</div>
+
+
+<div class="change-entry mb-2" id="entry-1_1_0-44">
+    <div class="d-flex align-items-start">
+        <div class="flex-grow-1">
+            <span class="change-summary">Implement OAuth2 authentication flow
+</span><div class="change-metadata mt-1">
+                
+<i class="fa fa-wrench meta-icon"></i>
+<span class="badge bg-secondary meta-label type-label">Improvement</span>
+<span class="badge bg-secondary meta-label part-label"></span>
+            </div>
+        </div>
+        <div class="note-link">
+            <a href="#note-1_1_0-44" class="text-decoration-none">
+                <i class="fa fa-sticky-note-o"></i>
+                <small>NOTE</small>
+            </a>
+        </div>
+    </div>
+</div>
+
+
+<div class="change-entry mb-2" id="entry-1_1_0-45">
+    <div class="d-flex align-items-start">
+        <div class="flex-grow-1">
+            <span class="change-summary">Add keyboard shortcuts for common actions
+</span><div class="change-metadata mt-1">
+                
+<i class="fa fa-wrench meta-icon"></i>
+<span class="badge bg-secondary meta-label type-label">Improvement</span>
+<span class="badge bg-secondary meta-label part-label"></span>
+            </div>
+        </div>
+        <div class="note-link">
+            <a href="#note-1_1_0-45" class="text-decoration-none">
+                <i class="fa fa-sticky-note-o"></i>
+                <small>NOTE</small>
+            </a>
+        </div>
+    </div>
+</div>
+
+
+<div class="change-entry mb-2" id="entry-1_1_0-46">
+    <div class="d-flex align-items-start">
+        <div class="flex-grow-1">
+            <span class="change-summary">Deprecate legacy API endpoints
+</span><div class="change-metadata mt-1">
+                
+<span class="badge bg-secondary meta-label type-label">task</span>
+<span class="badge bg-secondary meta-label part-label"></span>
+            </div>
+        </div>
+        <div class="note-link">
+            <a href="#note-1_1_0-46" class="text-decoration-none">
+                <i class="fa fa-sticky-note-o"></i>
+                <small>NOTE</small>
+            </a>
+        </div>
+    </div>
+</div>
+
+
+<div class="change-entry mb-2" id="entry-1_1_0-47">
+    <div class="d-flex align-items-start">
+        <div class="flex-grow-1">
+            <span class="change-summary">Update documentation for new features
+</span><div class="change-metadata mt-1">
+                
+<span class="badge bg-secondary meta-label type-label">task</span>
+<span class="badge bg-secondary meta-label part-label"></span>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+</div>
+
+
+</div>
+

@@ -1,0 +1,119 @@
+:icons: font
+
+:page-title: Release History for 1.1.0
+:page-version: 1.1.0
+:page-date: 2026-02-02
+
+= Release History -- 1.1.0 - 2026-02-02
+
+== Changelog
+
+Summaries of all user-facing changes made since the previous release.
+
+=== Web UI
+
+Add inline editing to dashboard widgets +
+xref:note-1_1_0-PROJ-310[NOTE]
+
+Fix modal overflow on small screens +
+xref:note-1_1_0-PROJ-983[NOTE]
+
+Add missing keyboard shortcuts to Help page +
+xref:note-1_1_0-PROJ-399[NOTE]
+
+=== API
+
+Add rate limiting headers to public API +
+xref:note-1_1_0-PROJ-467[NOTE]
+
+Fix JSON serialization issue with null values +
+xref:note-1_1_0-PROJ-987[NOTE]
+
+Add batch export API endpoint +
+xref:note-1_1_0-PROJ-777[NOTE]
+
+== Release Notes
+
+Descriptions of any specially notable changes or additions since the previous release.
+
+=== Breaking Changes
+
+==== API
+
+[.release-note]
+--
+The API now includes standard `X-RateLimit-*` headers in all responses to better inform consumers of usage thresholds.
+
+____
+*NOTE:* The default rate limit remains unchanged.
+____
+
+--
+
+=== Features
+
+==== API
+
+[.release-note]
+--
+A new batch export endpoint is now available at `/api/export/batch`.
+Supported formats:
+
+* CSV (default)
+* JSON with optional compression
+
+Example usage:
+
+[,bash]
+----
+curl -X POST /api/export/batch \
+  -H "Content-Type: application/json" \
+  -d '{"format": "csv", "ids": [1,2,3]}'
+----
+
+--
+
+=== Bug Fixes
+
+==== Web UI
+
+[.release-note]
+--
+Modals now scroll correctly on devices with < 600px screen width.
+
+--
+
+==== API
+
+[.release-note]
+--
+Previously, null values were omitted from JSON payloads.
+This has been corrected.
+
+____
+*WARNING:* *Impact:* Clients expecting explicit nulls will now receive them as specified.
+____
+
+--
+
+=== Improvements
+
+==== Web UI
+
+[.release-note]
+--
+Introduces an interactive editor directly in the dashboard, allowing users to modify widgets without navigating away.
+
+This significantly streamlines common tasks.
+
+--
+
+[.release-note]
+--
+The Help page now includes a full list of supported keyboard shortcuts, including:
+
+* / to focus search
+* ? to show help modal
+
+--
+

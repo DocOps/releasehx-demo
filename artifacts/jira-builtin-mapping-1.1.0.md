@@ -1,0 +1,25 @@
+
+# Release History -- 1.1.0 - 2026-02-02
+
+## Changelog
+
+Summaries of all user-facing changes made since the previous release.
+
+### Web UI
+
+Add inline editing to dashboard widgets
+
+Fix modal overflow on small screens
+
+Add missing keyboard shortcuts to Help page
+
+### API
+
+Add rate limiting headers to public API
+
+Add batch export API endpoint
+
+## Release Notes
+
+Descriptions of any specially notable changes or additions since the previous release.
+

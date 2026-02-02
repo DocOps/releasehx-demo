@@ -1,0 +1,57 @@
+:icons: font
+
+:page-title: Release History for 1.0.0
+:page-version: 1.0.0
+:page-date: 2026-02-02
+
+= Release History -- 1.0.0 - 2026-02-02
+
+
+== Release Notes
+
+
+Descriptions of notable changes in this release.
+
+
+=== Bug Fixes
+
+==== User Interface
+
+[.release-note]
+--
+Fixed critical type validation bug that was causing incorrect issue categorization.
+This resolves issues where Bug-type items were not being properly recognized by the system.
+
+--
+
+
+==== API
+
+[.release-note]
+--
+Improved Bug issue processing to ensure all Bug-type issues are correctly handled throughout the validation pipeline.
+Enhanced error handling for edge cases.
+
+--
+
+
+== What's Changed
+
+
+Summary of all changes in this release.
+
+
+=== User Interface
+
+
+* Test issue with Bug type +
+xref:note-1_0_0-118[NOTE]
+
+
+=== API
+
+
+* Test Valid Type Bug +
+xref:note-1_0_0-121[NOTE]
+
+

@@ -1,0 +1,26 @@
+code: "1.0.0"
+date: 2026-02-02
+memo:
+changes:
+
+  - chid: 1_0_0-121
+    tick: 121
+    type: bug
+    part: api
+    summ: |
+      Test Valid Type Bug
+    note: |
+      Improved Bug issue processing to ensure all Bug-type issues are correctly handled throughout the validation pipeline. Enhanced error handling for edge cases.
+    tags:
+      - bug
+    lead: briandominick
+
+  - chid: 1_0_0-118
+    tick: 118
+    type: bug
+    part: ui
+    summ: |
+      Test issue with Bug type
+    note: |
+      Fixed critical type validation bug that was causing incorrect issue categorization. This resolves issues where Bug-type items were not being properly recognized by the system.
+    lead: briandominick

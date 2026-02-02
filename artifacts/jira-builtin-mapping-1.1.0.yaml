@@ -1,0 +1,50 @@
+code: "1.1.0"
+date: 2026-02-02
+memo:
+changes:
+
+  - chid: 1_1_0-PROJ-310
+    tick: PROJ-310
+    type: 
+    part: webui
+    summ: |
+      Add inline editing to dashboard widgets
+    tags:
+      - highlighted
+    lead: julie
+
+  - chid: 1_1_0-PROJ-467
+    tick: PROJ-467
+    type: 
+    part: api
+    summ: |
+      Add rate limiting headers to public API
+    tags:
+      - breaking
+    lead: devin
+
+  - chid: 1_1_0-PROJ-983
+    tick: PROJ-983
+    type: 
+    part: webui
+    summ: |
+      Fix modal overflow on small screens
+    lead: sam
+
+  - chid: 1_1_0-PROJ-399
+    tick: PROJ-399
+    type: 
+    part: webui
+    summ: |
+      Add missing keyboard shortcuts to Help page
+    lead: alex
+
+  - chid: 1_1_0-PROJ-777
+    tick: PROJ-777
+    type: 
+    part: api
+    summ: |
+      Add batch export API endpoint
+    tags:
+      - highlighted
+    lead: morgan

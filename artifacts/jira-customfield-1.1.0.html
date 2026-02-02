@@ -1,0 +1,299 @@
+
+---
+title: Release History for 1.1.0
+version: 1.1.0
+date: 2026-02-02
+---
+
+<h1>Release History -- 1.1.0 - 2026-02-02</h1>
+
+<div class="release-section" id="release-1-1-0">
+
+<div class="changelog-section">
+<h2>Changelog</h2>
+
+Summaries of all user-facing changes made since the previous release.
+
+<h3>Web UI</h3>
+
+<div class="change-entry mb-2" id="entry-1_1_0-PROJ-310">
+    <div class="d-flex align-items-start">
+        <div class="flex-grow-1">
+            <span class="change-summary">Add inline editing to dashboard widgets
+</span><div class="change-metadata mt-1">
+                
+<i class="fa fa-arrow-up meta-icon"></i>
+<span class="badge bg-secondary meta-label type-label">Improvement</span>
+            </div>
+        </div>
+        <div class="note-link">
+            <a href="#note-1_1_0-PROJ-310" class="text-decoration-none">
+                <i class="fa fa-sticky-note-o"></i>
+                <small>NOTE</small>
+            </a>
+        </div>
+    </div>
+</div>
+
+<div class="change-entry mb-2" id="entry-1_1_0-PROJ-983">
+    <div class="d-flex align-items-start">
+        <div class="flex-grow-1">
+            <span class="change-summary">Fix modal overflow on small screens
+</span><div class="change-metadata mt-1">
+                
+<i class="fa fa-bug meta-icon"></i>
+<span class="badge bg-secondary meta-label type-label">Bug fix</span>
+            </div>
+        </div>
+        <div class="note-link">
+            <a href="#note-1_1_0-PROJ-983" class="text-decoration-none">
+                <i class="fa fa-sticky-note-o"></i>
+                <small>NOTE</small>
+            </a>
+        </div>
+    </div>
+</div>
+
+<div class="change-entry mb-2" id="entry-1_1_0-PROJ-399">
+    <div class="d-flex align-items-start">
+        <div class="flex-grow-1">
+            <span class="change-summary">Add missing keyboard shortcuts to Help page
+</span><div class="change-metadata mt-1">
+                
+<i class="fa fa-arrow-up meta-icon"></i>
+<span class="badge bg-secondary meta-label type-label">Improvement</span>
+            </div>
+        </div>
+        <div class="note-link">
+            <a href="#note-1_1_0-PROJ-399" class="text-decoration-none">
+                <i class="fa fa-sticky-note-o"></i>
+                <small>NOTE</small>
+            </a>
+        </div>
+    </div>
+</div>
+
+<h3>API</h3>
+
+<div class="change-entry mb-2" id="entry-1_1_0-PROJ-467">
+    <div class="d-flex align-items-start">
+        <div class="flex-grow-1">
+            <span class="change-summary">Add rate limiting headers to public API
+</span><div class="change-metadata mt-1">
+                
+<i class="fa fa-arrow-up meta-icon"></i>
+<span class="badge bg-secondary meta-label type-label">Improvement</span>
+            </div>
+        </div>
+        <div class="note-link">
+            <a href="#note-1_1_0-PROJ-467" class="text-decoration-none">
+                <i class="fa fa-sticky-note-o"></i>
+                <small>NOTE</small>
+            </a>
+        </div>
+    </div>
+</div>
+
+<div class="change-entry mb-2" id="entry-1_1_0-PROJ-987">
+    <div class="d-flex align-items-start">
+        <div class="flex-grow-1">
+            <span class="change-summary">Fix JSON serialization issue with null values
+</span><div class="change-metadata mt-1">
+                
+<i class="fa fa-bug meta-icon"></i>
+<span class="badge bg-secondary meta-label type-label">Bug fix</span>
+            </div>
+        </div>
+        <div class="note-link">
+            <a href="#note-1_1_0-PROJ-987" class="text-decoration-none">
+                <i class="fa fa-sticky-note-o"></i>
+                <small>NOTE</small>
+            </a>
+        </div>
+    </div>
+</div>
+
+<div class="change-entry mb-2" id="entry-1_1_0-PROJ-777">
+    <div class="d-flex align-items-start">
+        <div class="flex-grow-1">
+            <span class="change-summary">Add batch export API endpoint
+</span><div class="change-metadata mt-1">
+                
+<i class="fa fa-star meta-icon"></i>
+<span class="badge bg-secondary meta-label type-label">New feature</span>
+            </div>
+        </div>
+        <div class="note-link">
+            <a href="#note-1_1_0-PROJ-777" class="text-decoration-none">
+                <i class="fa fa-sticky-note-o"></i>
+                <small>NOTE</small>
+            </a>
+        </div>
+    </div>
+</div>
+
+</div>
+
+<div class="notes-section">
+<h2>Release Notes</h2>
+
+Descriptions of any specially notable changes or additions since the previous release.
+
+<h3>Breaking Changes</h3>
+
+<h4>API</h4>
+
+<div class="release-note card mb-3" id="note-1_1_0-PROJ-467">
+    <div class="card-body">
+        <h5 class="card-title">Added rate limiting headers to public API</h5>
+
+        <div class="card-text">
+            The API now includes standard `X-RateLimit-*` headers in all responses to better inform consumers of usage thresholds.
+
+> **NOTE:** The default rate limit remains unchanged.
+
+        </div>
+        <div class="change-metadata mt-3 pt-2 border-top">
+            
+<i class="fa fa-star meta-icon"></i>
+<span class="badge bg-secondary meta-label type-label">New feature</span>
+        </div>
+    </div>
+</div>
+
+<h3>Features</h3>
+
+<h4>API</h4>
+
+<div class="release-note card mb-3" id="note-1_1_0-PROJ-777">
+    <div class="card-body">
+        <h5 class="card-title">Added batch export API endpoint</h5>
+
+        <div class="card-text">
+            A new batch export endpoint is now available at `/api/export/batch`. Supported formats:
+
+- CSV (default)
+- JSON with optional compression
+
+Example usage:
+
+```bash
+curl -X POST /api/export/batch \
+  -H "Content-Type: application/json" \
+  -d '{"format": "csv", "ids": [1,2,3]}'
+```
+
+        </div>
+        <div class="change-metadata mt-3 pt-2 border-top">
+            
+<i class="fa fa-star meta-icon"></i>
+<span class="badge bg-secondary meta-label type-label">New feature</span>
+        </div>
+    </div>
+</div>
+
+<h3>Bug Fixes</h3>
+
+<h4>Web UI</h4>
+
+<div class="release-note card mb-3" id="note-1_1_0-PROJ-983">
+    <div class="card-body">
+        <h5 class="card-title">Fixed modal overflow on small screens</h5>
+
+        <div class="card-text">
+            Modals now scroll correctly on devices with < 600px screen width.
+
+        </div>
+        <div class="change-metadata mt-3 pt-2 border-top">
+            
+<i class="fa fa-star meta-icon"></i>
+<span class="badge bg-secondary meta-label type-label">New feature</span>
+        </div>
+    </div>
+</div>
+
+<h4>API</h4>
+
+<div class="release-note card mb-3" id="note-1_1_0-PROJ-987">
+    <div class="card-body">
+        <h5 class="card-title">Fixed JSON serialization issue with null values</h5>
+
+        <div class="card-text">
+            Previously, null values were omitted from JSON payloads. This has been corrected.
+
+> **WARNING:** **Impact:** Clients expecting explicit nulls will now receive them as specified.
+
+        </div>
+        <div class="change-metadata mt-3 pt-2 border-top">
+            
+<i class="fa fa-star meta-icon"></i>
+<span class="badge bg-secondary meta-label type-label">New feature</span>
+        </div>
+    </div>
+</div>
+
+<h3>Improvements</h3>
+
+<h4>Web UI</h4>
+
+<div class="release-note card mb-3" id="note-1_1_0-PROJ-310">
+    <div class="card-body">
+        <h5 class="card-title">Added inline editing to dashboard widgets</h5>
+
+        <div class="card-text">
+            Introduces an interactive editor directly in the dashboard, allowing users to modify widgets without navigating away.
+
+This significantly streamlines common tasks.
+
+        </div>
+        <div class="change-metadata mt-3 pt-2 border-top">
+            
+<i class="fa fa-star meta-icon"></i>
+<span class="badge bg-secondary meta-label type-label">New feature</span>
+        </div>
+    </div>
+</div>
+
+<div class="release-note card mb-3" id="note-1_1_0-PROJ-399">
+    <div class="card-body">
+        <h5 class="card-title">Added missing keyboard shortcuts to Help page</h5>
+
+        <div class="card-text">
+            The Help page now includes a full list of supported keyboard shortcuts, including:
+
+- / to focus search
+- ? to show help modal
+
+        </div>
+        <div class="change-metadata mt-3 pt-2 border-top">
+            
+<i class="fa fa-star meta-icon"></i>
+<span class="badge bg-secondary meta-label type-label">New feature</span>
+        </div>
+    </div>
+</div>
+
+<h4>API</h4>
+
+<div class="release-note card mb-3" id="note-1_1_0-PROJ-467">
+    <div class="card-body">
+        <h5 class="card-title">Added rate limiting headers to public API</h5>
+
+        <div class="card-text">
+            The API now includes standard `X-RateLimit-*` headers in all responses to better inform consumers of usage thresholds.
+
+> **NOTE:** The default rate limit remains unchanged.
+
+        </div>
+        <div class="change-metadata mt-3 pt-2 border-top">
+            
+<i class="fa fa-star meta-icon"></i>
+<span class="badge bg-secondary meta-label type-label">New feature</span>
+        </div>
+    </div>
+</div>
+
+</div>
+
+</div>
+
