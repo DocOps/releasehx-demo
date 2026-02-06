@@ -41,6 +41,7 @@ links:
   web: https://github.com/example/project/issues/{{ tick }}
 
 modes:
+  html_wrap: true
   markdown_frontmatter: true
   remove_excess_lines: 2
 
@@ -48,6 +49,7 @@ rhyml:
   empty_notes: skip
 
 history:
+  html_framework: bootstrap5
   items:
     show_issue_links: true
 

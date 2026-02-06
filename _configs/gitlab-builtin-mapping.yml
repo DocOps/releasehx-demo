@@ -72,6 +72,7 @@ links:
   usr: https://gitlab.example.com/{{ vars.lead }}
 
 modes:
+  html_wrap: true
   asciidoc_frontmatter: true
   fetch: all-tagged
   remove_excess_lines: 1
@@ -84,6 +85,7 @@ rhyml:
   max_parts: 2
 
 history:
+  html_framework: bootstrap5
   head: "Release {{ release.code }} - {{ release.date }}"
   items: 
     issue_links: true

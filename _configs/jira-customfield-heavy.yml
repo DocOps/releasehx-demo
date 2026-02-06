@@ -46,6 +46,7 @@ links:
   usr: https://example.com/staff/profiles/{{ vars.lead }}
 
 modes:
+  html_wrap: true
   asciidoc_frontmatter: true
   markdown_frontmatter: true
   fetch: all-tagged
@@ -59,6 +60,7 @@ rhyml:
   max_parts: 3
 
 history:
+  html_framework: bootstrap5
   head: "Release {{ release.code }} - {{ release.date | date: '%B %d, %Y' }}"
   text: |
     This release includes {{ release.changes.size }} changes across {{ release.parts.size }} components.

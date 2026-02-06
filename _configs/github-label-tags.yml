@@ -67,6 +67,7 @@ links:
   usr: https://github.com/{{ vars.lead }}
 
 modes:
+  html_wrap: true
   asciidoc_frontmatter: true
   markdown_frontmatter: true
   remove_excess_lines: 2
@@ -77,6 +78,7 @@ rhyml:
   empty_notes: skip
 
 history:
+  html_framework: bootstrap5
   items:
     issue_links: true
     git_links: false  # GitHub Issues API doesn't provide commit hashes

@@ -59,6 +59,7 @@ links:
   usr: https://example.com/staff/profiles/{{ vars.lead }}
 
 modes:
+  html_wrap: true
   asciidoc_frontmatter: true
 
 rhyml:
@@ -67,6 +68,7 @@ rhyml:
   empty_notes: skip
 
 history:
+  html_framework: bootstrap5
   items: 
     empty_groups: |
       No changes in this {{ group_type }} category.

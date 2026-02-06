@@ -46,6 +46,7 @@ rhyml:
   chid: "{{ release.code | replace: '.', '_' | upcase }}-{{ change.tick }}"
 
 history:
+  html_framework: bootstrap5
   items:
     empty_groups: |
       No changes in this {{ group_type }} category.

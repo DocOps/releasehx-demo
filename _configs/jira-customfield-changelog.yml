@@ -42,6 +42,7 @@ links:
   usr: https://example.com/staff/profiles/{{ vars.lead }}
 
 modes:
+  html_wrap: true
   asciidoc_frontmatter: true
   fetch: all-tagged
 
@@ -50,6 +51,7 @@ rhyml:
   chid: "{{ release.code | replace: '.', '_' | upcase }}-{{ change.tick }}"
 
 history:
+  html_framework: bootstrap5
   head: "Changelog for {{ release.code }}"
   items: 
     issue_links: true

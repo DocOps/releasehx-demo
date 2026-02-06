@@ -86,6 +86,7 @@ links:
 
 # All mode options enabled
 modes:
+  html_wrap: true
   asciidoc_frontmatter: true
   markdown_frontmatter: true
   fetch: all-tagged
@@ -103,6 +104,7 @@ rhyml:
 
 # Rich history section with templating
 history:
+  html_framework: bootstrap5
   head: "{{ release.code }} Release - {{ release.date | date: '%B %d, %Y' }}"
   text: |
     Welcome to {{ release.code }}! This release includes {{ release.changes.size }} changes across {{ release.parts.size }} different components.
