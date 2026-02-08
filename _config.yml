@@ -1,0 +1,67 @@
+# Jekyll configuration for ReleaseHx Demo GitHub Pages
+# Serves HTML/Markdown artifacts at https://docops.github.io/releasehx-demo/
+
+title: ReleaseHx Demo Artifacts
+description: Demonstration outputs from ReleaseHx across multiple platforms and configurations
+baseurl: "/releasehx-demo"
+url: "https://docops.github.io"
+
+# Build settings
+markdown: kramdown
+kramdown:
+  input: GFM
+  syntax_highlighter: rouge
+
+# Collections - artifacts directory
+collections:
+  artifacts:
+    output: true
+    permalink: /artifacts/:name:output_ext
+
+# Defaults for artifacts
+defaults:
+  - scope:
+      path: "artifacts"
+      type: "artifacts"
+    values:
+      layout: "artifact"
+  - scope:
+      path: "artifacts/*.html"
+    values:
+      layout: "artifact-html"
+  - scope:
+      path: "artifacts/*.md"
+    values:
+      layout: "artifact-markdown"
+
+# Include artifacts directory
+include:
+  - artifacts
+
+# Exclude source files and dev directories
+exclude:
+  - _configs
+  - _payloads
+  - _templates_
+  - _apis_
+  - _mappings_
+  - __output
+  - __tests
+  - scripts
+  - specs
+  - vendor
+  - Gemfile
+  - Gemfile.lock
+  - Rakefile
+  - dev-install.sh
+  - .agent
+  - .git
+  - .gitignore
+
+# Theme (GitHub Pages default)
+theme: minima
+
+# Plugins
+plugins:
+  - jekyll-feed
+  - jekyll-seo-tag

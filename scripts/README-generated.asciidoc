@@ -1,4 +1,8 @@
 :releasehx_version: {{ version }}
+:samples_base_url: http://localhost:4000/releasehx-demo/artifacts
+ifdef::env-github[]
+:samples_base_url: https://docops.github.io/releasehx-demo/artifacts
+endif::[]
 
 = ReleaseHx {releasehx_version} Demo Artifacts
 :toc:
@@ -25,7 +29,7 @@ Start with these to quickly evaluate ReleaseHx capabilities.
 {%- assign artifacts = combo.artifacts[first_version] %}
 
 {%- if artifacts.files.html %}
-*link:artifacts/{{ combo.slug }}-{{ first_version }}.html[{{ combo.slug }}-{{ first_version }}.html]* (Open in browser)
+*link:{samples_base_url}/{{ combo.slug }}-{{ first_version }}.html[{{ combo.slug }}-{{ first_version }}.html]* (Open in browser)
 {%- endif %}
 
 {%- if artifacts.change_count > 0 %}
