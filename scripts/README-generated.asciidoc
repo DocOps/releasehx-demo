@@ -22,12 +22,10 @@ Start with these to quickly evaluate ReleaseHx capabilities.
 === {{ combo.desc }}
 
 {% assign first_version = combo.versions.first -%}
-{% assign first_config = combo.config.first -%}
-{% assign config_name = first_config | split: '/' | last | replace: '.yml', '' -%}
 {% assign artifacts = combo.artifacts[first_version] -%}
 
 {% if artifacts.files.html -%}
-*link:artifacts/{{ config_name }}-{{ first_version }}.html[{{ config_name }}-{{ first_version }}.html]* (Open in browser)
+*link:artifacts/{{ combo.slug }}-{{ first_version }}.html[{{ combo.slug }}-{{ first_version }}.html]* (Open in browser)
 {% endif -%}
 
 {% if artifacts.change_count > 0 -%}
@@ -43,7 +41,7 @@ Also available::
 {% for format in combo.file_order -%}
 {% assign file_info = artifacts.files[format] -%}
 {% if file_info -%}
-{% unless forloop.first %} | {% endunless %}link:artifacts/{{ config_name }}-{{ first_version }}.{{ format }}[{% if format == 'pdf' %}PDF{% elsif format == 'md' %}Markdown{% elsif format == 'adoc' %}AsciiDoc{% elsif format == 'yaml' %}YAML{% else %}{{ format | upcase }}{% endif %}{% if file_info.size_human %} ({{ file_info.size_human }}){% endif %}]
+{% unless forloop.first %} | {% endunless %}link:artifacts/{{ combo.slug }}-{{ first_version }}.{{ format }}[{% if format == 'pdf' %}PDF{% elsif format == 'md' %}Markdown{% elsif format == 'adoc' %}AsciiDoc{% elsif format == 'yaml' %}YAML{% else %}{{ format | upcase }}{% endif %}{% if file_info.size_human %} ({{ file_info.size_human }}){% endif %}]
 {%- endif -%}
 {%- endfor %}
 
@@ -76,10 +74,8 @@ Browse additional configuration examples showing different layout options and pl
 === GitHub Examples
 
 {% for combo in github_combos -%}
-{% assign first_config = combo.config.first -%}
-{% assign config_name = first_config | split: '/' | last | replace: '.yml', '' -%}
 {% assign first_version = combo.versions.first -%}
-* link:artifacts/{{ config_name }}-{{ first_version }}.html[{{ combo.desc }}]
+* link:artifacts/{{ combo.slug }}-{{ first_version }}.html[{{ combo.desc }}]
 {% endfor -%}
 {% endif -%}
 
@@ -87,10 +83,8 @@ Browse additional configuration examples showing different layout options and pl
 === GitLab Examples
 
 {% for combo in gitlab_combos -%}
-{% assign first_config = combo.config.first -%}
-{% assign config_name = first_config | split: '/' | last | replace: '.yml', '' -%}
 {% assign first_version = combo.versions.first -%}
-* link:artifacts/{{ config_name }}-{{ first_version }}.html[{{ combo.desc }}]
+* link:artifacts/{{ combo.slug }}-{{ first_version }}.html[{{ combo.desc }}]
 {% endfor -%}
 {% endif -%}
 
@@ -98,10 +92,8 @@ Browse additional configuration examples showing different layout options and pl
 === Jira Examples
 
 {% for combo in jira_combos -%}
-{% assign first_config = combo.config.first -%}
-{% assign config_name = first_config | split: '/' | last | replace: '.yml', '' -%}
 {% assign first_version = combo.versions.first -%}
-* link:artifacts/{{ config_name }}-{{ first_version }}.html[{{ combo.desc }}]
+* link:artifacts/{{ combo.slug }}-{{ first_version }}.html[{{ combo.desc }}]
 {% endfor -%}
 {% endif -%}
 
@@ -109,10 +101,8 @@ Browse additional configuration examples showing different layout options and pl
 === Generic Platform
 
 {% for combo in generic_combos -%}
-{% assign first_config = combo.config.first -%}
-{% assign config_name = first_config | split: '/' | last | replace: '.yml', '' -%}
 * {% for version in combo.versions -%}
-{% unless forloop.first %}, {% endunless %}link:artifacts/{{ config_name }}-{{ version }}.html[v{{ version }}]
+{% unless forloop.first %}, {% endunless %}link:artifacts/{{ combo.slug }}-{{ version }}.html[v{{ version }}]
 {%- endfor %} ({{ combo.desc }})
 {% endfor -%}
 {% endif -%}
