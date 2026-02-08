@@ -11,10 +11,8 @@ paths:
 conversions:
   summ: issue_heading
   note: custom_field
-  markup: markdown
-
-sources:
   note_custom_field: customfield_10039
+  markup: markdown
 
 parts:
   webui:
