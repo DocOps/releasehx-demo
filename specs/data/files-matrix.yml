@@ -18,6 +18,7 @@ combinations:
       - _payloads/github-label-tags-1.1.0.json
     mapping: _mappings_/label-tags/github.yaml
     versions: [1.1.0]
+    showcase: {}
 
   - slug: jira-customfield
     desc: Jira integration using custom field for release notes
@@ -30,6 +31,7 @@ combinations:
       - _payloads/jira-customfield-note-1.1.0.json
     mapping: _mappings_/customfield-note/jira.yaml
     versions: [1.1.0]
+    showcase: {}
 
   - slug: jira-description
     desc: Jira integration extracting notes from description field
@@ -47,6 +49,7 @@ combinations:
       - _payloads/gitlab-label-tags-1.1.0.json
     mapping: _mappings_/label-tags/gitlab.yaml
     versions: ["1.1.0"]
+    showcase: {}
 
   - slug: generic-kitchen-sink
     desc: Comprehensive example demonstrating all features

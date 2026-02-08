@@ -287,9 +287,22 @@ def create_artifacts_only_branch branch_name, releasehx_version
   # Ensure clean working directory before branch operations
   git_ensure_clean_switch!(branch_name)
   
+  # Load TemplateGenerator and generate README
+  require_relative 'scripts/dynamic-gen'
+  template_generator = TemplateGenerator.new
+  
+  # Generate dynamic README content
+  template_path = File.expand_path('scripts/README-generated.asciidoc', __dir__)
+  readme_content = template_generator.generate_readme(releasehx_version, template_path)
+  
+  # Save generated README for use in new branch
+  readme_path = File.join(__dir__, 'README-generated.adoc')
+  File.write(readme_path, readme_content)
+  puts "  Generated README from template with metadata"
+  
   # Save files that need to be copied before switching branches
   gitignore_generated_content = File.read('.gitignore-generated') if File.exist?('.gitignore-generated')
-  readme_template_content = File.read('README-generated.adoc') if File.exist?('README-generated.adoc')
+  readme_generated_content = File.read(readme_path)
   
   # Check if branch exists and delete it for clean slate
   branch_exists = `git branch --list #{branch_name}`.strip.length > 0
@@ -317,13 +330,12 @@ def create_artifacts_only_branch branch_name, releasehx_version
     puts "  Created .gitignore for artifacts-only branch (from .gitignore-generated)"
   end
   
-  # Create README from saved template, prepending version attribute
-  if readme_template_content
-    readme_content = ":releasehx_version: #{releasehx_version}\n" + readme_template_content
-    File.write('README.adoc', readme_content)
-    puts "  Created README.adoc for artifacts-only branch (from README-generated.adoc)"
+  # Write README from generated content
+  if readme_generated_content
+    File.write('README.adoc', readme_generated_content)
+    puts "  Created README.adoc for artifacts-only branch (dynamically generated)"
   else
-    puts "  WARNING: README-generated.adoc not found, skipping README creation"
+    puts "  WARNING: Generated README content not found, skipping README creation"
   end
   
   # Add only the artifacts directory, README, and .gitignore
