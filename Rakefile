@@ -60,13 +60,11 @@ def git_safe_to_switch?(branch, verbose: true)
     return false
   end
 
-  # Check for conflicting untracked files
+  # Check for conflicting untracked files (only if branch exists)
   conflicts = git_conflicting_files(branch)
 
-  if conflicts.nil?
-    puts "❌ Target branch '#{branch}' does not exist." if verbose
-    return false
-  end
+  # If branch doesn't exist, that's fine (we might be creating it)
+  return true if conflicts.nil?
 
   unless conflicts.empty?
     if verbose
