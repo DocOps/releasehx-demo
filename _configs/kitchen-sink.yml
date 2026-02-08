@@ -20,7 +20,7 @@ conversions:
   summ: issue_heading
   note: issue_body
   head: release_note_heading
-  note_pattern: '/^## Release Note\s*\n+(?<note>(.|\n)+)/mi'
+  note_pattern: '/^(##|==) (Draft )?Release Note.*?\n+(?<note>(.|\n)+)/mi'
   head_pattern: '/^(?<head>[^\n]+)\n+/m'
   markup: markdown
   engine: commonmarker

@@ -18,94 +18,94 @@ Source::
 
 Start with these to quickly evaluate ReleaseHx capabilities.
 
-{% for combo in featured_combinations -%}
+{% for combo in featured_combinations %}
 === {{ combo.desc }}
 
-{% assign first_version = combo.versions.first -%}
-{% assign artifacts = combo.artifacts[first_version] -%}
+{%- assign first_version = combo.versions.first %}
+{%- assign artifacts = combo.artifacts[first_version] %}
 
-{% if artifacts.files.html -%}
+{%- if artifacts.files.html %}
 *link:artifacts/{{ combo.slug }}-{{ first_version }}.html[{{ combo.slug }}-{{ first_version }}.html]* (Open in browser)
-{% endif -%}
+{%- endif %}
 
-{% if artifacts.change_count > 0 -%}
+{%- if artifacts.change_count > 0 %}
 * {{ artifacts.change_count }} change{% if artifacts.change_count != 1 %}s{% endif %}{% if artifacts.note_count > 0 %} with {% if artifacts.note_count == artifacts.change_count %}comprehensive{% else %}{{ artifacts.note_count }}{% endif %} metadata{% endif %}
-{% endif -%}
-{% if combo.showcase.highlights -%}
-{% for highlight in combo.showcase.highlights -%}
+{%- endif %}
+{%- if combo.showcase.highlights %}
+{% for highlight in combo.showcase.highlights %}
 * {{ highlight }}
-{% endfor -%}
-{% endif -%}
+{% endfor %}
+{%- endif %}
 
 Also available::
-{% for format in combo.file_order -%}
-{% assign file_info = artifacts.files[format] -%}
-{% if file_info -%}
+{% for format in combo.file_order %}
+{%- assign file_info = artifacts.files[format] %}
+{%- if file_info %}
 {% unless forloop.first %} | {% endunless %}link:artifacts/{{ combo.slug }}-{{ first_version }}.{{ format }}[{% if format == 'pdf' %}PDF{% elsif format == 'md' %}Markdown{% elsif format == 'adoc' %}AsciiDoc{% elsif format == 'yaml' %}YAML{% else %}{{ format | upcase }}{% endif %}{% if file_info.size_human %} ({{ file_info.size_human }}){% endif %}]
-{%- endif -%}
+{%- endif %}
 {%- endfor %}
 
-{% endfor -%}
+{% endfor %}
 
 == Configuration Variations
 
 Browse additional configuration examples showing different layout options and platform capabilities.
 
-{% assign github_combos = '' | split: '' -%}
-{% assign gitlab_combos = '' | split: '' -%}
-{% assign jira_combos = '' | split: '' -%}
-{% assign generic_combos = '' | split: '' -%}
+{%- assign github_combos = '' | split: '' %}
+{%- assign gitlab_combos = '' | split: '' %}
+{%- assign jira_combos = '' | split: '' %}
+{%- assign generic_combos = '' | split: '' %}
 
-{% for combo in combinations -%}
-{% unless combo.showcase -%}
-  {% if combo.platform == 'github' -%}
-    {% assign github_combos = github_combos | push: combo -%}
-  {% elsif combo.platform == 'gitlab' -%}
-    {% assign gitlab_combos = gitlab_combos | push: combo -%}
-  {% elsif combo.platform == 'jira' -%}
-    {% assign jira_combos = jira_combos | push: combo -%}
-  {% elsif combo.platform == 'generic' -%}
-    {% assign generic_combos = generic_combos | push: combo -%}
-  {% endif -%}
-{% endunless -%}
-{% endfor -%}
+{%- for combo in combinations %}
+{%- unless combo.showcase %}
+  {%- if combo.platform == 'github' %}
+    {%- assign github_combos = github_combos | push: combo %}
+  {%- elsif combo.platform == 'gitlab' %}
+    {%- assign gitlab_combos = gitlab_combos | push: combo %}
+  {%- elsif combo.platform == 'jira' %}
+    {%- assign jira_combos = jira_combos | push: combo %}
+  {%- elsif combo.platform == 'generic' %}
+    {%- assign generic_combos = generic_combos | push: combo %}
+  {%- endif %}
+{%- endunless %}
+{%- endfor %}
 
-{% if github_combos.size > 0 -%}
+{%- if github_combos.size > 0 %}
 === GitHub Examples
 
-{% for combo in github_combos -%}
-{% assign first_version = combo.versions.first -%}
+{%- for combo in github_combos %}
+{%- assign first_version = combo.versions.first %}
 * link:artifacts/{{ combo.slug }}-{{ first_version }}.html[{{ combo.desc }}]
-{% endfor -%}
-{% endif -%}
+{% endfor %}
+{%- endif %}
 
-{% if gitlab_combos.size > 0 -%}
+{%- if gitlab_combos.size > 0 %}
 === GitLab Examples
 
-{% for combo in gitlab_combos -%}
-{% assign first_version = combo.versions.first -%}
+{% for combo in gitlab_combos %}
+{%- assign first_version = combo.versions.first %}
 * link:artifacts/{{ combo.slug }}-{{ first_version }}.html[{{ combo.desc }}]
-{% endfor -%}
-{% endif -%}
+{% endfor %}
+{%- endif %}
 
-{% if jira_combos.size > 0 -%}
+{%- if jira_combos.size > 0 %}
 === Jira Examples
 
-{% for combo in jira_combos -%}
-{% assign first_version = combo.versions.first -%}
+{% for combo in jira_combos %}
+{%- assign first_version = combo.versions.first %}
 * link:artifacts/{{ combo.slug }}-{{ first_version }}.html[{{ combo.desc }}]
-{% endfor -%}
-{% endif -%}
+{% endfor %}
+{%- endif %}
 
-{% if generic_combos.size > 0 -%}
+{%- if generic_combos.size > 0 %}
 === Generic Platform
 
-{% for combo in generic_combos -%}
-* {% for version in combo.versions -%}
+{% for combo in generic_combos %}
+* {% for version in combo.versions %}
 {% unless forloop.first %}, {% endunless %}link:artifacts/{{ combo.slug }}-{{ version }}.html[v{{ version }}]
 {%- endfor %} ({{ combo.desc }})
-{% endfor -%}
-{% endif -%}
+{% endfor %}
+{%- endif %}
 
 == All Generated Files
 

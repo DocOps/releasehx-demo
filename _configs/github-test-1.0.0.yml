@@ -11,7 +11,7 @@ paths:
 conversions:
   summ: issue_heading
   note: issue_body
-  note_pattern: '/^## Release Note\s*\n+(?<note>(.|\n)+)/mi'
+  note_pattern: '/^(##|==) (Draft )?Release Note.*?\n+(?<note>(.|\n)+)/mi'
   markup: markdown
 
 # Default types without requiring specific labels
