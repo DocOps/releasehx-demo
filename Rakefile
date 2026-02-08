@@ -5,6 +5,91 @@ require "asciidoctor"
 require_relative '../releasehx/lib/sourcerer'
 require 'docopslab/dev'
 
+# ============================================================================
+# Git Branch Safety Utilities
+# ============================================================================
+# These methods provide safe branch switching by checking for:
+# - Uncommitted changes (modified tracked files)
+# - Untracked files that would conflict with target branch
+#
+# NOTE: Once stable, these will be moved to docopslab-dev gem
+# ============================================================================
+
+# Get the current branch name
+def git_current_branch
+  `git branch --show-current`.strip
+end
+
+# Check if working directory has uncommitted changes
+def git_has_uncommitted_changes?
+  !`git status --porcelain`.strip.empty?
+end
+
+# Get list of untracked files in working directory
+def git_untracked_files
+  `git ls-files --others --exclude-standard`.strip.split("\n")
+end
+
+# Get list of files in target branch
+# Returns nil if branch doesn't exist
+def git_files_in_branch(branch)
+  # Check if branch exists
+  result = `git rev-parse --verify #{branch} 2>/dev/null`.strip
+  return nil if result.empty?
+
+  # List all files in the branch
+  `git ls-tree -r #{branch} --name-only`.strip.split("\n")
+end
+
+# Find untracked files that would conflict with target branch
+# Returns nil if target branch doesn't exist
+def git_conflicting_files(branch)
+  branch_files = git_files_in_branch(branch)
+  return nil if branch_files.nil?
+
+  untracked = git_untracked_files
+  untracked & branch_files # Intersection
+end
+
+# Check if it's safe to switch to target branch
+def git_safe_to_switch?(branch, verbose: true)
+  # Check for uncommitted changes
+  if git_has_uncommitted_changes?
+    puts '❌ You have uncommitted changes. Please commit or stash them first.' if verbose
+    puts "💡 Run 'git status' to see changes." if verbose
+    return false
+  end
+
+  # Check for conflicting untracked files
+  conflicts = git_conflicting_files(branch)
+
+  if conflicts.nil?
+    puts "❌ Target branch '#{branch}' does not exist." if verbose
+    return false
+  end
+
+  unless conflicts.empty?
+    if verbose
+      puts "❌ Untracked files would conflict with branch '#{branch}':"
+      conflicts.each { |f| puts "   - #{f}" }
+      puts '💡 Commit these files or remove them before switching branches.'
+    end
+    return false
+  end
+
+  true
+end
+
+# Ensure it's safe to switch branches, exit if not
+def git_ensure_clean_switch!(branch, verbose: true)
+  return if git_safe_to_switch?(branch, verbose: verbose)
+  exit 1
+end
+
+# ============================================================================
+# End Git Branch Safety Utilities
+# ============================================================================
+
 desc "Run all demo tests"
 task :test do
   puts "🔍 Running ReleaseHx demo tests..."
@@ -197,10 +282,16 @@ end
 # Helper method to create artifacts-only branch
 def create_artifacts_only_branch branch_name, releasehx_version
   puts "Creating artifacts-only branch: #{branch_name}"
+  
+  current_branch = git_current_branch
   artifact_path = "artifacts"
   
-  # Save .gitignore-generated content before switching branches
+  # Ensure clean working directory before branch operations
+  git_ensure_clean_switch!(branch_name)
+  
+  # Save files that need to be copied before switching branches
   gitignore_generated_content = File.read('.gitignore-generated') if File.exist?('.gitignore-generated')
+  readme_template_content = File.read('README-generated.adoc') if File.exist?('README-generated.adoc')
   
   # Check if branch exists and delete it for clean slate
   branch_exists = `git branch --list #{branch_name}`.strip.length > 0
@@ -228,31 +319,14 @@ def create_artifacts_only_branch branch_name, releasehx_version
     puts "  Created .gitignore for artifacts-only branch (from .gitignore-generated)"
   end
   
-  # Create a minimal README for the artifacts branch
-  readme_content = <<~README
-    = Generated Artifacts for ReleaseHx #{releasehx_version}
-    
-    This branch contains only the generated artifacts produced by ReleaseHx #{releasehx_version}.
-    
-    == Structure
-    
-    - `#{artifact_path}/` - All generated files (YAML, Markdown, AsciiDoc, HTML, PDF)
-    
-    **Note**: These files are generated artifacts for demonstration purposes.
-    Paths and structure may change between versions.
-    
-    Generated on: #{Time.now.strftime('%Y-%m-%d %H:%M:%S UTC')}
-    
-    == Branch Purpose
-    
-    This is an artifacts-only branch (orphan branch with no shared history with `main`).
-    
-    - *Source files*: See the `main` branch
-    - *Documentation*: See the `main` branch README
-    - *Showcase*: This branch displays generated output only
-  README
-  
-  File.write('README.adoc', readme_content)
+  # Create README from saved template, prepending version attribute
+  if readme_template_content
+    readme_content = ":releasehx_version: #{releasehx_version}\n" + readme_template_content
+    File.write('README.adoc', readme_content)
+    puts "  Created README.adoc for artifacts-only branch (from README-generated.adoc)"
+  else
+    puts "  WARNING: README-generated.adoc not found, skipping README creation"
+  end
   
   # Add only the artifacts directory, README, and .gitignore
   sh "git add artifacts/ README.adoc .gitignore"
@@ -292,7 +366,16 @@ task :create_version_branch do
   majmin_version = get_readme_releasehx_majmin
   branch_name = "generated/#{majmin_version}"
   
-  # Generate artifacts first on main branch
+  # Safety check BEFORE doing any work
+  current_branch = git_current_branch
+  unless current_branch == "main"
+    puts "❌ Must be on main branch to create version branch"
+    exit 1
+  end
+  
+  git_ensure_clean_switch!(branch_name)
+  
+  # Generate artifacts on main branch
   Rake::Task[:generate_artifacts].invoke
   
   # Create artifacts-only branch
@@ -306,7 +389,16 @@ task :create_latest_branch do
   releasehx_version = validate_version_alignment
   branch_name = "generated/latest"
   
-  # Generate artifacts first on main branch
+  # Safety check BEFORE doing any work
+  current_branch = git_current_branch
+  unless current_branch == "main"
+    puts "❌ Must be on main branch to create latest branch"
+    exit 1
+  end
+  
+  git_ensure_clean_switch!(branch_name)
+  
+  # Generate artifacts on main branch
   Rake::Task[:generate_artifacts].invoke
   
   # Create artifacts-only branch
@@ -323,18 +415,14 @@ task :generate_release do
   puts "Complete artifacts-only release generation workflow for ReleaseHx #{releasehx_version}"
   
   # Ensure we start from a clean main branch
-  current_branch = `git branch --show-current`.strip
+  current_branch = git_current_branch
   unless current_branch == "main"
     puts "Switching to main branch for clean workflow start..."
     sh "git checkout main"
   end
   
   # Check if main branch is clean
-  unless `git status --porcelain`.strip.empty?
-    puts "⚠️  Warning: Working directory has uncommitted changes"
-    puts "   Please commit or stash changes before running artifacts workflow"
-    raise "Working directory not clean"
-  end
+  git_ensure_clean_switch!("generated/#{majmin_version}")
   
   puts "✅ Starting artifacts-only workflow from clean main branch"
   
@@ -355,18 +443,14 @@ task :generate_latest_release do
   puts "Complete artifacts-only latest release workflow for ReleaseHx #{releasehx_version}"
   
   # Ensure we start from a clean main branch
-  current_branch = `git branch --show-current`.strip
+  current_branch = git_current_branch
   unless current_branch == "main"
     puts "Switching to main branch for clean workflow start..."
     sh "git checkout main"
   end
   
   # Check if main branch is clean
-  unless `git status --porcelain`.strip.empty?
-    puts "⚠️  Warning: Working directory has uncommitted changes"
-    puts "   Please commit or stash changes before running artifacts workflow"
-    raise "Working directory not clean"
-  end
+  git_ensure_clean_switch!("generated/latest")
   
   puts "✅ Starting artifacts-only workflow from clean main branch"
   

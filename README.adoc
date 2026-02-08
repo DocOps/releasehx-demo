@@ -4,8 +4,8 @@
 :this_repo_git_www: {docopslab_git_www}/{this_repo_name}
 :this_repo_git_uri: git@github.com:DocOps/{this_repo_name}.git
 :releasehx_repo: {docopslab_git_www}/releasehx
-:releasehx_vrsn_majmin: 0.1
-:releasehx_vrsn_patch: 2
+:releasehx_vrsn_majmin: 0.2
+:releasehx_vrsn_patch: 0
 :releasehx_vrsn: {releasehx_vrsn_majmin}.{releasehx_vrsn_patch}
 :toc: macro
 :toclevels: 3
