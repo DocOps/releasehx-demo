@@ -67,6 +67,7 @@ links:
 modes:
   html_wrap: true
   asciidoc_frontmatter: true
+  markdown_frontmatter: true
   fetch: all-tagged
   remove_excess_lines: 1
 
@@ -78,6 +79,15 @@ rhyml:
   max_parts: 2
 
 history:
+  title: 'Release History: GitLab Label Tags'
+  markdown_frontmatter: |
+    ---
+    title: "{{ release.code }} Release Notes"
+    version: "{{ release.code }}"
+    date: "{{ release.date }}"
+    permalink: /artifacts/gitlab-label-tags-{{ release.code }}/
+    layout: artifact-markdown
+    ---
   html_framework: bootstrap5
   head: "Release {{ release.code }} - {{ release.date }}"
   items: 

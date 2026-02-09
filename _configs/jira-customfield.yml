@@ -34,6 +34,7 @@ links:
   usr: https://example.com/staff/profiles/{{ vars.lead }}
 
 modes:
+  markdown_frontmatter: true
   html_wrap: true
   asciidoc_frontmatter: true
 
@@ -42,6 +43,15 @@ rhyml:
   chid: "{{ release.code | replace: '.', '_' | upcase }}-{{ change.tick }}"
 
 history:
+  title: 'Release History: Jira Custom Field'
+  markdown_frontmatter: |
+    ---
+    title: "{{ release.code }} Release Notes"
+    version: "{{ release.code }}"
+    date: "{{ release.date }}"
+    permalink: /artifacts/jira-customfield-{{ release.code }}/
+    layout: artifact-markdown
+    ---
   html_framework: bootstrap5
   items: 
     empty_groups: |

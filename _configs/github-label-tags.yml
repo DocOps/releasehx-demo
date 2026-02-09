@@ -17,6 +17,9 @@ conversions:
   markup: markdown
   engine: redcarpet
 
+modes:
+  markdown_frontmatter: true
+
 parts:
   ui:
     head: User Interface
@@ -78,6 +81,15 @@ rhyml:
   empty_notes: skip
 
 history:
+  title: 'Release History: GitHub Label Tags'
+  markdown_frontmatter: |
+    ---
+    title: "{{ release.code }} Release Notes"
+    version: "{{ release.code }}"
+    date: "{{ release.date }}"
+    permalink: /artifacts/github-label-tags-{{ release.code }}/
+    layout: artifact-markdown
+    ---
   html_framework: bootstrap5
   items:
     issue_links: true
