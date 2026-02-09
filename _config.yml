@@ -5,6 +5,8 @@ title: ReleaseHx Demo Artifacts
 description: Demonstration outputs from ReleaseHx across multiple platforms and configurations
 baseurl: "/releasehx-demo"
 url: "https://docops.github.io"
+layouts_dir: jekyll/_layouts
+includes_dir: jekyll/_includes
 
 # Build settings
 markdown: kramdown
@@ -33,6 +35,7 @@ defaults:
       path: "artifacts/*.md"
     values:
       layout: "artifact-markdown"
+      permalink: /artifacts/:basename_from-md_/
 
 # Include artifacts directory
 include:
@@ -57,6 +60,10 @@ exclude:
   - .agent
   - .git
   - .gitignore
+  - artifacts/*.adoc
+  - artifacts/*.yaml
+  - artifacts/*.yml
+  - artifacts/*.pdf
 
 # Theme (GitHub Pages default)
 theme: minima
@@ -65,3 +72,4 @@ theme: minima
 plugins:
   - jekyll-feed
   - jekyll-seo-tag
+  - jekyll-optional-front-matter

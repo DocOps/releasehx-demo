@@ -85,7 +85,7 @@ history:
     title: "{{ release.code }} Release Notes"
     version: "{{ release.code }}"
     date: "{{ release.date }}"
-    permalink: /artifacts/gitlab-label-tags-{{ release.code }}/
+    permalink: /artifacts/gitlab-label-tags-{{ release.code }}_from-md_/
     layout: artifact-markdown
     ---
   html_framework: bootstrap5

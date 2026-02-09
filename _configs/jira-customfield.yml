@@ -49,7 +49,7 @@ history:
     title: "{{ release.code }} Release Notes"
     version: "{{ release.code }}"
     date: "{{ release.date }}"
-    permalink: /artifacts/jira-customfield-{{ release.code }}/
+    permalink: /artifacts/jira-customfield-{{ release.code }}_from-md_/
     layout: artifact-markdown
     ---
   html_framework: bootstrap5
