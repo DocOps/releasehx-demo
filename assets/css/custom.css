@@ -1,0 +1,74 @@
+/* Custom styles for ReleaseHx Demo artifacts */
+
+/* Dark mode fix for Bootstrap .bg-light */
+@media (prefers-color-scheme: dark) {
+  .bg-light {
+    background-color: var(--bs-card-cap-bg) !important;
+  }
+  
+  /* Ensure card backgrounds work in dark mode */
+  .card {
+    background-color: var(--bs-card-bg, #1e1e1e);
+    border-color: var(--bs-border-color, #444);
+  }
+  
+  .card-header {
+    background-color: var(--bs-card-cap-bg, #2d2d2d);
+    border-bottom-color: var(--bs-border-color, #444);
+  }
+  
+  /* Adjust text colors for dark mode */
+  .text-muted {
+    color: var(--bs-secondary-color, #adb5bd) !important;
+  }
+}
+
+/* Additional artifact styling */
+.artifact-content {
+  margin-top: 2rem;
+}
+
+.artifact-meta {
+  border-left: 4px solid var(--bs-primary, #0d6efd);
+}
+
+/* Badge styles for release notes */
+.badge {
+  display: inline-block;
+  padding: 0.35em 0.65em;
+  font-size: 0.75em;
+  font-weight: 700;
+  line-height: 1;
+  color: #fff;
+  text-align: center;
+  white-space: nowrap;
+  vertical-align: baseline;
+  border-radius: 0.25rem;
+}
+
+/* Type badges */
+.type-badge { background-color: #6c757d; }
+.type-feature, .type-improvement { background-color: #198754; }
+.type-bug { background-color: #dc3545; }
+.type-enhancement { background-color: #0d6efd; }
+.type-refactor { background-color: #6610f2; }
+.type-docs { background-color: #0dcaf0; }
+.type-security { background-color: #d63384; }
+.type-deprecation { background-color: #fd7e14; }
+.type-removal { background-color: #dc3545; }
+
+/* Part badges */
+.part-badge { background-color: #0d6efd; }
+
+/* Tag badges */
+.tag-badge { background-color: #6c757d; }
+.tag-breaking { background-color: #dc3545; }
+.tag-experimental { background-color: #6610f2; }
+.tag-security { background-color: #d63384; }
+
+/* Dark mode badge adjustments */
+@media (prefers-color-scheme: dark) {
+  .badge {
+    color: #fff;
+  }
+}

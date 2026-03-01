@@ -81,7 +81,7 @@ changelog:
     Comprehensive list of all changes included in {{ release.code }}.
     
     Changes are organized by component and type for easy navigation.
-  spot: 3
+  spot: 1
   sort:
     - 'highlighted:grouping1'
     - 'breaking:grouping1'
@@ -100,7 +100,7 @@ notes:
     Detailed information about significant changes, new features, and important considerations for {{ release.code }}.
     
     Please review breaking changes and deprecations carefully before upgrading.
-  spot: 1
+  spot: 2
   sort:
     - 'breaking:grouping1'
     - 'deprecation:grouping1'

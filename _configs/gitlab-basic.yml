@@ -70,6 +70,7 @@ changelog:
   head: Changes
   text: |
     All changes included in this release.
+  spot: 1
   sort:
     - 'part:grouping1'
     - 'type:grouping2'
@@ -80,7 +81,7 @@ notes:
   head: Notable Changes
   text: |
     Detailed information about significant changes that may affect users.
-  spot: 1
+  spot: 2
   sort:
     - 'highlighted:grouping1'
     - 'security:grouping1'

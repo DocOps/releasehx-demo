@@ -130,7 +130,7 @@ changelog:
   head: What's Changed
   text: Summary of all changes in this release.
   htag: h2
-  spot: 2
+  spot: 1
   sort:
     - part:grouping1
   items:
@@ -151,7 +151,7 @@ notes:
   head: Release Notes
   text: Descriptions of notable changes in this release.
   htag: h2
-  spot: 1
+  spot: 2
   sort:
     - highlight:grouping1
     - deprecation:grouping1

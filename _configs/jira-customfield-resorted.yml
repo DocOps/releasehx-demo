@@ -58,6 +58,7 @@ changelog:
   head: Changelog
   text: |
     Summaries of all user-facing changes made since the previous release.
+  spot: 1
   sort:
     - 'type:grouping1'
     - 'part:grouping2'

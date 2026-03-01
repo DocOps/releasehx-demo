@@ -225,8 +225,14 @@ GEM
     jekyll-asciidoc (3.0.1)
       asciidoctor (>= 1.5.0, < 3.0.0)
       jekyll (>= 3.0.0)
+    jekyll-feed (0.17.0)
+      jekyll (>= 3.7, < 5.0)
+    jekyll-optional-front-matter (0.3.2)
+      jekyll (>= 3.0, < 5.0)
     jekyll-sass-converter (3.1.0)
       sass-embedded (~> 1.75)
+    jekyll-seo-tag (2.8.0)
+      jekyll (>= 3.8, < 5.0)
     jekyll-watch (2.2.1)
       listen (~> 3.0)
     jmespath (1.6.2)
@@ -258,6 +264,10 @@ GEM
     mercenary (0.4.0)
     method_source (1.1.0)
     metrics (0.15.0)
+    minima (2.5.2)
+      jekyll (>= 3.5, < 5.0)
+      jekyll-feed (~> 0.9)
+      jekyll-seo-tag (~> 2.1)
     mize (0.6.1)
     multi_json (1.17.0)
     net-http (0.6.0)
@@ -431,6 +441,11 @@ PLATFORMS
 DEPENDENCIES
   docopslab-dev
   issuer!
+  jekyll (~> 4.3)
+  jekyll-feed (~> 0.12)
+  jekyll-optional-front-matter (~> 0.3)
+  jekyll-seo-tag (~> 2.8)
+  minima (~> 2.5)
   releasehx!
 
 BUNDLED WITH

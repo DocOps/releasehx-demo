@@ -29,7 +29,8 @@ Start with these to quickly evaluate ReleaseHx capabilities.
 {%- assign artifacts = combo.artifacts[first_version] %}
 
 {%- if artifacts.files.html %}
-*link:{samples_base_url}/{{ combo.slug }}-{{ first_version }}.html[{{ combo.slug }}-{{ first_version }}.html]* (Open in browser)
+*link:{samples_base_url}/{{ combo.slug }}-{{ first_version }}.html[{{ combo.slug }}-{{ first_version }}.html]* (Open in browser) +
+link:https://github.com/DocOps/releasehx-demo/blob/main/artifacts/{{ combo.slug }}-{{ first_version }}.html[HTML source^]
 {%- endif %}
 
 {%- if artifacts.change_count > 0 %}
