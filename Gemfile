@@ -1,7 +1,9 @@
 source "https://rubygems.org"
 
 gem 'releasehx', path: '../releasehx'
-gem 'issuer', path: '../issuer'
+gem 'issuer' # , path: '../issuer'
+gem 'schemagraphy'
+gem 'asciisourcerer'
 
 # Jekyll for GitHub Pages
 gem 'jekyll', '~> 4.3'
