@@ -2,7 +2,7 @@ require "rake"
 require "yaml"
 require "fileutils"
 require "asciidoctor"
-require_relative '../releasehx/lib/sourcerer'
+require "asciisourcerer"
 require 'docopslab/dev'
 
 # ============================================================================
@@ -93,100 +93,102 @@ task :test do
   puts "🔍 Running ReleaseHx demo tests..."
   
   puts "\n=== CLI Tests ==="
-  Rake::Task[:cli_test].invoke
+  Rake::Task['test:cli'].invoke
 
   puts "\n=== README Commands Tests ==="
-  Rake::Task[:readme_test].invoke
+  Rake::Task['test:readme'].invoke
 
   puts "\n=== Dynamic Tests ==="
-  Rake::Task[:dynamic_test].invoke
+  Rake::Task['test:dynamic'].invoke
 
   puts "\n=== YAML Validation Tests ==="
-  Rake::Task[:yaml_test].invoke
+  Rake::Task['test:yaml'].invoke
 
   puts "\n=== Content Quality Validation ==="
-  Rake::Task[:validate_content].invoke
+  Rake::Task['test:content'].invoke
   
   puts "\n✅ All demo tests passed!"
 end
 
-desc "Run CLI workflow tests"
-task :cli_test do
-  puts "Testing CLI workflows..."
-  
-  # Create output directory
-  FileUtils.mkdir_p("__tests/cli")
-  
-  # Test basic workflows
-  puts "Testing Jira workflow..."
-  sh "bundle exec rhx 1.1.0 --api-data _payloads/jira-description-note-1.1.0.json --config _configs/jira-description.yml --mapping _mappings_/description-note/jira.yaml --adoc __tests/cli/test-jira.adoc --force"
-  
-  puts "Testing GitHub workflow..."
-  sh "bundle exec rhx 1.1.0 --api-data _payloads/github-label-tags-1.1.0.json --config _configs/github-label-tags.yml --adoc __tests/cli/test-github.adoc --force"
-  
-  puts "Testing auto-discovery..."
-  sh "bundle exec rhx 1.1.0 --api-data _payloads/jira-description-note-1.1.0.json --config _configs/jira-description.yml --adoc __tests/cli/test-auto-discovery.adoc --force"
-end
+namespace :test do
+  desc "Run CLI workflow tests"
+  task :cli do
+    puts "Testing CLI workflows..."
 
-desc "Validate YAML files"
-task :yaml_test do
-  puts "Validating YAML configuration files..."
-  Dir.glob("_configs/*.yml").each do |file|
-    puts "Validating #{file}..."
-    begin
-      YAML.load_file(file)
-      puts "✓ #{file} is valid"
-    rescue => e
-      puts "✗ #{file} failed: #{e.message}"
-      exit 1
+    # Create output directory
+    FileUtils.mkdir_p("__tests/cli")
+
+    # Test basic workflows
+    puts "Testing Jira workflow..."
+    sh "bundle exec rhx 1.1.0 --api-data _payloads/jira-description-note-1.1.0.json --config _configs/jira-description.yml --mapping _mappings_/description-note/jira.yaml --adoc __tests/cli/test-jira.adoc --force"
+
+    puts "Testing GitHub workflow..."
+    sh "bundle exec rhx 1.1.0 --api-data _payloads/github-label-tags-1.1.0.json --config _configs/github-label-tags.yml --adoc __tests/cli/test-github.adoc --force"
+
+    puts "Testing auto-discovery..."
+    sh "bundle exec rhx 1.1.0 --api-data _payloads/jira-description-note-1.1.0.json --config _configs/jira-description.yml --adoc __tests/cli/test-auto-discovery.adoc --force"
+  end
+
+  desc "Validate YAML files"
+  task :yaml do
+    puts "Validating YAML configuration files..."
+    Dir.glob("_configs/*.yml").each do |file|
+      puts "Validating #{file}..."
+      begin
+        YAML.load_file(file)
+        puts "✓ #{file} is valid"
+      rescue => e
+        puts "✗ #{file} failed: #{e.message}"
+        exit 1
+      end
+    end
+
+    puts "Validating mapping files..."
+    Dir.glob("_mappings_/**/*.yaml").each do |file|
+      puts "Validating #{file}..."
+      begin
+        YAML.load_file(file)
+        puts "✓ #{file} is valid"
+      rescue => e
+        puts "✗ #{file} failed: #{e.message}"
+        exit 1
+      end
     end
   end
-  
-  puts "Validating mapping files..."
-  Dir.glob("_mappings_/**/*.yaml").each do |file|
-    puts "Validating #{file}..."
-    begin
-      YAML.load_file(file)
-      puts "✓ #{file} is valid"
-    rescue => e
-      puts "✗ #{file} failed: #{e.message}"
-      exit 1
+
+  desc 'Test commands in README.adoc'
+  task :readme do
+    puts 'Executing testable commands from README.adoc'
+
+    # Ensure output directories exist
+    FileUtils.mkdir_p("__output/drafts")
+    FileUtils.mkdir_p("__output/publish")
+    FileUtils.mkdir_p("__tests/readme/drafts")
+    FileUtils.mkdir_p("__tests/readme/publish")
+
+    # Execute commands (they output to __output/)
+    command_groups = Sourcerer.extract_commands('README.adoc', role: 'testable')
+    command_groups.each do |group|
+      sh "shopt -s expand_aliases; #{group}" unless group.strip.empty?
     end
+
+    # Copy results to __tests/readme/ for test evidence
+    puts "Copying demo outputs to test directory..."
+    FileUtils.cp_r(Dir.glob("__output/drafts/*"), "__tests/readme/drafts/", verbose: false) if Dir.exist?("__output/drafts")
+    FileUtils.cp_r(Dir.glob("__output/publish/*"), "__tests/readme/publish/", verbose: false) if Dir.exist?("__output/publish")
   end
-end
 
-desc 'Test commands in README.adoc'
-task :readme_test do
-  puts 'Executing testable commands from README.adoc'
-  
-  # Ensure output directories exist
-  FileUtils.mkdir_p("__output/drafts")
-  FileUtils.mkdir_p("__output/publish")
-  FileUtils.mkdir_p("__tests/readme/drafts")
-  FileUtils.mkdir_p("__tests/readme/publish")
-  
-  # Execute commands (they output to __output/)
-  command_groups = Sourcerer.extract_commands('README.adoc', role: 'testable')
-  command_groups.each do |group|
-    sh "shopt -s expand_aliases; #{group}" unless group.strip.empty?
+  desc "Run dynamic tests from files-matrix.yml"
+  task :dynamic do
+    puts "Testing dynamic combinations from matrix..."
+    sh "bundle exec ruby scripts/dynamic-gen.rb --execute --output-dir __tests/dynamic"
   end
-  
-  # Copy results to __tests/readme/ for test evidence
-  puts "Copying demo outputs to test directory..."
-  FileUtils.cp_r(Dir.glob("__output/drafts/*"), "__tests/readme/drafts/", verbose: false) if Dir.exist?("__output/drafts")
-  FileUtils.cp_r(Dir.glob("__output/publish/*"), "__tests/readme/publish/", verbose: false) if Dir.exist?("__output/publish")
-end
 
-desc "Run dynamic tests from files-matrix.yml"
-task :dynamic_test do
-  puts "Testing dynamic combinations from matrix..."
-  sh "bundle exec ruby scripts/dynamic-gen.rb --execute --output-dir __tests/dynamic"
-end
-
-desc "Validate content quality of generated files"
-task :validate_content do
-  puts "Validating content quality of generated files..."
-  sh "bundle exec ruby scripts/validate-content.rb"
+  desc "Validate content quality of generated files"
+  task :content do
+    puts "Validating content quality of generated files..."
+    sh "bundle exec ruby scripts/validate-content.rb"
+  end
 end
 
 desc "Clean generated output files"
@@ -218,13 +220,15 @@ task :install do
   sh "bundle install"
 end
 
-desc "Ensure we have the latest ReleaseHx build from ../releasehx"
-task :ensure_latest_build do
-  if REBUILD_RELEASEHX
-    puts "Rebuilding ReleaseHx from ../releasehx..."
-    sh "./dev-install.sh"
-  else
-    puts "Skipping ReleaseHx rebuild (SKIP_REBUILD=true)"
+namespace :install do
+  desc "Ensure we have the latest ReleaseHx build from ../releasehx"
+  task :dev do
+    if REBUILD_RELEASEHX
+      puts "Rebuilding ReleaseHx from ../releasehx..."
+      sh "./dev-install.sh"
+    else
+      puts "Skipping ReleaseHx rebuild (SKIP_REBUILD=true)"
+    end
   end
 end
 
@@ -347,134 +351,144 @@ def create_artifacts_only_branch branch_name, releasehx_version
   puts "✅ Artifacts-only branch #{branch_name} created successfully"
 end
 
-desc "Validate ReleaseHx version alignment between CLI and README.adoc"
-task :validate_version do
-  validate_version_alignment
-end
-
-desc "Generate all demo artifacts on main branch"
-task :generate_artifacts do
-  releasehx_version = get_releasehx_version
-  
-  puts "Generating artifacts using ReleaseHx #{releasehx_version} on main branch..."
-  
-  # Clean first
-  Rake::Task[:clean].invoke
-  
-  # Use dynamic generation script to generate artifacts in artifacts/ directory
-  artifact_dir = "artifacts"
-  puts "Running dynamic generation script to generate artifacts to #{artifact_dir}..."
-  sh "bundle exec ruby scripts/dynamic-gen.rb --execute --output-dir #{artifact_dir} --flatten"
-  
-  puts "\nGenerated all available artifacts using ReleaseHx #{releasehx_version}"
-  puts "  Artifacts directory: #{artifact_dir}/"
-end
-
-desc "Create artifacts-only branch for current ReleaseHx version"
-task :create_version_branch do
-  releasehx_version = validate_version_alignment
-  majmin_version = get_readme_releasehx_majmin
-  branch_name = "generated/#{majmin_version}"
-  
-  # Safety check BEFORE doing any work
-  current_branch = git_current_branch
-  unless current_branch == "main"
-    puts "❌ Must be on main branch to create version branch"
-    exit 1
+namespace :validate do
+  desc "Validate ReleaseHx version alignment between CLI and README.adoc"
+  task :version do
+    validate_version_alignment
   end
-  
-  git_ensure_clean_switch!(branch_name)
-  
-  # Generate artifacts on main branch
-  Rake::Task[:generate_artifacts].invoke
-  
-  # Create artifacts-only branch
-  create_artifacts_only_branch(branch_name, releasehx_version)
-  
-  puts "Artifacts-only branch #{branch_name} created successfully"
 end
 
-desc "Create artifacts-only latest branch"
-task :create_latest_branch do
-  releasehx_version = validate_version_alignment
-  branch_name = "generated/latest"
-  
-  # Safety check BEFORE doing any work
-  current_branch = git_current_branch
-  unless current_branch == "main"
-    puts "❌ Must be on main branch to create latest branch"
-    exit 1
+namespace :generate do
+  desc "Generate all demo artifacts on main branch"
+  task :artifacts do
+    releasehx_version = get_releasehx_version
+
+    puts "Generating artifacts using ReleaseHx #{releasehx_version} on main branch..."
+
+    # Clean first
+    Rake::Task[:clean].invoke
+
+    # Use dynamic generation script to generate artifacts in artifacts/ directory
+    artifact_dir = "artifacts"
+    puts "Running dynamic generation script to generate artifacts to #{artifact_dir}..."
+    sh "bundle exec ruby scripts/dynamic-gen.rb --execute --output-dir #{artifact_dir} --flatten"
+
+    puts "\nGenerated all available artifacts using ReleaseHx #{releasehx_version}"
+    puts "  Artifacts directory: #{artifact_dir}/"
   end
-  
-  git_ensure_clean_switch!(branch_name)
-  
-  # Generate artifacts on main branch
-  Rake::Task[:generate_artifacts].invoke
-  
-  # Create artifacts-only branch
-  create_artifacts_only_branch(branch_name, releasehx_version)
-  
-  puts "Artifacts-only branch #{branch_name} created successfully"
 end
 
-desc "Complete artifacts-only workflow for versioned branch"
-task :generate_release do
-  releasehx_version = validate_version_alignment
-  majmin_version = get_readme_releasehx_majmin
-  
-  puts "Complete artifacts-only release generation workflow for ReleaseHx #{releasehx_version}"
-  
-  # Ensure we start from a clean main branch
-  current_branch = git_current_branch
-  unless current_branch == "main"
-    puts "Switching to main branch for clean workflow start..."
+namespace :create do
+  desc "Create artifacts-only branch for current ReleaseHx version"
+  task :branch do
+    releasehx_version = validate_version_alignment
+    majmin_version = get_readme_releasehx_majmin
+    branch_name = "generated/#{majmin_version}"
+
+    # Safety check BEFORE doing any work
+    current_branch = git_current_branch
+    unless current_branch == "main"
+      puts "❌ Must be on main branch to create version branch"
+      exit 1
+    end
+
+    git_ensure_clean_switch!(branch_name)
+
+    # Generate artifacts on main branch
+    Rake::Task['generate:artifacts'].invoke
+
+    # Create artifacts-only branch
+    create_artifacts_only_branch(branch_name, releasehx_version)
+
+    puts "Artifacts-only branch #{branch_name} created successfully"
+  end
+
+  desc "Create artifacts-only latest branch"
+  task :latest do
+    releasehx_version = validate_version_alignment
+    branch_name = "generated/latest"
+
+    # Safety check BEFORE doing any work
+    current_branch = git_current_branch
+    unless current_branch == "main"
+      puts "❌ Must be on main branch to create latest branch"
+      exit 1
+    end
+
+    git_ensure_clean_switch!(branch_name)
+
+    # Generate artifacts on main branch
+    Rake::Task['generate:artifacts'].invoke
+
+    # Create artifacts-only branch
+    create_artifacts_only_branch(branch_name, releasehx_version)
+
+    puts "Artifacts-only branch #{branch_name} created successfully"
+  end
+end
+
+namespace :generate do
+  desc "Complete artifacts-only workflow for versioned branch"
+  task :release do
+    releasehx_version = validate_version_alignment
+    majmin_version = get_readme_releasehx_majmin
+
+    puts "Complete artifacts-only release generation workflow for ReleaseHx #{releasehx_version}"
+
+    # Ensure we start from a clean main branch
+    current_branch = git_current_branch
+    unless current_branch == "main"
+      puts "Switching to main branch for clean workflow start..."
+      sh "git checkout main"
+    end
+
+    # Check if main branch is clean
+    git_ensure_clean_switch!("generated/#{majmin_version}")
+
+    puts "✅ Starting artifacts-only workflow from clean main branch"
+
+    # Create the artifacts-only branch
+    Rake::Task['create:branch'].invoke
+
+    # Return to main branch and clean up artifacts
     sh "git checkout main"
-  end
-  
-  # Check if main branch is clean
-  git_ensure_clean_switch!("generated/#{majmin_version}")
-  
-  puts "✅ Starting artifacts-only workflow from clean main branch"
-  
-  # Create the artifacts-only branch
-  Rake::Task[:create_version_branch].invoke
-  
-  # Return to main branch and clean up artifacts
-  sh "git checkout main"
-  Rake::Task[:clean].invoke
-  
-  puts "🎉 Artifacts-only workflow complete! Check 'generated/#{majmin_version}' branch."
-end
+    Rake::Task[:clean].invoke
 
-desc "Complete artifacts-only workflow for latest branch"
-task :generate_latest_release do
-  releasehx_version = validate_version_alignment
-  
-  puts "Complete artifacts-only latest release workflow for ReleaseHx #{releasehx_version}"
-  
-  # Ensure we start from a clean main branch
-  current_branch = git_current_branch
-  unless current_branch == "main"
-    puts "Switching to main branch for clean workflow start..."
+    puts "🎉 Artifacts-only workflow complete! Check 'generated/#{majmin_version}' branch."
+  end
+
+  desc "Complete artifacts-only workflow for latest branch"
+  task :latest do
+    releasehx_version = validate_version_alignment
+
+    puts "Complete artifacts-only latest release workflow for ReleaseHx #{releasehx_version}"
+
+    # Ensure we start from a clean main branch
+    current_branch = git_current_branch
+    unless current_branch == "main"
+      puts "Switching to main branch for clean workflow start..."
+      sh "git checkout main"
+    end
+
+    # Check if main branch is clean
+    git_ensure_clean_switch!("generated/latest")
+
+    puts "✅ Starting artifacts-only workflow from clean main branch"
+
+    # Create the artifacts-only branch
+    Rake::Task['create:latest'].invoke
+
+    # Return to main branch and clean up artifacts
     sh "git checkout main"
+    Rake::Task[:clean].invoke
+
+    puts "🎉 Artifacts-only latest workflow complete! Check 'generated/latest' branch."
   end
-  
-  # Check if main branch is clean
-  git_ensure_clean_switch!("generated/latest")
-  
-  puts "✅ Starting artifacts-only workflow from clean main branch"
-  
-  # Create the artifacts-only branch
-  Rake::Task[:create_latest_branch].invoke
-  
-  # Return to main branch and clean up artifacts
-  sh "git checkout main"
-  Rake::Task[:clean].invoke
-  
-  puts "🎉 Artifacts-only latest workflow complete! Check 'generated/latest' branch."
 end
 
-desc "Run comprehensive test suite"
-task :pr_test => [:setup, :yaml_test, :test] do
-  puts "All comprehensive tests passed!"
+namespace :test do
+  desc "Run comprehensive test suite"
+  task pr: [:setup, 'test:yaml', :test] do
+    puts "All comprehensive tests passed!"
+  end
 end

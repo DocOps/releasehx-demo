@@ -2,7 +2,7 @@
 set -e
 
 echo "Prebuilding local releasehx gem..."
-( cd ../releasehx && rake prebundle )
+( cd ../releasehx && bundle exec rake build:gem )
 
 echo "Running bundle install..."
 bundle install
