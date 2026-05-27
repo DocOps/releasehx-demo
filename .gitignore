@@ -39,6 +39,7 @@ tmp/
 README.html
 src/
 .jekyll-cache
+_site/
 test_description_config.rb
 .warp/
 .agent/

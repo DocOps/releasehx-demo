@@ -288,7 +288,7 @@ These directory names follow ReleaseHx default path conventions as defined in `.
 [NOTE]
 ====
 The `artifacts/` directory is gitignored on `main` but committed to `generated/*` branches.
-When you run `rake generate_release`, artifacts are:
+When you run `rake generate:release`, artifacts are:
 
 . Generated to `artifacts/rhx-{releasehx_vrsn_majmin}/` on `main`
 . Committed to an orphan `generated/{releasehx_vrsn_majmin}` branch
@@ -351,17 +351,13 @@ The following commands are available for testing, development, and artifact gene
 [.prompt]
  rake test
 
-.Run API client tests
-[.prompt]
- rake api_test
-
 .Run CLI workflow tests
 [.prompt]
- rake cli_test
+ rake test:cli
 
 .Validate YAML files
 [.prompt]
- rake yaml_test
+ rake test:yaml
 
 ==== Development Tasks
 
@@ -375,7 +371,7 @@ The following commands are available for testing, development, and artifact gene
 
 .Generate all sample output artifacts
 [.prompt]
- rake generate_artifacts
+ rake generate:artifacts
 
 .Tasks from `docopslab-dev`
 [.prompt]
@@ -768,7 +764,7 @@ On `main` branch::
 * File `.gitignore-generated` defines what to track on generated/* branches
 * Specifies: track `!artifacts/`, ignore source files
 
-During `rake generate_release`::
+During `rake generate:release`::
 * Reads `.gitignore-generated` content
 * Creates orphan branch `generated/{releasehx_vrsn_majmin}`
 * Writes content to `.gitignore` on new branch
@@ -791,7 +787,7 @@ Create release::
 [source,shell,subs=+attributes]
 ----
 # Generate artifacts and create version-specific branch
-bundle exec rake generate_release
+bundle exec rake generate:release
 
 # The task will create the orphan branch but may fail during git add.
 # If it fails, complete manually:

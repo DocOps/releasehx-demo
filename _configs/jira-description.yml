@@ -14,9 +14,7 @@ conversions:
   summ: issue_heading
   note: description
   markup: markdown
-
-sources:
-  note_heading: "Release Note"
+  note_pattern: /RELEASE NOTE:\s*(?<note>(.|\n)+)/gmi
 
 parts:
   webui:
@@ -39,6 +37,7 @@ links:
     href: https://github.com/DocOps/releasehx-demo/commit/{{ hash }}
 
 modes:
+  html_wrap: true
   asciidoc_frontmatter: true
 
 rhyml:
@@ -52,6 +51,7 @@ history:
       No changes in this {{ group_type }} category.
 
 changelog:
+  spot: 1
   items:
     frame: paragraph
 

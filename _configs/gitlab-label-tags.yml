@@ -100,6 +100,7 @@ changelog:
   head: Changes
   text: |
     All changes included in this release (using label-based tagging).
+  spot: 1
   sort:
     - 'part:grouping1'
     - 'type:grouping2'
@@ -110,7 +111,7 @@ notes:
   head: Notable Changes
   text: |
     Detailed information about significant changes that may affect users.
-  spot: 1
+  spot: 2
   sort:
     - 'highlighted:grouping1'
     - 'security:grouping1'
@@ -119,7 +120,7 @@ notes:
     - 'experimental:grouping1'
     - 'part:grouping2'
   items:
-    frame: table-cols-2
+    frame: desc-list
     allow_redundant: false
 
 tags:

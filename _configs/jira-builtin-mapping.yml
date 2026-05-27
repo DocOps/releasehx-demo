@@ -74,6 +74,7 @@ history:
       No changes in this {{ group_type }} category.
 
 changelog:
+  spot: 1
   items:
     frame: paragraph
 

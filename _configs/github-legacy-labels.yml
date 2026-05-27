@@ -51,6 +51,7 @@ history:
     metadata_icons: true
 
 changelog:
+  spot: 1
   head: What's Changed
   text: |
     Summary of all changes in this release (using legacy label-based tagging).
@@ -60,7 +61,7 @@ changelog:
     metadata_labels: after
 
 notes:
-  spot: 1
+  spot: 2
   items:
     frame: desc-list
     allow_redundant: true

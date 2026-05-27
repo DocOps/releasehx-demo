@@ -141,7 +141,7 @@ changelog:
     Comprehensive list of all changes in {{ release.code }}, organized by component and change type.
 
     Each entry includes links to the original issue and commit for detailed information.
-  spot: 4
+  spot: 1
   sort:
     - 'highlighted:group'
     - 'breaking:group'
@@ -161,7 +161,7 @@ notes:
     Detailed information about the most important changes in {{ release.code }}.
 
     This section focuses on changes that directly impact users and require attention during upgrades.
-  spot: 1
+  spot: 2
   sort:
     - 'breaking:group'
     - 'security:group'

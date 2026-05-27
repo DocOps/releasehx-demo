@@ -221,9 +221,9 @@ Thoroughly review the "Testing Methodology" section in `README.adoc` and `API-CL
 ### Working with Artifacts
 
 1. **Clean environment:** `bundle exec rake clean`
-2. **Generate artifacts:** `bundle exec rake generate_artifacts`
-3. **Create version branch:** `bundle exec rake generate_release`
-4. **Create latest branch:** `bundle exec rake generate_latest_release`
+2. **Generate artifacts:** `bundle exec rake generate:artifacts`
+3. **Create version branch:** `bundle exec rake generate:release`
+4. **Create latest branch:** `bundle exec rake generate:latest`
 
 
 ## Debugging and Investigation Tools

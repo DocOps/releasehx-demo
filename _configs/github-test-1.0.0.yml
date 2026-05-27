@@ -54,13 +54,14 @@ history:
     show_issue_links: true
 
 changelog:
+  spot: 1
   head: What's Changed
   text: Summary of all changes in this release.
   items:
     frame: unordered
 
 notes:
-  spot: 1
+  spot: 2
   head: Release Notes
   text: Descriptions of notable changes in this release.
   items:
