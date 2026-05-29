@@ -1,0 +1,34 @@
+:icons: font
+:page-title: Release History for 1.1.0
+:page-version: 1.1.0
+:page-date: 2026-05-29
+
+= Changelog for 1.1.0
+
+[.release-section]
+== Changes in 1.1.0
+
+Complete list of all changes included in this release.
+
+[.changelog-section]
+
+[[entry-1_1_0-PROJ-310]]
+[.change-entry]
+* Add inline editing to dashboard widgets
+
+[[entry-1_1_0-PROJ-467]]
+[.change-entry]
+* Add rate limiting headers to public API
+
+[[entry-1_1_0-PROJ-983]]
+[.change-entry]
+* Fix modal overflow on small screens
+
+[[entry-1_1_0-PROJ-399]]
+[.change-entry]
+* Add missing keyboard shortcuts to Help page
+
+[[entry-1_1_0-PROJ-777]]
+[.change-entry]
+* Add batch export API endpoint
+

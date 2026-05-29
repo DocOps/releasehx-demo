@@ -1,0 +1,60 @@
+:icons: font
+:page-title: Release History for 1.1.0
+:page-version: 1.1.0
+:page-date: 2026-05-29
+
+= Release History -- 1.1.0 - 2026-05-29
+
+[.release-section]
+== Changelog
+
+Summaries of all user-facing changes made since the previous release.
+
+[.changelog-section]
+
+=== Web UI
+
+[.change-entry]
+Add inline editing to dashboard widgets +
+xref:note-1_1_0-PROJ-310[NOTE]
+
+[.change-entry]
+Fix modal overflow on small screens +
+xref:note-1_1_0-PROJ-983[NOTE]
+
+[.change-entry]
+Add missing keyboard shortcuts to Help page +
+xref:note-1_1_0-PROJ-399[NOTE]
+
+=== API
+
+[.change-entry]
+Add rate limiting headers to public API +
+xref:note-1_1_0-PROJ-467[NOTE]
+
+[.change-entry]
+Fix JSON serialization issue with null values +
+xref:note-1_1_0-PROJ-987[NOTE]
+
+[.change-entry]
+Add batch export API endpoint +
+xref:note-1_1_0-PROJ-777[NOTE]
+
+== Release Notes
+
+Descriptions of any specially notable changes or additions since the previous release.
+
+[.notes-section]
+
+=== Breaking Changes
+==== API
+[.release-note]
+--
+Implements middleware to attach X-RateLimit headers.
+
+The API now includes standard `X-RateLimit-*` headers in all responses to better inform consumers of usage thresholds.
+
+NOTE: The default rate limit remains unchanged.
+
+--
+
