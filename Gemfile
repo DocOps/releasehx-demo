@@ -1,6 +1,6 @@
 source "https://rubygems.org"
 
-gem 'releasehx', path: '../releasehx'
+gem 'releasehx', '~> 0.2'
 gem 'issuer' # , path: '../issuer'
 gem 'schemagraphy'
 gem 'asciisourcerer'

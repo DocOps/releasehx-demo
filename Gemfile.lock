@@ -1,28 +1,3 @@
-PATH
-  remote: ../releasehx
-  specs:
-    releasehx (0.2.0)
-      asciidoctor-html5s (~> 0.5)
-      asciidoctor-pdf (~> 2.3)
-      asciisourcerer (~> 0.4)
-      commonmarker (~> 0.23)
-      faraday (~> 2.9)
-      faraday-follow_redirects (~> 0.3.0)
-      jekyll (~> 4.4)
-      jekyll-asciidoc (~> 3.0.0)
-      jmespath (~> 1.6)
-      jsonpath (~> 1.1)
-      kramdown (~> 2.4)
-      kramdown-asciidoc (~> 2.1)
-      liquid (~> 4.0)
-      mcp (~> 0.4)
-      prism (~> 1.5)
-      schemagraphy (~> 0.1)
-      thor (~> 1.3)
-      tilt (~> 2.3)
-      to_regexp (= 0.2.1)
-      yaml (~> 0.4)
-
 GEM
   remote: https://rubygems.org/
   specs:
@@ -356,6 +331,27 @@ GEM
       rainbow (>= 2.0, < 4.0)
       rexml (~> 3.1)
     regexp_parser (2.12.0)
+    releasehx (0.2.1)
+      asciidoctor-html5s (~> 0.5)
+      asciidoctor-pdf (~> 2.3)
+      asciisourcerer (~> 0.4)
+      commonmarker (~> 0.23)
+      faraday (~> 2.9)
+      faraday-follow_redirects (~> 0.3.0)
+      jekyll (~> 4.4)
+      jekyll-asciidoc (~> 3.0.0)
+      jmespath (~> 1.6)
+      jsonpath (~> 1.1)
+      kramdown (~> 2.4)
+      kramdown-asciidoc (~> 2.1)
+      liquid (~> 4.0)
+      mcp (~> 0.4)
+      prism (~> 1.5)
+      schemagraphy (~> 0.1)
+      thor (~> 1.3)
+      tilt (~> 2.3)
+      to_regexp (= 0.2.1)
+      yaml (~> 0.4)
     reline (0.6.3)
       io-console (~> 0.5)
     reverse_markdown (2.1.1)
@@ -473,7 +469,7 @@ DEPENDENCIES
   jekyll-optional-front-matter (~> 0.3)
   jekyll-seo-tag (~> 2.8)
   minima (~> 2.5)
-  releasehx!
+  releasehx (~> 0.2)
   schemagraphy
 
 BUNDLED WITH
