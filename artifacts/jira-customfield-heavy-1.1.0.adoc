@@ -1,0 +1,91 @@
+:icons: font
+:page-title: Release History for 1.1.0
+:page-version: 1.1.0
+:page-date: 2026-05-29
+
+= Release 1.1.0 - May 29, 2026
+
+
+[.release-section]
+== Complete Changelog
+
+
+Comprehensive list of all changes included in 1.1.0.
+
+Changes are organized by component and type for easy navigation.
+
+
+
+[.changelog-section]
+
+
+=== 🌟 Highlighted Features
+==== Web User Interface
+
+
+[.change-entry]
+* Added inline editing to dashboard widgets +
+xref:note-1_1_0-PROJ-310-added-inline-edit[NOTE]
+
+
+==== Application Programming Interface
+
+
+[.change-entry]
+* Added batch export API endpoint +
+xref:note-1_1_0-PROJ-777-added-batch-expor[NOTE]
+
+
+
+=== ⚠️ Breaking Changes
+==== Application Programming Interface
+
+
+[.change-entry]
+* Added rate limiting headers to public API +
+xref:note-1_1_0-PROJ-467-added-rate-limiti[NOTE]
+
+
+
+== Release Highlights & Important Notes
+
+
+Detailed information about significant changes, new features, and important considerations for 1.1.0.
+
+Please review breaking changes and deprecations carefully before upgrading.
+
+
+
+[.notes-section]
+
+
+
+=== ⚠️ Breaking Changes
+==== Application Programming Interface
+[.release-note]
+--
+RELEASE NOTE NEEDED
+
+--
+
+
+
+=== 🌟 Highlighted Features
+==== Web User Interface
+[.release-note]
+--
+RELEASE NOTE NEEDED
+
+--
+
+
+
+==== Application Programming Interface
+[.release-note]
+--
+RELEASE NOTE NEEDED
+
+--
+
+
+

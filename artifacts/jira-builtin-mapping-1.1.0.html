@@ -1,0 +1,144 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Release history and changelog">
+  
+  <title>Release History -- 1.1.0 - 2026-05-29</title>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+  
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+  <style>
+    /* Bootstrap Overrides for ReleaseHx */
+/* Users can override this file by placing bootstrap-overrides.css in their _templates directory */
+
+/* Dark Mode Fixes */
+@media (prefers-color-scheme: dark) {
+  /* Fix .bg-light in card headers - use semantic card background instead */
+  .card-header.bg-light {
+    background-color: var(--bs-card-cap-bg) !important;
+    border-bottom: var(--bs-card-border-width) solid var(--bs-card-border-color);
+  }
+}
+
+.container-lg {
+  max-width: 900px;
+}
+
+  </style>
+</head>
+<body>
+  <div class="container-lg py-5">
+    <article class="release-history">
+      
+<h1 class="display-5 fw-bold mb-4">Release History -- 1.1.0 - 2026-05-29</h1>
+
+<div class="release-section" id="release-1-1-0">
+
+<section class="changelog-section py-4 px-3 mb-4 rounded">
+<h2 class="h2 fw-bold border-bottom pb-3 mb-3">Changelog</h2>
+
+Summaries of all user-facing changes made since the previous release.
+
+  <div class="changelog-content mt-4">
+
+<h3 class="h3 fw-bold text-primary mt-4 mb-2">Web UI</h3>
+
+<div class="change-entry list-group-item px-3 py-2" id="entry-1_1_0-PROJ-310">
+  <div class="d-flex align-items-start justify-content-between">
+    <div class="flex-grow-1">
+      <p class="change-summary mb-2">
+        <span class="text-body">Add inline editing to dashboard widgets
+</span>
+      </p><div class="change-metadata">
+        
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="change-entry list-group-item px-3 py-2" id="entry-1_1_0-PROJ-983">
+  <div class="d-flex align-items-start justify-content-between">
+    <div class="flex-grow-1">
+      <p class="change-summary mb-2">
+        <span class="text-body">Fix modal overflow on small screens
+</span>
+      </p><div class="change-metadata">
+        
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="change-entry list-group-item px-3 py-2" id="entry-1_1_0-PROJ-399">
+  <div class="d-flex align-items-start justify-content-between">
+    <div class="flex-grow-1">
+      <p class="change-summary mb-2">
+        <span class="text-body">Add missing keyboard shortcuts to Help page
+</span>
+      </p><div class="change-metadata">
+        
+      </div>
+    </div>
+  </div>
+</div>
+
+<h3 class="h3 fw-bold text-primary mt-4 mb-2">API</h3>
+
+<div class="change-entry list-group-item px-3 py-2" id="entry-1_1_0-PROJ-467">
+  <div class="d-flex align-items-start justify-content-between">
+    <div class="flex-grow-1">
+      <p class="change-summary mb-2">
+        <span class="text-body">Add rate limiting headers to public API
+</span>
+      </p><div class="change-metadata">
+        
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="change-entry list-group-item px-3 py-2" id="entry-1_1_0-PROJ-777">
+  <div class="d-flex align-items-start justify-content-between">
+    <div class="flex-grow-1">
+      <p class="change-summary mb-2">
+        <span class="text-body">Add batch export API endpoint
+</span>
+      </p><div class="change-metadata">
+        
+      </div>
+    </div>
+  </div>
+</div>
+
+  </div>
+</section>
+
+<section class="notes-section py-4 px-3 mb-4">
+<h2 class="h2 fw-bold border-bottom pb-3 mb-3">Release Notes</h2>
+
+Descriptions of any specially notable changes or additions since the previous release.
+
+  <div class="notes-content mt-4">
+
+  </div>
+</section>
+
+</div>
+
+    </article>
+  </div>
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+  <script>
+    // Auto-detect and apply Bootstrap 5 dark mode
+    if (window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches) {
+      document.documentElement.setAttribute('data-bs-theme', 'dark');
+    }
+    // Listen for system theme changes
+    window.matchMedia('(prefers-color-scheme: dark)').addEventListener('change', e => {
+      document.documentElement.setAttribute('data-bs-theme', e.matches ? 'dark' : 'light');
+    });
+  </script>
+</body>
+</html>
